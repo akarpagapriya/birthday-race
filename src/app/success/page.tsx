@@ -17,7 +17,7 @@ function SuccessContent() {
   }
 
   return (
-    <div style={{ minHeight: '100vh', background: 'radial-gradient(ellipse at 50% 30%,#1e0042,#080010)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: 24, textAlign: 'center' }}>
+    <div style={{ minHeight: '100vh', background: 'radial-gradient(ellipse at 50% 30%,#1e0042,#080010)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: 24, textAlign: 'center', overflowY: 'scroll', height: '100vh' }}>
       <div style={{ fontSize: '5rem', marginBottom: 16 }}>🎉</div>
       <h1 style={{ fontFamily: "'Racing Sans One',cursive", fontSize: 'clamp(1.8rem,6vw,3rem)', color: '#d8b4fe', marginBottom: 12, textShadow: '0 0 40px #9333ea' }}>
         Game Created!
