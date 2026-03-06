@@ -27,7 +27,11 @@ function makeBgStars(): BgStar[] {
   return Array.from({length:160},()=>({x:Math.random()*1200,y:Math.random()*900,r:Math.random()*1.6+.3,speed:.2+Math.random()*.8,op:.15+Math.random()*.7}))
 }
 
-export default function Game() {
+export default function Game({ customData }: { customData?: { childName: string; themeColor: string; wishes: Wish[] } | null }) {
+  const activeWishes = customData?.wishes ?? WISHES
+  const defaultTheme = customData?.themeColor ?? '#9333ea'
+  const childName = customData?.childName ?? 'Kabileshwar'
+  const totalStages = activeWishes.length  // ← dynamic! works for 1–7 stages
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const [screen, setScreen] = useState<Screen>('intro')
   const [wishIdx, setWishIdx] = useState(0)
@@ -41,15 +45,10 @@ export default function Game() {
   const [transMsg, setTransMsg] = useState('')
   const [transOpen, setTransOpen] = useState(false)
   const [goScore, setGoScore] = useState(0)
-  const [dotParticles, setDotParticles] = useState<{id:number;left:number;dur:number;delay:number;size:number;op:number}[]>([])
-
-  // Initialize dot particles on client-side only
-  useEffect(() => {
-    setDotParticles(Array.from({length:70},(_,i)=>({
-      id:i, left:Math.random()*100, dur:7+Math.random()*14, delay:Math.random()*14,
-      size:0.8+Math.random()*2.5, op:0.4+Math.random()*0.6
-    })))
-  }, [])
+  const [dotParticles] = useState(() => Array.from({length:70},(_,i)=>({
+    id:i, left:Math.random()*100, dur:7+Math.random()*14, delay:Math.random()*14,
+    size:0.8+Math.random()*2.5, op:0.4+Math.random()*0.6
+  })))
 
   // Game state (mutable refs for canvas loop)
   const G = useRef({
@@ -101,7 +100,6 @@ export default function Game() {
     const ctx = canvas.getContext('2d'); if(!ctx) return
 
     function resize(){
-      if(!canvas) return
       const r=canvas.getBoundingClientRect()
       if(r.width>0&&r.height>0){
         canvas.width=r.width; canvas.height=r.height
@@ -114,7 +112,6 @@ export default function Game() {
     function loop(ts:number){
       rafRef.current=requestAnimationFrame(loop)
       const g=G.current
-      if(!canvas) return
       const W=canvas.width, H=canvas.height
       if(W===0||H===0) return
 
@@ -185,9 +182,8 @@ export default function Game() {
       }
 
       // DRAW
-      if(!ctx) return
       const shake=g.shakeT>0
-      if(shake&&ctx){ctx.save();ctx.translate(~~(Math.random()*8-4),~~(Math.random()*6-3))}
+      if(shake){ctx.save();ctx.translate(~~(Math.random()*8-4),~~(Math.random()*6-3))}
       drawSpaceBg(ctx,W,H,g.bgStars,g.stageColor,g.bgTimer)
       drawRoad(ctx,W,H,g.roadScroll,g.stageColor,STAGE_NAMES[g.stage-1])
 
@@ -235,13 +231,13 @@ export default function Game() {
 
   const continueFromWish = useCallback(()=>{
     const stage = G.current.stage
-    if(stage>=7){
+    if(stage >= totalStages){
       doTransition('🏆 CHAMPION!',()=>{ setScreen('winner'); spawnConfetti(140); sndBday() })
     } else {
       const ns=stage+1
       doTransition(`STAGE ${ns} ⚡`,()=>{ setScreen('game'); initStage(ns) })
     }
-  },[doTransition,initStage])
+  },[doTransition, initStage, totalStages])
 
   const retry = useCallback(()=>{
     sndRev(); G.current.lives=3
@@ -253,17 +249,8 @@ export default function Game() {
     doTransition('NEW RACE! 🏁',()=>setScreen('intro'))
   },[doTransition])
 
-  const SHORT_WISHES = [
-    "You are my brightest star! ⭐",
-    "My sunshine, my everything! ☀️",
-    "Two mummies love you endlessly! 💜",
-    "Best brother ever! Let's race! 🚗",
-    "Best Anna in the whole world! 👶",
-    "We all love you to the moon! 🌙",
-    "You are our #1 Champion! 🏆",
-  ]
-
-  const wish = WISHES[wishIdx]
+  const SHORT_WISHES = activeWishes.map(w => w.text)
+  const wish = activeWishes[wishIdx]
   const isTouch = typeof window!=='undefined' && 'ontouchstart' in window
 
   return (
@@ -289,7 +276,7 @@ export default function Game() {
           ))}
           <div style={{fontSize:'clamp(3rem,12vw,7rem)',filter:'drop-shadow(0 0 30px #9333ea)',animation:'flagWave 1.2s ease-in-out infinite alternate',zIndex:2}}>🏁</div>
           <div style={{fontFamily:"'Racing Sans One',cursive",fontSize:'clamp(2.2rem,8vw,5.5rem)',color:'#d8b4fe',textAlign:'center',textShadow:'0 0 40px #9333ea,0 0 80px #6b21a8,4px 4px 0 #3b0764',lineHeight:1.1,padding:'0 16px',zIndex:2}}>
-            ⚡ Lightning<br/>Kabileshwar!
+⚡ Lightning<br/>{childName}!
           </div>
           <div style={{fontFamily:"'Boogaloo',cursive",fontSize:'clamp(1rem,3vw,1.6rem)',color:'rgba(255,255,255,0.75)',zIndex:2}}>🎂 Happy 6th Birthday! 🎂</div>
           <div style={{background:'rgba(147,51,234,0.1)',border:'2px solid rgba(147,51,234,0.4)',borderRadius:20,padding:'16px 26px',maxWidth:400,margin:'0 16px',zIndex:2}}>
@@ -297,7 +284,7 @@ export default function Game() {
               🚗 Steer your car &amp; <strong style={{color:'#d8b4fe'}}>collect ⭐ stars!</strong><br/>
               Avoid obstacles on the road.<br/>
               Win a stage → unlock a <strong style={{color:'#d8b4fe'}}>family wish! 💜</strong><br/>
-              7 stages · 7 wishes · 1 Champion!
+              {totalStages} stages · {totalStages} wishes · 1 Champion!
             </p>
           </div>
           <button onClick={startGame} style={{fontFamily:"'Racing Sans One',cursive",fontSize:'clamp(1.1rem,3.5vw,1.8rem)',background:'linear-gradient(135deg,#9333ea,#6b21a8)',color:'#fff',border:'none',borderRadius:60,padding:'16px 44px',cursor:'pointer',letterSpacing:2,boxShadow:'0 7px 0 #3b0764,0 0 40px rgba(147,51,234,0.5)',animation:'btnPulse 1.8s ease-in-out infinite',zIndex:2}}>
@@ -312,15 +299,15 @@ export default function Game() {
         <div style={{width:'100%',height:50,background:'rgba(8,0,16,0.95)',borderBottom:'2px solid rgba(147,51,234,0.4)',display:'flex',alignItems:'center',justifyContent:'space-between',padding:'0 12px',gap:6,flexShrink:0,zIndex:10}}>
           <div style={{display:'flex',flexDirection:'column',alignItems:'center'}}>
             <span style={{fontFamily:"'Racing Sans One',cursive",fontSize:'0.58rem',letterSpacing:2,color:'rgba(255,255,255,0.38)',textTransform:'uppercase'}}>Stage</span>
-            <span style={{fontFamily:"'Boogaloo',cursive",fontSize:'1.2rem',color:'#d8b4fe'}}>{hStage}/7</span>
+            <span style={{fontFamily:"'Boogaloo',cursive",fontSize:'1.2rem',color:'#d8b4fe'}}>{hStage}/{totalStages}</span>
           </div>
           {/* Stage nodes */}
           <div style={{display:'flex',alignItems:'center',gap:3}}>
-            {Array.from({length:7},(_,i)=>(
+            {Array.from({length:totalStages},(_,i)=>(
               <div key={i} style={{display:'flex',alignItems:'center',gap:3}}>
                 {i>0&&<div style={{width:8,height:3,background:i<hStage?'#7c3aed':'#1e0042',borderRadius:2}}/>}
                 <div style={{width:20,height:20,borderRadius:'50%',background:i+1<hStage?'#7c3aed':i+1===hStage?'#d8b4fe':'#1e0042',border:`2px solid ${i+1<hStage?'#a78bfa':i+1===hStage?'#fff':'#4c1d95'}`,display:'flex',alignItems:'center',justifyContent:'center',fontSize:'0.55rem',animation:i+1===hStage?'nodePulse 1s ease-in-out infinite':undefined}}>
-                  {STAGE_ICONS[i]}
+                  {STAGE_ICONS[i] ?? '⭐'}
                 </div>
               </div>
             ))}
@@ -434,12 +421,7 @@ export default function Game() {
                 <div style={{position:'relative',zIndex:2,width:'100%',height:'100%',borderRadius:'50%',overflow:'hidden',border:`4px solid ${wish.color}`,boxShadow:`0 0 0 3px #fff2,0 0 30px ${wish.color}99`,background:`linear-gradient(135deg,${wish.color}33,#1a0030)`,display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',animation:'photoFloat 3s 2.3s ease-in-out infinite'}}>
                   {wish.photo ? (
                     /* ── REPLACE BELOW with <img src={`/photo${wish.photo}.jpg`} ... /> once you add real photos to /public ── */
-                    <>
-                      <span style={{fontSize:'2.4rem'}}>📸</span>
-                      <span style={{fontFamily:"'Boogaloo',cursive",fontSize:'0.62rem',color:'rgba(255,255,255,0.5)',letterSpacing:1,textTransform:'uppercase',textAlign:'center',padding:'0 8px'}}>
-                        Photo {wish.photo}<br/>of Kabileshwar
-                      </span>
-                    </>
+                    <img src={wish.photo} style={{width:'100%',height:'100%',objectFit:'cover',borderRadius:'50%'}} alt="Family photo" />
                   ) : (
                     <span style={{fontSize:'3.5rem'}}>{wish.av}</span>
                   )}
@@ -461,7 +443,7 @@ export default function Game() {
 
               {/* CONTINUE BUTTON — fades in at 2.65s */}
               <button onClick={continueFromWish} style={{animation:'btnFadeUp 0.5s 2.65s ease-out both',marginTop:20,display:'block',fontFamily:"'Racing Sans One',cursive",fontSize:'1rem',background:`linear-gradient(135deg,${wish.color},#6b21a8)`,color:'#fff',border:'none',borderRadius:40,padding:'13px 36px',cursor:'pointer',boxShadow:`0 6px 0 #3b0764,0 0 24px ${wish.color}55`,letterSpacing:1,width:'100%',position:'relative',zIndex:6}}>
-                {G.current.stage >= 7 ? '🏆 CLAIM THE TROPHY!' : 'NEXT STAGE ⚡'}
+                {G.current.stage >= totalStages ? '🏆 CLAIM THE TROPHY!' : 'NEXT STAGE ⚡'}
               </button>
             </div>
           </div>
@@ -473,7 +455,7 @@ export default function Game() {
         <div style={{position:'fixed',inset:0,background:'radial-gradient(ellipse at 50% 40%,#1a0010,#080010)',display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',gap:16}}>
           <div style={{fontSize:'4rem'}}>💥</div>
           <h2 style={{fontFamily:"'Racing Sans One',cursive",fontSize:'clamp(2rem,7vw,3.5rem)',color:'#f87171',textShadow:'0 0 30px rgba(248,113,113,.7)',textAlign:'center'}}>OH NO! CRASH!</h2>
-          <p style={{fontFamily:"'Boogaloo',cursive",fontSize:'clamp(1rem,3vw,1.3rem)',color:'rgba(255,255,255,.8)',textAlign:'center',padding:'0 20px'}}>Don't worry Kabileshwar!<br/>Every champion crashes sometimes!</p>
+          <p style={{fontFamily:"'Boogaloo',cursive",fontSize:'clamp(1rem,3vw,1.3rem)',color:'rgba(255,255,255,.8)',textAlign:'center',padding:'0 20px'}}>Don't worry {childName}!<br/>Every champion crashes sometimes!</p>
           <div style={{fontFamily:"'Boogaloo',cursive",fontSize:'1.4rem',color:'#d8b4fe'}}>⭐ Stars: {goScore}</div>
           <button onClick={retry} style={{fontFamily:"'Racing Sans One',cursive",fontSize:'clamp(1.1rem,3.5vw,1.8rem)',background:'linear-gradient(135deg,#9333ea,#6b21a8)',color:'#fff',border:'none',borderRadius:60,padding:'16px 44px',cursor:'pointer',letterSpacing:2,boxShadow:'0 7px 0 #3b0764'}}>
             🔄 TRY AGAIN!
@@ -484,7 +466,7 @@ export default function Game() {
       {/* ═══ WINNER ═══ */}
       {screen==='winner' && (
         <div style={{position:'fixed',inset:0,background:'radial-gradient(ellipse at 50% 30%,#1e0042,#080010)',display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',gap:12,padding:20,overflowY:'auto'}}>
-          <div style={{fontFamily:"'Racing Sans One',cursive",fontSize:'clamp(1.6rem,5.5vw,3.5rem)',color:'#d8b4fe',textAlign:'center',textShadow:'0 0 40px rgba(147,51,234,.8)',lineHeight:1.1}}>⚡ LIGHTNING KABILESHWAR<br/>IS THE CHAMPION! 🏆</div>
+          <div style={{fontFamily:"'Racing Sans One',cursive",fontSize:'clamp(1.6rem,5.5vw,3.5rem)',color:'#d8b4fe',textAlign:'center',textShadow:'0 0 40px rgba(147,51,234,.8)',lineHeight:1.1}}>⚡ LIGHTNING {childName.toUpperCase()}<br/>IS THE CHAMPION! 🏆</div>
           <div className="anim-trophy" style={{fontSize:'2.2rem'}}>🏆🥇🎊⭐🚗⚡🎂</div>
           <div className="anim-winfloat" style={{width:'clamp(90px,20vw,130px)',aspectRatio:'1',borderRadius:'50%',overflow:'hidden',border:'5px solid #9333ea',boxShadow:'0 0 0 4px #6b21a8,0 0 50px rgba(147,51,234,.7)',background:'#180030',display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',gap:4,color:'rgba(255,255,255,.35)'}}>
             <span style={{fontSize:'2rem'}}>📸</span><small style={{fontSize:'.6rem',letterSpacing:1,textTransform:'uppercase'}}>Winner!</small>
@@ -493,7 +475,7 @@ export default function Game() {
             You collected all 7 wishes from your whole family! 💜
           </p>
           <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fit,minmax(175px,1fr))',gap:8,width:'100%',maxWidth:660}}>
-            {WISHES.map((w,i)=>(
+            {activeWishes.map((w,i)=>(
               <div key={i} style={{background:'rgba(147,51,234,.08)',border:`2px solid ${w.color}44`,borderRadius:14,padding:'10px 12px',textAlign:'center'}}>
                 <div style={{fontSize:'1.5rem'}}>{w.av}</div>
                 <div style={{fontFamily:"'Racing Sans One',cursive",fontSize:'.75rem',color:'#d8b4fe',margin:'3px 0',letterSpacing:1}}>{w.from}</div>

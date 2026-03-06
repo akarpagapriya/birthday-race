@@ -2,9 +2,9 @@ import type { Metadata } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: '⚡ Lightning Kabileshwar – Birthday Race!',
-  description: 'Happy 6th Birthday Kabileshwar! Race through 7 stages and collect family wishes!',
-  viewport: 'width=device-width, initial-scale=1, user-scalable=no',
+  title: '⚡ Birthday Race — Personalised Birthday Games for Kids!',
+  description: 'Create a personalised birthday race game for your child with family photos and wishes inside gift boxes!',
+  icons: { icon: '/favicon.svg' },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
