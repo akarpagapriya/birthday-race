@@ -1,0 +1,2387 @@
+module.exports = [
+"[externals]/next/dist/compiled/next-server/app-page-turbo.runtime.dev.js [external] (next/dist/compiled/next-server/app-page-turbo.runtime.dev.js, cjs)", ((__turbopack_context__, module, exports) => {
+
+const mod = __turbopack_context__.x("next/dist/compiled/next-server/app-page-turbo.runtime.dev.js", () => require("next/dist/compiled/next-server/app-page-turbo.runtime.dev.js"));
+
+module.exports = mod;
+}),
+"[project]/src/components/gameData.ts [app-ssr] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "BDAY_NOTES",
+    ()=>BDAY_NOTES,
+    "STAGE_COLORS",
+    ()=>STAGE_COLORS,
+    "STAGE_ICONS",
+    ()=>STAGE_ICONS,
+    "STAGE_NAMES",
+    ()=>STAGE_NAMES,
+    "STARS_NEEDED",
+    ()=>STARS_NEEDED,
+    "WISHES",
+    ()=>WISHES
+]);
+const WISHES = [
+    {
+        from: 'Paati Gunasekari',
+        av: '👵',
+        color: '#c084fc',
+        tag: 'Stage 1 Complete! 🏁',
+        photo: 1,
+        text: "My dearest Kabileshwar, you are the brightest star in our family sky! Paati loves you more than all the stars in this game put together. Happy 6th Birthday, my little champion! 🌟💜"
+    },
+    {
+        from: 'Amma Karpagapriya',
+        av: '💛',
+        color: '#fde68a',
+        tag: 'Stage 2 Complete! ✨',
+        photo: 2,
+        text: "Kabi my love, you came into my life and made everything perfect. Watching you grow into this amazing little racer fills my heart with so much joy. I love you more than words can say. Happy Birthday, my sunshine! ☀️💛"
+    },
+    {
+        from: 'Amma Durgadevi',
+        av: '💜',
+        color: '#e879f9',
+        tag: 'Stage 3 Complete! ⚡',
+        photo: 3,
+        text: "My sweet Kabileshwar, you know you have two mummies who love you endlessly! You make every day so special just by being you. Zoom through life always — we'll always be cheering for you! 💜🚗"
+    },
+    {
+        from: 'Brother Nimaleshwar',
+        av: '👦',
+        color: '#6ee7b7',
+        tag: 'Stage 4 Complete! 🏆',
+        photo: 4,
+        text: "Anna Kabi! You're the coolest! Let's race our toy cars forever and ever! I'm SO happy you're my brother. Happy Birthday, let's play ALL day today! 🚗🚕💚"
+    },
+    {
+        from: 'Baby Sister Maadhangi',
+        av: '👶',
+        color: '#93c5fd',
+        tag: 'Stage 5 Complete! 📣',
+        photo: 5,
+        text: "Boo boo baa! 🍼 (That means: Anna Kabileshwar, I don't know much yet — but I already know you are the BEST big brother in the whole world! I love you so much! 💙👶)"
+    },
+    {
+        from: 'The Whole Family 🏠',
+        av: '🏠',
+        color: '#fca5a5',
+        tag: 'Stage 6 Complete! 🔴',
+        photo: null,
+        text: "Gunasekari, Karpagapriya, Durgadevi, Nimaleshwar & little Maadhangi — ALL of us say: Kabileshwar, you are our greatest joy, our loudest laugh, our warmest hug. We love you endlessly! 🌺💜"
+    },
+    {
+        from: '⚡ Lightning Kabileshwar',
+        av: '🏆',
+        color: '#fde68a',
+        tag: '🏁 CHAMPION! All 7 Done!',
+        photo: null,
+        text: "YOU DID IT! You finished all 7 stages and collected every family wish! You are not just ⚡ Lightning Kabileshwar the racer — you are the most loved, most wonderful 6-year-old in the whole universe. HAPPY BIRTHDAY! 🎂🎊🚗⭐🏆"
+    }
+];
+const STARS_NEEDED = [
+    10,
+    12,
+    13,
+    14,
+    14,
+    15,
+    16
+];
+const STAGE_COLORS = [
+    '#c084fc',
+    '#e879f9',
+    '#a78bfa',
+    '#fde68a',
+    '#93c5fd',
+    '#f87171',
+    '#d8b4fe'
+];
+const STAGE_NAMES = [
+    'Star Valley',
+    'Comet Lane',
+    'Nebula Road',
+    'Halfway Highway',
+    'Fan Boulevard',
+    'Final Straight',
+    "Champion's End"
+];
+const STAGE_ICONS = [
+    '🏁',
+    '⛽',
+    '⚡',
+    '🏆',
+    '📣',
+    '🔴',
+    '👑'
+];
+const BDAY_NOTES = [
+    [
+        261.6,
+        .3
+    ],
+    [
+        261.6,
+        .1
+    ],
+    [
+        293.7,
+        .4
+    ],
+    [
+        261.6,
+        .4
+    ],
+    [
+        349.2,
+        .4
+    ],
+    [
+        329.6,
+        .8
+    ],
+    [
+        261.6,
+        .3
+    ],
+    [
+        261.6,
+        .1
+    ],
+    [
+        293.7,
+        .4
+    ],
+    [
+        261.6,
+        .4
+    ],
+    [
+        392,
+        .4
+    ],
+    [
+        349.2,
+        .8
+    ],
+    [
+        261.6,
+        .3
+    ],
+    [
+        261.6,
+        .1
+    ],
+    [
+        523.3,
+        .4
+    ],
+    [
+        440,
+        .4
+    ],
+    [
+        349.2,
+        .4
+    ],
+    [
+        329.6,
+        .4
+    ],
+    [
+        293.7,
+        .8
+    ],
+    [
+        466.2,
+        .3
+    ],
+    [
+        466.2,
+        .1
+    ],
+    [
+        440,
+        .4
+    ],
+    [
+        349.2,
+        .4
+    ],
+    [
+        392,
+        .4
+    ],
+    [
+        349.2,
+        1
+    ]
+];
+}),
+"[project]/src/components/audio.ts [app-ssr] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "sndBday",
+    ()=>sndBday,
+    "sndCollect",
+    ()=>sndCollect,
+    "sndCrash",
+    ()=>sndCrash,
+    "sndRev",
+    ()=>sndRev,
+    "sndWin",
+    ()=>sndWin
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$gameData$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/components/gameData.ts [app-ssr] (ecmascript)");
+;
+let audioCtx = null;
+function getAC() {
+    if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    return audioCtx;
+}
+function tone(freq, dur, type = 'sine', vol = 0.18) {
+    try {
+        const c = getAC(), o = c.createOscillator(), g = c.createGain();
+        o.connect(g);
+        g.connect(c.destination);
+        o.type = type;
+        o.frequency.value = freq;
+        g.gain.setValueAtTime(vol, c.currentTime);
+        g.gain.exponentialRampToValueAtTime(0.001, c.currentTime + dur);
+        o.start();
+        o.stop(c.currentTime + dur + 0.02);
+    } catch  {}
+}
+function sndCollect() {
+    tone(1047, .08);
+    setTimeout(()=>tone(1319, .1), 80);
+}
+function sndCrash() {
+    try {
+        const c = getAC(), o = c.createOscillator(), g = c.createGain();
+        o.connect(g);
+        g.connect(c.destination);
+        o.type = 'sawtooth';
+        o.frequency.setValueAtTime(200, c.currentTime);
+        o.frequency.exponentialRampToValueAtTime(35, c.currentTime + .35);
+        g.gain.setValueAtTime(0.22, c.currentTime);
+        g.gain.exponentialRampToValueAtTime(0.001, c.currentTime + .4);
+        o.start();
+        o.stop(c.currentTime + .45);
+    } catch  {}
+}
+function sndWin() {
+    [
+        523,
+        659,
+        784,
+        1047,
+        1319,
+        1568
+    ].forEach((f, i)=>setTimeout(()=>tone(f, .3, 'sine', .22), i * 100));
+}
+function sndRev() {
+    try {
+        const c = getAC(), o = c.createOscillator(), g = c.createGain();
+        o.connect(g);
+        g.connect(c.destination);
+        o.type = 'sawtooth';
+        o.frequency.setValueAtTime(70, c.currentTime);
+        o.frequency.exponentialRampToValueAtTime(260, c.currentTime + .18);
+        o.frequency.exponentialRampToValueAtTime(90, c.currentTime + .42);
+        g.gain.setValueAtTime(0.1, c.currentTime);
+        g.gain.exponentialRampToValueAtValue(0.001, c.currentTime + .45);
+        o.start();
+        o.stop(c.currentTime + .5);
+    } catch  {}
+}
+function sndBday() {
+    try {
+        const c = getAC();
+        let t = c.currentTime + .1;
+        __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$gameData$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["BDAY_NOTES"].forEach(([f, d])=>{
+            const o = c.createOscillator(), g = c.createGain();
+            o.connect(g);
+            g.connect(c.destination);
+            o.type = 'sine';
+            o.frequency.value = f;
+            g.gain.setValueAtTime(.2, t);
+            g.gain.exponentialRampToValueAtValue(0.001, t + d);
+            o.start(t);
+            o.stop(t + d + .05);
+            t += d + .02;
+        });
+    } catch  {}
+}
+}),
+"[project]/src/components/drawUtils.ts [app-ssr] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "drawObstacle",
+    ()=>drawObstacle,
+    "drawRoad",
+    ()=>drawRoad,
+    "drawSpaceBg",
+    ()=>drawSpaceBg,
+    "drawStar3D",
+    ()=>drawStar3D,
+    "drawToycar",
+    ()=>drawToycar
+]);
+function drawSpaceBg(ctx, W, H, bgStars, stageColor, bgTimer) {
+    ctx.fillStyle = '#080010';
+    ctx.fillRect(0, 0, W, H);
+    bgStars.forEach((s)=>{
+        ctx.beginPath();
+        ctx.arc(s.x / 1200 * W, s.y, s.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(200,180,255,${s.op})`;
+        ctx.fill();
+    });
+    if (bgTimer % 200 === 0) {
+        const nx = Math.random() * W, ny = Math.random() * H * .8, nr = 40 + Math.random() * 80;
+        const ng = ctx.createRadialGradient(nx, ny, 0, nx, ny, nr);
+        ng.addColorStop(0, stageColor + '18');
+        ng.addColorStop(1, 'transparent');
+        ctx.fillStyle = ng;
+        ctx.beginPath();
+        ctx.arc(nx, ny, nr, 0, Math.PI * 2);
+        ctx.fill();
+    }
+}
+function drawRoad(ctx, W, H, roadScroll, stageColor, stageName) {
+    const rL = W * .12, rR = W * .88, rW = rR - rL;
+    const rg = ctx.createLinearGradient(rL, 0, rR, 0);
+    rg.addColorStop(0, '#0e0020');
+    rg.addColorStop(.15, '#160030');
+    rg.addColorStop(.5, '#1e0040');
+    rg.addColorStop(.85, '#160030');
+    rg.addColorStop(1, '#0e0020');
+    ctx.fillStyle = rg;
+    ctx.fillRect(rL, 0, rW, H);
+    [
+        rL,
+        rR
+    ].forEach((ex)=>{
+        const eg = ctx.createLinearGradient(ex - 5, 0, ex + 5, 0);
+        eg.addColorStop(0, 'transparent');
+        eg.addColorStop(.5, stageColor + 'bb');
+        eg.addColorStop(1, 'transparent');
+        ctx.fillStyle = eg;
+        ctx.fillRect(ex - 4, 0, 8, H);
+    });
+    ctx.setLineDash([
+        36,
+        24
+    ]);
+    ctx.lineDashOffset = -roadScroll;
+    ctx.strokeStyle = 'rgba(196,181,253,0.14)';
+    ctx.lineWidth = 2;
+    [
+        rL + rW / 3,
+        rL + rW * 2 / 3
+    ].forEach((lx)=>{
+        ctx.beginPath();
+        ctx.moveTo(lx, 0);
+        ctx.lineTo(lx, H);
+        ctx.stroke();
+    });
+    ctx.setLineDash([]);
+    ctx.save();
+    ctx.font = `bold ${Math.max(14, W * .032)}px 'Racing Sans One',cursive`;
+    ctx.fillStyle = 'rgba(255,255,255,0.022)';
+    ctx.textAlign = 'center';
+    ctx.fillText(stageName, W / 2, H * .5);
+    ctx.restore();
+}
+function drawToycar(ctx, x, y, w, h, stageColor) {
+    const cw = w * 1.5;
+    ctx.save();
+    // ground shadow
+    const sg = ctx.createRadialGradient(x, y + h * .52, 0, x, y + h * .52, cw * .75);
+    sg.addColorStop(0, 'rgba(0,0,0,0.45)');
+    sg.addColorStop(1, 'rgba(0,0,0,0)');
+    ctx.fillStyle = sg;
+    ctx.beginPath();
+    ctx.ellipse(x, y + h * .53, cw * .7, h * .1, 0, 0, Math.PI * 2);
+    ctx.fill();
+    // engine glow
+    const eg = ctx.createRadialGradient(x, y + h * .2, 0, x, y + h * .2, cw);
+    eg.addColorStop(0, stageColor + '50');
+    eg.addColorStop(1, 'transparent');
+    ctx.fillStyle = eg;
+    ctx.beginPath();
+    ctx.ellipse(x, y + h * .2, cw, h * .55, 0, 0, Math.PI * 2);
+    ctx.fill();
+    // chassis
+    ctx.save();
+    ctx.shadowColor = stageColor;
+    ctx.shadowBlur = 20;
+    const cg = ctx.createLinearGradient(x - cw * .5, y + h * .05, x + cw * .5, y + h * .5);
+    cg.addColorStop(0, '#ff3a6e');
+    cg.addColorStop(.3, '#e81060');
+    cg.addColorStop(.7, '#c0004a');
+    cg.addColorStop(1, '#7a0030');
+    ctx.fillStyle = cg;
+    ctx.beginPath();
+    ctx.moveTo(x - cw * .48, y + h * .48);
+    ctx.lineTo(x - cw * .52, y + h * .08);
+    ctx.quadraticCurveTo(x - cw * .52, y - h * .02, x - cw * .4, y - h * .02);
+    ctx.lineTo(x + cw * .4, y - h * .02);
+    ctx.quadraticCurveTo(x + cw * .52, y - h * .02, x + cw * .52, y + h * .08);
+    ctx.lineTo(x + cw * .48, y + h * .48);
+    ctx.closePath();
+    ctx.fill();
+    ctx.restore();
+    // cabin roof
+    ctx.save();
+    const rg = ctx.createLinearGradient(x - cw * .28, y - h * .5, x + cw * .28, y + h * .02);
+    rg.addColorStop(0, '#ff7aaa');
+    rg.addColorStop(.4, '#e8105e');
+    rg.addColorStop(1, '#a0003e');
+    ctx.fillStyle = rg;
+    ctx.beginPath();
+    ctx.moveTo(x - cw * .25, y - h * .02);
+    ctx.lineTo(x - cw * .32, y - h * .38);
+    ctx.quadraticCurveTo(x - cw * .30, y - h * .52, x - cw * .15, y - h * .52);
+    ctx.lineTo(x + cw * .15, y - h * .52);
+    ctx.quadraticCurveTo(x + cw * .30, y - h * .52, x + cw * .32, y - h * .38);
+    ctx.lineTo(x + cw * .25, y - h * .02);
+    ctx.closePath();
+    ctx.fill();
+    // cabin highlight
+    ctx.fillStyle = 'rgba(255,200,220,0.18)';
+    ctx.beginPath();
+    ctx.moveTo(x - cw * .23, y - h * .04);
+    ctx.lineTo(x - cw * .28, y - h * .35);
+    ctx.lineTo(x - cw * .12, y - h * .35);
+    ctx.lineTo(x - cw * .1, y - h * .04);
+    ctx.closePath();
+    ctx.fill();
+    ctx.restore();
+    // windshield
+    const wg = ctx.createLinearGradient(x, y - h * .5, x, y - h * .05);
+    wg.addColorStop(0, 'rgba(180,240,255,0.78)');
+    wg.addColorStop(.4, 'rgba(100,200,255,0.55)');
+    wg.addColorStop(1, 'rgba(30,80,200,0.3)');
+    ctx.fillStyle = wg;
+    ctx.beginPath();
+    ctx.moveTo(x - cw * .26, y - h * .04);
+    ctx.lineTo(x - cw * .3, y - h * .36);
+    ctx.lineTo(x + cw * .3, y - h * .36);
+    ctx.lineTo(x + cw * .26, y - h * .04);
+    ctx.closePath();
+    ctx.fill();
+    ctx.strokeStyle = 'rgba(255,255,255,0.55)';
+    ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    ctx.moveTo(x - cw * .22, y - h * .06);
+    ctx.lineTo(x - cw * .26, y - h * .32);
+    ctx.stroke();
+    [
+        [
+            x - cw * .38,
+            y - h * .28,
+            cw * .09,
+            h * .18
+        ],
+        [
+            x + cw * .29,
+            y - h * .28,
+            cw * .09,
+            h * .18
+        ]
+    ].forEach(([wx, wy, ww, wh])=>{
+        ctx.fillStyle = 'rgba(120,200,255,0.4)';
+        ctx.beginPath();
+        ctx.roundRect(wx, wy, ww, wh, 3);
+        ctx.fill();
+        ctx.strokeStyle = 'rgba(255,255,255,0.2)';
+        ctx.lineWidth = 1;
+        ctx.stroke();
+    });
+    // hood stripes
+    ctx.strokeStyle = 'rgba(255,255,255,0.15)';
+    ctx.lineWidth = 2;
+    [
+        x - cw * .1,
+        x + cw * .1
+    ].forEach((sx)=>{
+        ctx.beginPath();
+        ctx.moveTo(sx, y - h * .02);
+        ctx.lineTo(sx, y + h * .35);
+        ctx.stroke();
+    });
+    // lightning decal
+    ctx.fillStyle = 'rgba(255,230,0,0.85)';
+    ctx.shadowColor = '#FFD600';
+    ctx.shadowBlur = 10;
+    ctx.font = `bold ${Math.max(9, cw * .22)}px serif`;
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText('⚡', x, y + h * .15);
+    // racing number
+    ctx.shadowBlur = 0;
+    ctx.fillStyle = 'rgba(255,255,255,0.22)';
+    ctx.beginPath();
+    ctx.roundRect(x + cw * .15, y - h * .01, cw * .22, h * .28, 4);
+    ctx.fill();
+    ctx.fillStyle = '#fff';
+    ctx.font = `bold ${Math.max(8, cw * .18)}px 'Boogaloo',cursive`;
+    ctx.fillText('6', x + cw * .26, y + h * .13);
+    [
+        [
+            x - cw * .34,
+            y - h * .5
+        ],
+        [
+            x + cw * .34,
+            y - h * .5
+        ]
+    ].forEach(([lx, ly])=>{
+        ctx.fillStyle = '#222';
+        ctx.beginPath();
+        ctx.roundRect(lx - cw * .09, ly, cw * .18, h * .1, 3);
+        ctx.fill();
+        const lg = ctx.createRadialGradient(lx, ly + h * .05, 0, lx, ly + h * .05, cw * .1);
+        lg.addColorStop(0, 'rgba(255,255,210,1)');
+        lg.addColorStop(.5, 'rgba(255,210,80,0.8)');
+        lg.addColorStop(1, 'rgba(255,140,0,0)');
+        ctx.fillStyle = lg;
+        ctx.beginPath();
+        ctx.arc(lx, ly + h * .05, cw * .1, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.save();
+        ctx.globalAlpha = 0.1;
+        const bg = ctx.createRadialGradient(lx, ly - h * .08, 0, lx, ly - h * .08, cw * .55);
+        bg.addColorStop(0, 'rgba(255,255,180,1)');
+        bg.addColorStop(1, 'transparent');
+        ctx.fillStyle = bg;
+        ctx.beginPath();
+        ctx.arc(lx, ly - h * .08, cw * .55, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+    });
+    [
+        [
+            x - cw * .36,
+            y + h * .44
+        ],
+        [
+            x + cw * .36,
+            y + h * .44
+        ]
+    ].forEach(([lx, ly])=>{
+        ctx.fillStyle = '#ff2200';
+        ctx.shadowColor = '#ff4400';
+        ctx.shadowBlur = 8;
+        ctx.beginPath();
+        ctx.roundRect(lx - cw * .07, ly - h * .04, cw * .14, h * .07, 2);
+        ctx.fill();
+    });
+    // wheels
+    const wr = cw * .13;
+    [
+        [
+            x - cw * .44,
+            y + h * .28
+        ],
+        [
+            x + cw * .44,
+            y + h * .28
+        ],
+        [
+            x - cw * .44,
+            y + h * .42
+        ],
+        [
+            x + cw * .44,
+            y + h * .42
+        ]
+    ].forEach(([wx, wy])=>{
+        ctx.save();
+        ctx.shadowBlur = 0;
+        ctx.beginPath();
+        ctx.arc(wx, wy, wr, 0, Math.PI * 2);
+        ctx.fillStyle = '#0d0020';
+        ctx.fill();
+        ctx.beginPath();
+        ctx.arc(wx, wy, wr, 0, Math.PI * 2);
+        ctx.strokeStyle = '#2a0050';
+        ctx.lineWidth = wr * .28;
+        ctx.stroke();
+        const rimG = ctx.createRadialGradient(wx - wr * .15, wy - wr * .15, 0, wx, wy, wr * .72);
+        rimG.addColorStop(0, 'rgba(255,255,255,0.9)');
+        rimG.addColorStop(.3, stageColor + 'dd');
+        rimG.addColorStop(.7, 'rgba(100,0,200,0.5)');
+        rimG.addColorStop(1, 'rgba(40,0,80,0.4)');
+        ctx.beginPath();
+        ctx.arc(wx, wy, wr * .72, 0, Math.PI * 2);
+        ctx.fillStyle = rimG;
+        ctx.fill();
+        ctx.beginPath();
+        ctx.arc(wx, wy, wr * .28, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(255,255,255,0.85)';
+        ctx.fill();
+        ctx.strokeStyle = 'rgba(255,255,255,0.5)';
+        ctx.lineWidth = wr * .1;
+        for(let s = 0; s < 4; s++){
+            const a = s * Math.PI / 2;
+            ctx.beginPath();
+            ctx.moveTo(wx + Math.cos(a) * wr * .28, wy + Math.sin(a) * wr * .28);
+            ctx.lineTo(wx + Math.cos(a) * wr * .68, wy + Math.sin(a) * wr * .68);
+            ctx.stroke();
+        }
+        ctx.restore();
+    });
+    ctx.restore();
+}
+function drawStar3D(ctx, x, y, r, spin) {
+    ctx.save();
+    ctx.translate(x, y);
+    ctx.rotate(spin);
+    const gg = ctx.createRadialGradient(0, 0, 0, 0, 0, r * 2.8);
+    gg.addColorStop(0, 'rgba(255,220,80,0.55)');
+    gg.addColorStop(.5, 'rgba(255,180,0,0.2)');
+    gg.addColorStop(1, 'transparent');
+    ctx.fillStyle = gg;
+    ctx.beginPath();
+    ctx.arc(0, 0, r * 2.8, 0, Math.PI * 2);
+    ctx.fill();
+    const pts = 5, outer = r, inner = r * .42;
+    ctx.beginPath();
+    for(let i = 0; i < pts * 2; i++){
+        const a = i * Math.PI / pts - Math.PI / 2;
+        const dist = i % 2 === 0 ? outer : inner;
+        i === 0 ? ctx.moveTo(Math.cos(a) * dist, Math.sin(a) * dist) : ctx.lineTo(Math.cos(a) * dist, Math.sin(a) * dist);
+    }
+    ctx.closePath();
+    const sg = ctx.createLinearGradient(-r, -r, r, r);
+    sg.addColorStop(0, '#fffde4');
+    sg.addColorStop(.25, '#ffe066');
+    sg.addColorStop(.6, '#f59e0b');
+    sg.addColorStop(1, '#92400e');
+    ctx.fillStyle = sg;
+    ctx.shadowColor = '#fbbf24';
+    ctx.shadowBlur = 14;
+    ctx.fill();
+    ctx.beginPath();
+    ctx.arc(-r * .18, -r * .22, r * .22, 0, Math.PI * 2);
+    ctx.fillStyle = 'rgba(255,255,255,0.82)';
+    ctx.fill();
+    ctx.beginPath();
+    ctx.arc(r * .08, r * .08, r * .1, 0, Math.PI * 2);
+    ctx.fillStyle = 'rgba(255,255,255,0.4)';
+    ctx.fill();
+    ctx.restore();
+}
+function drawObstacle(ctx, x, y, r, type) {
+    if (type === 'rock') {
+        ctx.save();
+        ctx.translate(x, y);
+        const sg = ctx.createRadialGradient(0, r * .6, 0, 0, r * .6, r * .8);
+        sg.addColorStop(0, 'rgba(0,0,0,0.3)');
+        sg.addColorStop(1, 'transparent');
+        ctx.fillStyle = sg;
+        ctx.beginPath();
+        ctx.ellipse(0, r * .6, r * .8, r * .25, 0, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.beginPath();
+        ctx.moveTo(-r * .6, r * .3);
+        ctx.lineTo(-r * .75, -r * .1);
+        ctx.lineTo(-r * .4, -r * .55);
+        ctx.lineTo(r * .1, -r * .7);
+        ctx.lineTo(r * .65, -r * .35);
+        ctx.lineTo(r * .7, r * .25);
+        ctx.lineTo(r * .35, r * .55);
+        ctx.lineTo(-r * .3, r * .6);
+        ctx.closePath();
+        const rg = ctx.createLinearGradient(-r, -r, r, r);
+        rg.addColorStop(0, '#9ca3af');
+        rg.addColorStop(.4, '#6b7280');
+        rg.addColorStop(1, '#1f2937');
+        ctx.fillStyle = rg;
+        ctx.shadowColor = 'rgba(0,0,0,0.5)';
+        ctx.shadowBlur = 8;
+        ctx.fill();
+        ctx.beginPath();
+        ctx.moveTo(-r * .3, -r * .5);
+        ctx.lineTo(r * .1, -r * .65);
+        ctx.lineTo(r * .5, -r * .3);
+        ctx.strokeStyle = 'rgba(255,255,255,0.2)';
+        ctx.lineWidth = 2;
+        ctx.stroke();
+        ctx.restore();
+    } else if (type === 'barrier') {
+        ctx.save();
+        ctx.translate(x, y);
+        const pg = ctx.createLinearGradient(-r * .08, 0, r * .08, 0);
+        pg.addColorStop(0, '#6b7280');
+        pg.addColorStop(.4, '#d1d5db');
+        pg.addColorStop(1, '#374151');
+        ctx.fillStyle = pg;
+        ctx.fillRect(-r * .06, -r * .5, r * .12, r);
+        ctx.save();
+        ctx.beginPath();
+        ctx.roundRect(-r * .5, -r * .5, r, r * .35, 4);
+        ctx.clip();
+        for(let i = 0; i < 8; i++){
+            ctx.fillStyle = i % 2 === 0 ? '#f97316' : '#fff';
+            ctx.fillRect(-r * .5 + i * (r * .125), -r * .5, r * .125, r * .35);
+        }
+        ctx.restore();
+        ctx.strokeStyle = 'rgba(0,0,0,0.4)';
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.roundRect(-r * .5, -r * .5, r, r * .35, 4);
+        ctx.stroke();
+        ctx.fillStyle = 'rgba(255,255,255,0.2)';
+        ctx.beginPath();
+        ctx.roundRect(-r * .5, -r * .5, r, r * .06, 4);
+        ctx.fill();
+        ctx.restore();
+    } else if (type === 'fuel') {
+        ctx.save();
+        ctx.translate(x, y);
+        const bg = ctx.createLinearGradient(-r, 0, r, 0);
+        bg.addColorStop(0, '#065f46');
+        bg.addColorStop(.4, '#34d399');
+        bg.addColorStop(1, '#064e3b');
+        ctx.fillStyle = bg;
+        ctx.shadowColor = '#34d399';
+        ctx.shadowBlur = 12;
+        ctx.beginPath();
+        ctx.roundRect(-r * .55, -r * .7, r * 1.1, r * 1.4, r * .2);
+        ctx.fill();
+        ctx.fillStyle = '#374151';
+        ctx.beginPath();
+        ctx.roundRect(-r * .2, -r * .85, r * .4, r * .25, r * .1);
+        ctx.fill();
+        ctx.fillStyle = 'rgba(255,255,255,0.15)';
+        ctx.beginPath();
+        ctx.roundRect(-r * .38, -r * .4, r * .76, r * .7, r * .1);
+        ctx.fill();
+        ctx.fillStyle = '#fff';
+        ctx.font = `bold ${r * .55}px serif`;
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText('⛽', 0, r * .02);
+        ctx.fillStyle = 'rgba(255,255,255,0.25)';
+        ctx.beginPath();
+        ctx.roundRect(-r * .42, -r * .65, r * .22, r * .5, r * .08);
+        ctx.fill();
+        ctx.restore();
+    } else {
+        // traffic light
+        ctx.save();
+        ctx.translate(x, y);
+        const h = r * 3.2;
+        ctx.fillStyle = '#374151';
+        ctx.fillRect(-r * .12, -h * .5, r * .24, h);
+        const hg = ctx.createLinearGradient(-r * .55, 0, r * .55, 0);
+        hg.addColorStop(0, '#1f2937');
+        hg.addColorStop(.4, '#374151');
+        hg.addColorStop(1, '#111827');
+        ctx.fillStyle = hg;
+        ctx.shadowColor = 'rgba(0,0,0,0.5)';
+        ctx.shadowBlur = 8;
+        ctx.beginPath();
+        ctx.roundRect(-r * .55, -h * .5, r * 1.1, h, r * .3);
+        ctx.fill();
+        [
+            [
+                0,
+                -r * 1.1,
+                '#ef4444',
+                '#fca5a5'
+            ],
+            [
+                0,
+                0,
+                '#f59e0b',
+                '#fde68a'
+            ],
+            [
+                0,
+                r * 1.1,
+                '#22c55e',
+                '#86efac'
+            ]
+        ].forEach(([lx, ly, c, gc])=>{
+            const lg = ctx.createRadialGradient(lx, ly, 0, lx, ly, r * .35);
+            lg.addColorStop(0, gc);
+            lg.addColorStop(.5, c);
+            lg.addColorStop(1, c + '88');
+            ctx.fillStyle = lg;
+            ctx.shadowColor = c;
+            ctx.shadowBlur = 10;
+            ctx.beginPath();
+            ctx.arc(lx, ly, r * .34, 0, Math.PI * 2);
+            ctx.fill();
+        });
+        ctx.restore();
+    }
+}
+}),
+"[project]/src/components/Game.tsx [app-ssr] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "default",
+    ()=>Game
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react-jsx-dev-runtime.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$gameData$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/components/gameData.ts [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$audio$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/components/audio.ts [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$drawUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/components/drawUtils.ts [app-ssr] (ecmascript)");
+'use client';
+;
+;
+;
+;
+;
+const CF_COLORS = [
+    '#c084fc',
+    '#e879f9',
+    '#a78bfa',
+    '#fde68a',
+    '#93c5fd',
+    '#f87171',
+    '#fff',
+    '#7c3aed',
+    '#f0abfc'
+];
+function spawnConfetti(n = 80) {
+    for(let i = 0; i < n; i++)setTimeout(()=>{
+        const el = document.createElement('div');
+        el.className = 'cf';
+        const s = 7 + Math.random() * 12, col = CF_COLORS[~~(Math.random() * CF_COLORS.length)];
+        el.style.cssText = `position:fixed;pointer-events:none;z-index:9999;border-radius:${Math.random() > .5 ? '50%' : '2px'};left:${Math.random() * 100}vw;top:-20px;width:${s}px;height:${s}px;background:${col};animation:confettiFall ${1.6 + Math.random() * 2}s ${Math.random() * .4}s linear forwards;`;
+        document.body.appendChild(el);
+        setTimeout(()=>el.remove(), 4500);
+    }, i * 11);
+}
+function makeBgStars() {
+    return Array.from({
+        length: 160
+    }, ()=>({
+            x: Math.random() * 1200,
+            y: Math.random() * 900,
+            r: Math.random() * 1.6 + .3,
+            speed: .2 + Math.random() * .8,
+            op: .15 + Math.random() * .7
+        }));
+}
+function Game() {
+    const canvasRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRef"])(null);
+    const [screen, setScreen] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])('intro');
+    const [wishIdx, setWishIdx] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(0);
+    const [hStage, setHStage] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(1);
+    const [hStars, setHStars] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(0);
+    const [hScore, setHScore] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(0);
+    const [hLives, setHLives] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(3);
+    const [progPct, setProgPct] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(0);
+    const [progCnt, setProgCnt] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])('0/10');
+    const [progLab, setProgLab] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])('Stage 1 — Collect 10 ⭐');
+    const [transMsg, setTransMsg] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])('');
+    const [transOpen, setTransOpen] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
+    const [goScore, setGoScore] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(0);
+    const [dotParticles] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(()=>Array.from({
+            length: 70
+        }, (_, i)=>({
+                id: i,
+                left: Math.random() * 100,
+                dur: 7 + Math.random() * 14,
+                delay: Math.random() * 14,
+                size: 0.8 + Math.random() * 2.5,
+                op: 0.4 + Math.random() * 0.6
+            })));
+    // Game state (mutable refs for canvas loop)
+    const G = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRef"])({
+        stage: 1,
+        starsN: 10,
+        starsC: 0,
+        lives: 3,
+        totalScore: 0,
+        running: false,
+        car: {
+            x: 200,
+            y: 400,
+            w: 36,
+            h: 60,
+            lane: 1,
+            targetX: 200
+        },
+        laneXs: [
+            200,
+            400,
+            600
+        ],
+        stars: [],
+        obstacles: [],
+        puffs: [],
+        starTimer: 0,
+        obsTimer: 0,
+        roadScroll: 0,
+        speed: 4,
+        invincible: 0,
+        shakeT: 0,
+        stageColor: '#c084fc',
+        bgStars: makeBgStars(),
+        bgTimer: 0
+    });
+    const keysRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRef"])({});
+    const lLRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRef"])(false), lRRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRef"])(false);
+    const rafRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRef"])(0);
+    const lastTRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRef"])(0);
+    const screenRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRef"])('intro');
+    // keep screenRef in sync
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
+        screenRef.current = screen;
+    }, [
+        screen
+    ]);
+    const doTransition = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useCallback"])((msg, cb)=>{
+        setTransMsg(msg);
+        setTransOpen(true);
+        setTimeout(()=>{
+            cb();
+            setTransOpen(false);
+        }, 380);
+    }, []);
+    const initStage = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useCallback"])((n)=>{
+        const g = G.current;
+        g.stage = n;
+        g.starsN = __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$gameData$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["STARS_NEEDED"][n - 1];
+        g.starsC = 0;
+        g.speed = 3.8 + n * .42;
+        g.stars = [];
+        g.obstacles = [];
+        g.puffs = [];
+        g.starTimer = 0;
+        g.obsTimer = 0;
+        g.roadScroll = 0;
+        g.stageColor = __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$gameData$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["STAGE_COLORS"][n - 1];
+        g.invincible = 0;
+        g.shakeT = 0;
+        g.running = true;
+        setHStage(n);
+        setHStars(0);
+        setHScore(g.totalScore);
+        setHLives(g.lives);
+        setProgLab(`Stage ${n} — Collect ${g.starsN} ⭐`);
+        setProgCnt(`0/${g.starsN}`);
+        setProgPct(0);
+        setTimeout(()=>{
+            const canvas = canvasRef.current;
+            if (!canvas) return;
+            const rect = canvas.getBoundingClientRect();
+            canvas.width = rect.width;
+            canvas.height = rect.height;
+            const W = canvas.width, H = canvas.height;
+            g.laneXs = [
+                W * .22,
+                W * .5,
+                W * .78
+            ];
+            g.car.lane = 1;
+            g.car.x = g.laneXs[1];
+            g.car.targetX = g.laneXs[1];
+            g.car.y = H * .74;
+        }, 50);
+    }, []);
+    // GAME LOOP
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
+        const canvas = canvasRef.current;
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+        if (!ctx) return;
+        function resize() {
+            if (!canvas) return;
+            const r = canvas.getBoundingClientRect();
+            if (r.width > 0 && r.height > 0) {
+                canvas.width = r.width;
+                canvas.height = r.height;
+                const g = G.current, W = canvas?.width || 0, H = canvas?.height || 0;
+                if (g.running) {
+                    g.laneXs = [
+                        W * .22,
+                        W * .5,
+                        W * .78
+                    ];
+                    g.car.targetX = g.laneXs[g.car.lane];
+                    g.car.y = H * .74;
+                }
+            }
+        }
+        window.addEventListener('resize', resize);
+        resize();
+        function loop(ts) {
+            rafRef.current = requestAnimationFrame(loop);
+            const g = G.current;
+            if (!canvas) return;
+            const W = canvas.width, H = canvas.height;
+            if (W === 0 || H === 0) return;
+            if (g.running) {
+                const dt = Math.min((ts - lastTRef.current) / 16.67, 3);
+                lastTRef.current = ts;
+                if (g.invincible > 0) g.invincible -= dt;
+                if (g.shakeT > 0) g.shakeT -= dt;
+                // input
+                if (!lLRef.current && keysRef.current['ArrowLeft']) {
+                    lLRef.current = true;
+                    if (g.car.lane > 0) {
+                        g.car.lane--;
+                        g.car.targetX = g.laneXs[g.car.lane];
+                        (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$audio$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["sndRev"])();
+                    }
+                }
+                if (!keysRef.current['ArrowLeft']) lLRef.current = false;
+                if (!lRRef.current && keysRef.current['ArrowRight']) {
+                    lRRef.current = true;
+                    if (g.car.lane < 2) {
+                        g.car.lane++;
+                        g.car.targetX = g.laneXs[g.car.lane];
+                        (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$audio$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["sndRev"])();
+                    }
+                }
+                if (!keysRef.current['ArrowRight']) lRRef.current = false;
+                g.car.x += (g.car.targetX - g.car.x) * .14 * dt * 3;
+                g.laneXs = [
+                    W * .22,
+                    W * .5,
+                    W * .78
+                ];
+                g.car.targetX = g.laneXs[g.car.lane];
+                g.car.y = H * .74;
+                g.roadScroll = (g.roadScroll + g.speed * 1.8 * dt) % 70;
+                g.bgTimer++;
+                g.bgStars.forEach((s)=>{
+                    s.y = (s.y + s.speed * dt) % (H + 10);
+                    if (s.y > H) s.y = -5;
+                });
+                // spawn
+                g.starTimer += dt;
+                if (g.starTimer > Math.max(22, 55 - g.stage * 4)) {
+                    g.starTimer = 0;
+                    g.stars.push({
+                        x: g.laneXs[~~(Math.random() * 3)],
+                        y: -35,
+                        w: 16 + g.stage,
+                        speed: g.speed + 1.1,
+                        spin: 0,
+                        spinSpeed: .06 + Math.random() * .04
+                    });
+                }
+                g.obsTimer += dt;
+                if (g.obsTimer > Math.max(42, 95 - g.stage * 7)) {
+                    g.obsTimer = 0;
+                    if (Math.random() < .5 + g.stage * .03) {
+                        const types = [
+                            'rock',
+                            'barrier',
+                            'fuel',
+                            'light'
+                        ];
+                        g.obstacles.push({
+                            x: g.laneXs[~~(Math.random() * 3)],
+                            y: -55,
+                            r: 18,
+                            speed: g.speed + .5,
+                            type: types[~~(Math.random() * types.length)]
+                        });
+                    }
+                }
+                // update stars
+                for(let i = g.stars.length - 1; i >= 0; i--){
+                    g.stars[i].y += g.stars[i].speed * dt;
+                    g.stars[i].spin += g.stars[i].spinSpeed * dt;
+                    if (g.stars[i].y > H + 50) {
+                        g.stars.splice(i, 1);
+                        continue;
+                    }
+                    const s = g.stars[i];
+                    if (Math.abs(g.car.x - s.x) < g.car.w * .75 + s.w - 10 && Math.abs(g.car.y - s.y) < g.car.h * .5 + s.w - 10) {
+                        g.stars.splice(i, 1);
+                        g.starsC++;
+                        g.totalScore++;
+                        (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$audio$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["sndCollect"])();
+                        const pct = Math.min(100, g.starsC / g.starsN * 100);
+                        setHStars(g.starsC);
+                        setHScore(g.totalScore);
+                        setProgPct(pct);
+                        setProgCnt(`${g.starsC}/${g.starsN}`);
+                        if (g.starsC >= g.starsN) {
+                            g.running = false;
+                            (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$audio$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["sndWin"])();
+                            spawnConfetti(60);
+                            setTimeout(()=>{
+                                setWishIdx(g.stage - 1);
+                                setScreen('wish');
+                            }, 500);
+                            return;
+                        }
+                    }
+                }
+                // update obstacles
+                for(let i = g.obstacles.length - 1; i >= 0; i--){
+                    g.obstacles[i].y += g.obstacles[i].speed * dt;
+                    if (g.obstacles[i].y > H + 60) {
+                        g.obstacles.splice(i, 1);
+                        continue;
+                    }
+                    const o = g.obstacles[i];
+                    if (g.invincible <= 0 && Math.abs(g.car.x - o.x) < g.car.w * .75 + o.r - 12 && Math.abs(g.car.y - o.y) < g.car.h * .5 + o.r - 12) {
+                        g.obstacles.splice(i, 1);
+                        g.lives--;
+                        g.invincible = 90;
+                        g.shakeT = 25;
+                        (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$audio$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["sndCrash"])();
+                        spawnConfetti(16);
+                        setHLives(g.lives);
+                        if (g.lives <= 0) {
+                            g.running = false;
+                            setGoScore(g.totalScore);
+                            setTimeout(()=>doTransition('OH NO! 💥', ()=>setScreen('gameover')), 500);
+                            return;
+                        }
+                    }
+                }
+            }
+            // DRAW
+            if (!ctx) return;
+            const shake = g.shakeT > 0;
+            if (shake && ctx) {
+                ctx.save();
+                ctx.translate(~~(Math.random() * 8 - 4), ~~(Math.random() * 6 - 3));
+            }
+            (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$drawUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["drawSpaceBg"])(ctx, W, H, g.bgStars, g.stageColor, g.bgTimer);
+            (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$drawUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["drawRoad"])(ctx, W, H, g.roadScroll, g.stageColor, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$gameData$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["STAGE_NAMES"][g.stage - 1]);
+            // puffs
+            g.puffs = g.puffs.filter((p)=>{
+                p.y -= 1.4;
+                p.r += .45;
+                p.op -= .045;
+                if (p.op <= 0) return false;
+                const pg = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r);
+                const a = Math.round(p.op * 180).toString(16).padStart(2, '0');
+                pg.addColorStop(0, g.stageColor + a);
+                pg.addColorStop(1, 'transparent');
+                ctx.fillStyle = pg;
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+                ctx.fill();
+                return true;
+            });
+            g.stars.forEach((s)=>(0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$drawUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["drawStar3D"])(ctx, s.x, s.y, s.w * .5, s.spin));
+            g.obstacles.forEach((o)=>(0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$drawUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["drawObstacle"])(ctx, o.x, o.y, o.r, o.type));
+            if (!(g.invincible > 0 && ~~(g.invincible / 5) % 2 === 1)) {
+                if (Math.random() < .28) g.puffs.push({
+                    x: g.car.x + (Math.random() * g.car.w * .3 - g.car.w * .15),
+                    y: g.car.y + g.car.h * .5,
+                    r: 2 + Math.random() * 4,
+                    op: .5
+                });
+                (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$drawUtils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["drawToycar"])(ctx, g.car.x, g.car.y, g.car.w, g.car.h, g.stageColor);
+            }
+            if (shake) ctx.restore();
+        }
+        rafRef.current = requestAnimationFrame(loop);
+        return ()=>{
+            cancelAnimationFrame(rafRef.current);
+            window.removeEventListener('resize', resize);
+        };
+    }, [
+        doTransition
+    ]);
+    // Keyboard
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
+        const kd = (e)=>{
+            keysRef.current[e.key] = true;
+            if (e.key.startsWith('Arrow')) e.preventDefault();
+        };
+        const ku = (e)=>{
+            keysRef.current[e.key] = false;
+        };
+        window.addEventListener('keydown', kd);
+        window.addEventListener('keyup', ku);
+        return ()=>{
+            window.removeEventListener('keydown', kd);
+            window.removeEventListener('keyup', ku);
+        };
+    }, []);
+    // Intro confetti
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
+        setTimeout(()=>spawnConfetti(30), 600);
+    }, []);
+    const startGame = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useCallback"])(()=>{
+        (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$audio$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["sndRev"])();
+        G.current.lives = 3;
+        G.current.totalScore = 0;
+        doTransition('STAGE 1 🏁', ()=>{
+            setScreen('game');
+            initStage(1);
+        });
+    }, [
+        doTransition,
+        initStage
+    ]);
+    const continueFromWish = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useCallback"])(()=>{
+        const stage = G.current.stage;
+        if (stage >= 7) {
+            doTransition('🏆 CHAMPION!', ()=>{
+                setScreen('winner');
+                spawnConfetti(140);
+                (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$audio$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["sndBday"])();
+            });
+        } else {
+            const ns = stage + 1;
+            doTransition(`STAGE ${ns} ⚡`, ()=>{
+                setScreen('game');
+                initStage(ns);
+            });
+        }
+    }, [
+        doTransition,
+        initStage
+    ]);
+    const retry = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useCallback"])(()=>{
+        (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$audio$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["sndRev"])();
+        G.current.lives = 3;
+        doTransition('TRY AGAIN! 🔄', ()=>{
+            setScreen('game');
+            initStage(G.current.stage || 1);
+        });
+    }, [
+        doTransition,
+        initStage
+    ]);
+    const playAgain = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useCallback"])(()=>{
+        G.current.lives = 3;
+        G.current.totalScore = 0;
+        doTransition('NEW RACE! 🏁', ()=>setScreen('intro'));
+    }, [
+        doTransition
+    ]);
+    const wish = __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$gameData$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["WISHES"][wishIdx];
+    const isTouch = ("TURBOPACK compile-time value", "undefined") !== 'undefined' && 'ontouchstart' in window;
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+        style: {
+            position: 'fixed',
+            inset: 0,
+            background: '#080010',
+            fontFamily: "'Nunito',sans-serif"
+        },
+        children: [
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                style: {
+                    position: 'fixed',
+                    inset: 0,
+                    zIndex: 500,
+                    pointerEvents: 'none',
+                    background: 'linear-gradient(135deg,#6b21a8,#9333ea)',
+                    clipPath: transOpen ? 'circle(150% at 50% 50%)' : 'circle(0% at 50% 50%)',
+                    transition: 'clip-path 0.4s cubic-bezier(.7,0,.3,1)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    fontFamily: "'Racing Sans One',cursive",
+                    fontSize: 'clamp(1.8rem,6vw,3.5rem)',
+                    color: '#fff',
+                    letterSpacing: 3,
+                    textShadow: '0 0 20px rgba(255,255,255,.5)'
+                },
+                children: transMsg
+            }, void 0, false, {
+                fileName: "[project]/src/components/Game.tsx",
+                lineNumber: 258,
+                columnNumber: 7
+            }, this),
+            screen === 'intro' && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                style: {
+                    position: 'fixed',
+                    inset: 0,
+                    background: 'radial-gradient(ellipse at 50% 40%,#1e0042 0%,#080010 75%)',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: 16,
+                    overflow: 'hidden'
+                },
+                children: [
+                    dotParticles.map((d)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            style: {
+                                position: 'absolute',
+                                borderRadius: '50%',
+                                width: d.size,
+                                height: d.size,
+                                left: `${d.left}%`,
+                                background: `rgba(147,51,234,${d.op})`,
+                                animation: `floatDot ${d.dur}s ${-d.delay}s linear infinite`,
+                                pointerEvents: 'none'
+                            }
+                        }, d.id, false, {
+                            fileName: "[project]/src/components/Game.tsx",
+                            lineNumber: 273,
+                            columnNumber: 13
+                        }, this)),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        style: {
+                            fontSize: 'clamp(3rem,12vw,7rem)',
+                            filter: 'drop-shadow(0 0 30px #9333ea)',
+                            animation: 'flagWave 1.2s ease-in-out infinite alternate',
+                            zIndex: 2
+                        },
+                        children: "🏁"
+                    }, void 0, false, {
+                        fileName: "[project]/src/components/Game.tsx",
+                        lineNumber: 275,
+                        columnNumber: 11
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        style: {
+                            fontFamily: "'Racing Sans One',cursive",
+                            fontSize: 'clamp(2.2rem,8vw,5.5rem)',
+                            color: '#d8b4fe',
+                            textAlign: 'center',
+                            textShadow: '0 0 40px #9333ea,0 0 80px #6b21a8,4px 4px 0 #3b0764',
+                            lineHeight: 1.1,
+                            padding: '0 16px',
+                            zIndex: 2
+                        },
+                        children: [
+                            "⚡ Lightning",
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
+                                fileName: "[project]/src/components/Game.tsx",
+                                lineNumber: 277,
+                                columnNumber: 24
+                            }, this),
+                            "Kabileshwar!"
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/src/components/Game.tsx",
+                        lineNumber: 276,
+                        columnNumber: 11
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        style: {
+                            fontFamily: "'Boogaloo',cursive",
+                            fontSize: 'clamp(1rem,3vw,1.6rem)',
+                            color: 'rgba(255,255,255,0.75)',
+                            zIndex: 2
+                        },
+                        children: "🎂 Happy 6th Birthday! 🎂"
+                    }, void 0, false, {
+                        fileName: "[project]/src/components/Game.tsx",
+                        lineNumber: 279,
+                        columnNumber: 11
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        style: {
+                            background: 'rgba(147,51,234,0.1)',
+                            border: '2px solid rgba(147,51,234,0.4)',
+                            borderRadius: 20,
+                            padding: '16px 26px',
+                            maxWidth: 400,
+                            margin: '0 16px',
+                            zIndex: 2
+                        },
+                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                            style: {
+                                fontSize: 'clamp(0.85rem,2.5vw,1.05rem)',
+                                color: 'rgba(255,255,255,0.85)',
+                                lineHeight: 1.8,
+                                textAlign: 'center',
+                                fontFamily: "'Boogaloo',cursive"
+                            },
+                            children: [
+                                "🚗 Steer your car & ",
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("strong", {
+                                    style: {
+                                        color: '#d8b4fe'
+                                    },
+                                    children: "collect ⭐ stars!"
+                                }, void 0, false, {
+                                    fileName: "[project]/src/components/Game.tsx",
+                                    lineNumber: 282,
+                                    columnNumber: 39
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
+                                    fileName: "[project]/src/components/Game.tsx",
+                                    lineNumber: 282,
+                                    columnNumber: 98
+                                }, this),
+                                "Avoid obstacles on the road.",
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
+                                    fileName: "[project]/src/components/Game.tsx",
+                                    lineNumber: 283,
+                                    columnNumber: 43
+                                }, this),
+                                "Win a stage → unlock a ",
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("strong", {
+                                    style: {
+                                        color: '#d8b4fe'
+                                    },
+                                    children: "family wish! 💜"
+                                }, void 0, false, {
+                                    fileName: "[project]/src/components/Game.tsx",
+                                    lineNumber: 284,
+                                    columnNumber: 38
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
+                                    fileName: "[project]/src/components/Game.tsx",
+                                    lineNumber: 284,
+                                    columnNumber: 96
+                                }, this),
+                                "7 stages · 7 wishes · 1 Champion!"
+                            ]
+                        }, void 0, true, {
+                            fileName: "[project]/src/components/Game.tsx",
+                            lineNumber: 281,
+                            columnNumber: 13
+                        }, this)
+                    }, void 0, false, {
+                        fileName: "[project]/src/components/Game.tsx",
+                        lineNumber: 280,
+                        columnNumber: 11
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                        onClick: startGame,
+                        style: {
+                            fontFamily: "'Racing Sans One',cursive",
+                            fontSize: 'clamp(1.1rem,3.5vw,1.8rem)',
+                            background: 'linear-gradient(135deg,#9333ea,#6b21a8)',
+                            color: '#fff',
+                            border: 'none',
+                            borderRadius: 60,
+                            padding: '16px 44px',
+                            cursor: 'pointer',
+                            letterSpacing: 2,
+                            boxShadow: '0 7px 0 #3b0764,0 0 40px rgba(147,51,234,0.5)',
+                            animation: 'btnPulse 1.8s ease-in-out infinite',
+                            zIndex: 2
+                        },
+                        children: "🚦 START RACING!"
+                    }, void 0, false, {
+                        fileName: "[project]/src/components/Game.tsx",
+                        lineNumber: 288,
+                        columnNumber: 11
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "[project]/src/components/Game.tsx",
+                lineNumber: 270,
+                columnNumber: 9
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                style: {
+                    position: 'fixed',
+                    inset: 0,
+                    flexDirection: 'column',
+                    display: screen === 'game' ? 'flex' : 'none'
+                },
+                children: [
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        style: {
+                            width: '100%',
+                            height: 50,
+                            background: 'rgba(8,0,16,0.95)',
+                            borderBottom: '2px solid rgba(147,51,234,0.4)',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'space-between',
+                            padding: '0 12px',
+                            gap: 6,
+                            flexShrink: 0,
+                            zIndex: 10
+                        },
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                style: {
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    alignItems: 'center'
+                                },
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                        style: {
+                                            fontFamily: "'Racing Sans One',cursive",
+                                            fontSize: '0.58rem',
+                                            letterSpacing: 2,
+                                            color: 'rgba(255,255,255,0.38)',
+                                            textTransform: 'uppercase'
+                                        },
+                                        children: "Stage"
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/components/Game.tsx",
+                                        lineNumber: 299,
+                                        columnNumber: 13
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                        style: {
+                                            fontFamily: "'Boogaloo',cursive",
+                                            fontSize: '1.2rem',
+                                            color: '#d8b4fe'
+                                        },
+                                        children: [
+                                            hStage,
+                                            "/7"
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/src/components/Game.tsx",
+                                        lineNumber: 300,
+                                        columnNumber: 13
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/src/components/Game.tsx",
+                                lineNumber: 298,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                style: {
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    gap: 3
+                                },
+                                children: Array.from({
+                                    length: 7
+                                }, (_, i)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        style: {
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            gap: 3
+                                        },
+                                        children: [
+                                            i > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                style: {
+                                                    width: 8,
+                                                    height: 3,
+                                                    background: i < hStage ? '#7c3aed' : '#1e0042',
+                                                    borderRadius: 2
+                                                }
+                                            }, void 0, false, {
+                                                fileName: "[project]/src/components/Game.tsx",
+                                                lineNumber: 306,
+                                                columnNumber: 23
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                style: {
+                                                    width: 20,
+                                                    height: 20,
+                                                    borderRadius: '50%',
+                                                    background: i + 1 < hStage ? '#7c3aed' : i + 1 === hStage ? '#d8b4fe' : '#1e0042',
+                                                    border: `2px solid ${i + 1 < hStage ? '#a78bfa' : i + 1 === hStage ? '#fff' : '#4c1d95'}`,
+                                                    display: 'flex',
+                                                    alignItems: 'center',
+                                                    justifyContent: 'center',
+                                                    fontSize: '0.55rem',
+                                                    animation: i + 1 === hStage ? 'nodePulse 1s ease-in-out infinite' : undefined
+                                                },
+                                                children: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$gameData$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["STAGE_ICONS"][i]
+                                            }, void 0, false, {
+                                                fileName: "[project]/src/components/Game.tsx",
+                                                lineNumber: 307,
+                                                columnNumber: 17
+                                            }, this)
+                                        ]
+                                    }, i, true, {
+                                        fileName: "[project]/src/components/Game.tsx",
+                                        lineNumber: 305,
+                                        columnNumber: 15
+                                    }, this))
+                            }, void 0, false, {
+                                fileName: "[project]/src/components/Game.tsx",
+                                lineNumber: 303,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                style: {
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    alignItems: 'center'
+                                },
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                        style: {
+                                            fontFamily: "'Racing Sans One',cursive",
+                                            fontSize: '0.58rem',
+                                            letterSpacing: 2,
+                                            color: 'rgba(255,255,255,0.38)',
+                                            textTransform: 'uppercase'
+                                        },
+                                        children: "Stars"
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/components/Game.tsx",
+                                        lineNumber: 314,
+                                        columnNumber: 13
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                        style: {
+                                            fontFamily: "'Boogaloo',cursive",
+                                            fontSize: '1.2rem',
+                                            color: '#d8b4fe'
+                                        },
+                                        children: hStars
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/components/Game.tsx",
+                                        lineNumber: 315,
+                                        columnNumber: 13
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/src/components/Game.tsx",
+                                lineNumber: 313,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                style: {
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    alignItems: 'center'
+                                },
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                        style: {
+                                            fontFamily: "'Racing Sans One',cursive",
+                                            fontSize: '0.58rem',
+                                            letterSpacing: 2,
+                                            color: 'rgba(255,255,255,0.38)',
+                                            textTransform: 'uppercase'
+                                        },
+                                        children: "Score"
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/components/Game.tsx",
+                                        lineNumber: 318,
+                                        columnNumber: 13
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                        style: {
+                                            fontFamily: "'Boogaloo',cursive",
+                                            fontSize: '1.2rem',
+                                            color: '#d8b4fe'
+                                        },
+                                        children: hScore
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/components/Game.tsx",
+                                        lineNumber: 319,
+                                        columnNumber: 13
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/src/components/Game.tsx",
+                                lineNumber: 317,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                style: {
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    alignItems: 'center'
+                                },
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                        style: {
+                                            fontFamily: "'Racing Sans One',cursive",
+                                            fontSize: '0.58rem',
+                                            letterSpacing: 2,
+                                            color: 'rgba(255,255,255,0.38)',
+                                            textTransform: 'uppercase'
+                                        },
+                                        children: "Lives"
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/components/Game.tsx",
+                                        lineNumber: 322,
+                                        columnNumber: 13
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                        style: {
+                                            fontFamily: "'Boogaloo',cursive",
+                                            fontSize: '1.2rem',
+                                            color: '#d8b4fe'
+                                        },
+                                        children: '❤️'.repeat(Math.max(0, hLives))
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/components/Game.tsx",
+                                        lineNumber: 323,
+                                        columnNumber: 13
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/src/components/Game.tsx",
+                                lineNumber: 321,
+                                columnNumber: 11
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/src/components/Game.tsx",
+                        lineNumber: 297,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("canvas", {
+                        ref: canvasRef,
+                        style: {
+                            flex: 1,
+                            width: '100%',
+                            display: 'block',
+                            touchAction: 'none'
+                        }
+                    }, void 0, false, {
+                        fileName: "[project]/src/components/Game.tsx",
+                        lineNumber: 327,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        style: {
+                            width: '100%',
+                            height: 44,
+                            background: 'rgba(8,0,16,0.95)',
+                            borderTop: '2px solid rgba(147,51,234,0.3)',
+                            display: 'flex',
+                            alignItems: 'center',
+                            padding: '0 14px',
+                            gap: 10,
+                            flexShrink: 0
+                        },
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                style: {
+                                    fontFamily: "'Boogaloo',cursive",
+                                    fontSize: '0.85rem',
+                                    color: 'rgba(255,255,255,0.5)',
+                                    whiteSpace: 'nowrap'
+                                },
+                                children: progLab
+                            }, void 0, false, {
+                                fileName: "[project]/src/components/Game.tsx",
+                                lineNumber: 331,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                style: {
+                                    flex: 1,
+                                    height: 12,
+                                    background: '#120024',
+                                    borderRadius: 6,
+                                    overflow: 'hidden',
+                                    border: '2px solid #3b0764'
+                                },
+                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    style: {
+                                        height: '100%',
+                                        width: `${progPct}%`,
+                                        background: 'linear-gradient(90deg,#7c3aed,#d8b4fe)',
+                                        borderRadius: 6,
+                                        transition: 'width 0.25s'
+                                    }
+                                }, void 0, false, {
+                                    fileName: "[project]/src/components/Game.tsx",
+                                    lineNumber: 333,
+                                    columnNumber: 13
+                                }, this)
+                            }, void 0, false, {
+                                fileName: "[project]/src/components/Game.tsx",
+                                lineNumber: 332,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                style: {
+                                    fontFamily: "'Boogaloo',cursive",
+                                    fontSize: '0.85rem',
+                                    color: 'rgba(255,255,255,0.5)',
+                                    whiteSpace: 'nowrap'
+                                },
+                                children: progCnt
+                            }, void 0, false, {
+                                fileName: "[project]/src/components/Game.tsx",
+                                lineNumber: 335,
+                                columnNumber: 11
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/src/components/Game.tsx",
+                        lineNumber: 330,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        style: {
+                            position: 'absolute',
+                            bottom: 48,
+                            left: 0,
+                            right: 0,
+                            display: 'flex',
+                            justifyContent: 'space-between',
+                            padding: '0 20px',
+                            zIndex: 20,
+                            pointerEvents: 'none'
+                        },
+                        children: [
+                            {
+                                label: '◀',
+                                key: 'ArrowLeft'
+                            },
+                            {
+                                label: '▶',
+                                key: 'ArrowRight'
+                            }
+                        ].map(({ label, key })=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                onTouchStart: (e)=>{
+                                    e.preventDefault();
+                                    keysRef.current[key] = true;
+                                },
+                                onTouchEnd: (e)=>{
+                                    e.preventDefault();
+                                    keysRef.current[key] = false;
+                                },
+                                style: {
+                                    width: 72,
+                                    height: 72,
+                                    borderRadius: '50%',
+                                    background: 'rgba(147,51,234,0.2)',
+                                    border: '3px solid rgba(147,51,234,0.5)',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    fontSize: '1.8rem',
+                                    pointerEvents: 'all',
+                                    userSelect: 'none',
+                                    cursor: 'pointer'
+                                },
+                                children: label
+                            }, key, false, {
+                                fileName: "[project]/src/components/Game.tsx",
+                                lineNumber: 341,
+                                columnNumber: 13
+                            }, this))
+                    }, void 0, false, {
+                        fileName: "[project]/src/components/Game.tsx",
+                        lineNumber: 339,
+                        columnNumber: 9
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "[project]/src/components/Game.tsx",
+                lineNumber: 295,
+                columnNumber: 7
+            }, this),
+            screen === 'wish' && wish && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                style: {
+                    position: 'fixed',
+                    inset: 0,
+                    zIndex: 300,
+                    background: 'rgba(5,0,12,0.96)',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    padding: 20,
+                    backdropFilter: 'blur(12px)'
+                },
+                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    className: "anim-wishpop",
+                    style: {
+                        background: 'linear-gradient(145deg,#100020,#1e003a)',
+                        border: `4px solid ${wish.color}`,
+                        borderRadius: 28,
+                        padding: '28px 24px',
+                        maxWidth: 480,
+                        width: '100%',
+                        textAlign: 'center',
+                        boxShadow: `0 0 0 6px ${wish.color}22,0 20px 60px #000,0 0 80px ${wish.color}44`
+                    },
+                    children: [
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            style: {
+                                fontFamily: "'Racing Sans One',cursive",
+                                fontSize: '.75rem',
+                                letterSpacing: 3,
+                                color: 'rgba(255,255,255,0.38)',
+                                textTransform: 'uppercase',
+                                marginBottom: 8
+                            },
+                            children: wish.tag
+                        }, void 0, false, {
+                            fileName: "[project]/src/components/Game.tsx",
+                            lineNumber: 355,
+                            columnNumber: 13
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            className: "anim-avatar",
+                            style: {
+                                fontSize: 'clamp(3rem,9vw,5rem)',
+                                marginBottom: 4,
+                                filter: `drop-shadow(0 0 16px ${wish.color}cc)`
+                            },
+                            children: wish.av
+                        }, void 0, false, {
+                            fileName: "[project]/src/components/Game.tsx",
+                            lineNumber: 356,
+                            columnNumber: 13
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            style: {
+                                fontFamily: "'Racing Sans One',cursive",
+                                fontSize: 'clamp(1.1rem,4vw,1.7rem)',
+                                color: wish.color,
+                                marginBottom: 10
+                            },
+                            children: [
+                                "From ",
+                                wish.from
+                            ]
+                        }, void 0, true, {
+                            fileName: "[project]/src/components/Game.tsx",
+                            lineNumber: 357,
+                            columnNumber: 13
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            style: {
+                                width: 50,
+                                height: 3,
+                                background: `linear-gradient(90deg,transparent,${wish.color},transparent)`,
+                                borderRadius: 2,
+                                margin: '0 auto 14px'
+                            }
+                        }, void 0, false, {
+                            fileName: "[project]/src/components/Game.tsx",
+                            lineNumber: 358,
+                            columnNumber: 13
+                        }, this),
+                        wish.photo && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            style: {
+                                width: 'clamp(80px,20vw,120px)',
+                                aspectRatio: '1',
+                                borderRadius: 18,
+                                overflow: 'hidden',
+                                border: `4px solid ${wish.color}`,
+                                boxShadow: `0 0 0 3px #6b21a8,0 8px 30px rgba(0,0,0,0.6)`,
+                                margin: '10px auto',
+                                background: '#180030',
+                                display: 'flex',
+                                flexDirection: 'column',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                gap: 4,
+                                color: 'rgba(255,255,255,0.3)'
+                            },
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                    style: {
+                                        fontSize: '1.6rem'
+                                    },
+                                    children: "📸"
+                                }, void 0, false, {
+                                    fileName: "[project]/src/components/Game.tsx",
+                                    lineNumber: 361,
+                                    columnNumber: 17
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("small", {
+                                    style: {
+                                        fontSize: '.6rem',
+                                        letterSpacing: 1,
+                                        textTransform: 'uppercase'
+                                    },
+                                    children: [
+                                        "Photo ",
+                                        wish.photo
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/src/components/Game.tsx",
+                                    lineNumber: 362,
+                                    columnNumber: 17
+                                }, this)
+                            ]
+                        }, void 0, true, {
+                            fileName: "[project]/src/components/Game.tsx",
+                            lineNumber: 360,
+                            columnNumber: 15
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            style: {
+                                fontFamily: "'Boogaloo',cursive",
+                                fontSize: 'clamp(1rem,2.8vw,1.3rem)',
+                                color: 'rgba(255,255,255,0.9)',
+                                lineHeight: 1.75
+                            },
+                            children: wish.text
+                        }, void 0, false, {
+                            fileName: "[project]/src/components/Game.tsx",
+                            lineNumber: 365,
+                            columnNumber: 13
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                            onClick: continueFromWish,
+                            style: {
+                                marginTop: 18,
+                                fontFamily: "'Racing Sans One',cursive",
+                                fontSize: '1rem',
+                                background: 'linear-gradient(135deg,#9333ea,#6b21a8)',
+                                color: '#fff',
+                                border: 'none',
+                                borderRadius: 40,
+                                padding: '13px 34px',
+                                cursor: 'pointer',
+                                boxShadow: '0 6px 0 #3b0764',
+                                letterSpacing: 1
+                            },
+                            children: G.current.stage >= 7 ? '🏆 CLAIM THE TROPHY!' : 'NEXT STAGE ⚡'
+                        }, void 0, false, {
+                            fileName: "[project]/src/components/Game.tsx",
+                            lineNumber: 366,
+                            columnNumber: 13
+                        }, this)
+                    ]
+                }, void 0, true, {
+                    fileName: "[project]/src/components/Game.tsx",
+                    lineNumber: 354,
+                    columnNumber: 11
+                }, this)
+            }, void 0, false, {
+                fileName: "[project]/src/components/Game.tsx",
+                lineNumber: 353,
+                columnNumber: 9
+            }, this),
+            screen === 'gameover' && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                style: {
+                    position: 'fixed',
+                    inset: 0,
+                    background: 'radial-gradient(ellipse at 50% 40%,#1a0010,#080010)',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: 16
+                },
+                children: [
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        style: {
+                            fontSize: '4rem'
+                        },
+                        children: "💥"
+                    }, void 0, false, {
+                        fileName: "[project]/src/components/Game.tsx",
+                        lineNumber: 376,
+                        columnNumber: 11
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
+                        style: {
+                            fontFamily: "'Racing Sans One',cursive",
+                            fontSize: 'clamp(2rem,7vw,3.5rem)',
+                            color: '#f87171',
+                            textShadow: '0 0 30px rgba(248,113,113,.7)',
+                            textAlign: 'center'
+                        },
+                        children: "OH NO! CRASH!"
+                    }, void 0, false, {
+                        fileName: "[project]/src/components/Game.tsx",
+                        lineNumber: 377,
+                        columnNumber: 11
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                        style: {
+                            fontFamily: "'Boogaloo',cursive",
+                            fontSize: 'clamp(1rem,3vw,1.3rem)',
+                            color: 'rgba(255,255,255,.8)',
+                            textAlign: 'center',
+                            padding: '0 20px'
+                        },
+                        children: [
+                            "Don't worry Kabileshwar!",
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
+                                fileName: "[project]/src/components/Game.tsx",
+                                lineNumber: 378,
+                                columnNumber: 179
+                            }, this),
+                            "Every champion crashes sometimes!"
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/src/components/Game.tsx",
+                        lineNumber: 378,
+                        columnNumber: 11
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        style: {
+                            fontFamily: "'Boogaloo',cursive",
+                            fontSize: '1.4rem',
+                            color: '#d8b4fe'
+                        },
+                        children: [
+                            "⭐ Stars: ",
+                            goScore
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/src/components/Game.tsx",
+                        lineNumber: 379,
+                        columnNumber: 11
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                        onClick: retry,
+                        style: {
+                            fontFamily: "'Racing Sans One',cursive",
+                            fontSize: 'clamp(1.1rem,3.5vw,1.8rem)',
+                            background: 'linear-gradient(135deg,#9333ea,#6b21a8)',
+                            color: '#fff',
+                            border: 'none',
+                            borderRadius: 60,
+                            padding: '16px 44px',
+                            cursor: 'pointer',
+                            letterSpacing: 2,
+                            boxShadow: '0 7px 0 #3b0764'
+                        },
+                        children: "🔄 TRY AGAIN!"
+                    }, void 0, false, {
+                        fileName: "[project]/src/components/Game.tsx",
+                        lineNumber: 380,
+                        columnNumber: 11
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "[project]/src/components/Game.tsx",
+                lineNumber: 375,
+                columnNumber: 9
+            }, this),
+            screen === 'winner' && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                style: {
+                    position: 'fixed',
+                    inset: 0,
+                    background: 'radial-gradient(ellipse at 50% 30%,#1e0042,#080010)',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: 12,
+                    padding: 20,
+                    overflowY: 'auto'
+                },
+                children: [
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        style: {
+                            fontFamily: "'Racing Sans One',cursive",
+                            fontSize: 'clamp(1.6rem,5.5vw,3.5rem)',
+                            color: '#d8b4fe',
+                            textAlign: 'center',
+                            textShadow: '0 0 40px rgba(147,51,234,.8)',
+                            lineHeight: 1.1
+                        },
+                        children: [
+                            "⚡ LIGHTNING KABILESHWAR",
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
+                                fileName: "[project]/src/components/Game.tsx",
+                                lineNumber: 389,
+                                columnNumber: 218
+                            }, this),
+                            "IS THE CHAMPION! 🏆"
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/src/components/Game.tsx",
+                        lineNumber: 389,
+                        columnNumber: 11
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "anim-trophy",
+                        style: {
+                            fontSize: '2.2rem'
+                        },
+                        children: "🏆🥇🎊⭐🚗⚡🎂"
+                    }, void 0, false, {
+                        fileName: "[project]/src/components/Game.tsx",
+                        lineNumber: 390,
+                        columnNumber: 11
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "anim-winfloat",
+                        style: {
+                            width: 'clamp(90px,20vw,130px)',
+                            aspectRatio: '1',
+                            borderRadius: '50%',
+                            overflow: 'hidden',
+                            border: '5px solid #9333ea',
+                            boxShadow: '0 0 0 4px #6b21a8,0 0 50px rgba(147,51,234,.7)',
+                            background: '#180030',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            gap: 4,
+                            color: 'rgba(255,255,255,.35)'
+                        },
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                style: {
+                                    fontSize: '2rem'
+                                },
+                                children: "📸"
+                            }, void 0, false, {
+                                fileName: "[project]/src/components/Game.tsx",
+                                lineNumber: 392,
+                                columnNumber: 13
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("small", {
+                                style: {
+                                    fontSize: '.6rem',
+                                    letterSpacing: 1,
+                                    textTransform: 'uppercase'
+                                },
+                                children: "Winner!"
+                            }, void 0, false, {
+                                fileName: "[project]/src/components/Game.tsx",
+                                lineNumber: 392,
+                                columnNumber: 54
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/src/components/Game.tsx",
+                        lineNumber: 391,
+                        columnNumber: 11
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                        style: {
+                            fontFamily: "'Boogaloo',cursive",
+                            fontSize: '1rem',
+                            color: 'rgba(255,255,255,.65)',
+                            textAlign: 'center',
+                            maxWidth: 480,
+                            padding: '0 16px'
+                        },
+                        children: "You collected all 7 wishes from your whole family! 💜"
+                    }, void 0, false, {
+                        fileName: "[project]/src/components/Game.tsx",
+                        lineNumber: 394,
+                        columnNumber: 11
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        style: {
+                            display: 'grid',
+                            gridTemplateColumns: 'repeat(auto-fit,minmax(175px,1fr))',
+                            gap: 8,
+                            width: '100%',
+                            maxWidth: 660
+                        },
+                        children: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$gameData$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["WISHES"].map((w, i)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                style: {
+                                    background: 'rgba(147,51,234,.08)',
+                                    border: `2px solid ${w.color}44`,
+                                    borderRadius: 14,
+                                    padding: '10px 12px',
+                                    textAlign: 'center'
+                                },
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        style: {
+                                            fontSize: '1.5rem'
+                                        },
+                                        children: w.av
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/components/Game.tsx",
+                                        lineNumber: 400,
+                                        columnNumber: 17
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        style: {
+                                            fontFamily: "'Racing Sans One',cursive",
+                                            fontSize: '.75rem',
+                                            color: '#d8b4fe',
+                                            margin: '3px 0',
+                                            letterSpacing: 1
+                                        },
+                                        children: w.from
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/components/Game.tsx",
+                                        lineNumber: 401,
+                                        columnNumber: 17
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        style: {
+                                            fontFamily: "'Boogaloo',cursive",
+                                            fontSize: '.82rem',
+                                            color: 'rgba(255,255,255,.8)',
+                                            lineHeight: 1.5
+                                        },
+                                        children: w.text
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/components/Game.tsx",
+                                        lineNumber: 402,
+                                        columnNumber: 17
+                                    }, this)
+                                ]
+                            }, i, true, {
+                                fileName: "[project]/src/components/Game.tsx",
+                                lineNumber: 399,
+                                columnNumber: 15
+                            }, this))
+                    }, void 0, false, {
+                        fileName: "[project]/src/components/Game.tsx",
+                        lineNumber: 397,
+                        columnNumber: 11
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                        onClick: playAgain,
+                        style: {
+                            marginTop: 8,
+                            fontFamily: "'Racing Sans One',cursive",
+                            fontSize: 'clamp(1.1rem,3.5vw,1.8rem)',
+                            background: 'linear-gradient(135deg,#9333ea,#6b21a8)',
+                            color: '#fff',
+                            border: 'none',
+                            borderRadius: 60,
+                            padding: '16px 44px',
+                            cursor: 'pointer',
+                            letterSpacing: 2,
+                            boxShadow: '0 7px 0 #3b0764'
+                        },
+                        children: "🏁 RACE AGAIN!"
+                    }, void 0, false, {
+                        fileName: "[project]/src/components/Game.tsx",
+                        lineNumber: 406,
+                        columnNumber: 11
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "[project]/src/components/Game.tsx",
+                lineNumber: 388,
+                columnNumber: 9
+            }, this)
+        ]
+    }, void 0, true, {
+        fileName: "[project]/src/components/Game.tsx",
+        lineNumber: 255,
+        columnNumber: 5
+    }, this);
+}
+}),
+"[project]/node_modules/next/dist/server/route-modules/app-page/module.compiled.js [app-ssr] (ecmascript)", ((__turbopack_context__, module, exports) => {
+"use strict";
+
+if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
+;
+else {
+    if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
+    ;
+    else {
+        if ("TURBOPACK compile-time truthy", 1) {
+            if ("TURBOPACK compile-time truthy", 1) {
+                module.exports = __turbopack_context__.r("[externals]/next/dist/compiled/next-server/app-page-turbo.runtime.dev.js [external] (next/dist/compiled/next-server/app-page-turbo.runtime.dev.js, cjs)");
+            } else //TURBOPACK unreachable
+            ;
+        } else //TURBOPACK unreachable
+        ;
+    }
+} //# sourceMappingURL=module.compiled.js.map
+}),
+"[project]/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react-jsx-dev-runtime.js [app-ssr] (ecmascript)", ((__turbopack_context__, module, exports) => {
+"use strict";
+
+module.exports = __turbopack_context__.r("[project]/node_modules/next/dist/server/route-modules/app-page/module.compiled.js [app-ssr] (ecmascript)").vendored['react-ssr'].ReactJsxDevRuntime; //# sourceMappingURL=react-jsx-dev-runtime.js.map
+}),
+"[project]/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react.js [app-ssr] (ecmascript)", ((__turbopack_context__, module, exports) => {
+"use strict";
+
+module.exports = __turbopack_context__.r("[project]/node_modules/next/dist/server/route-modules/app-page/module.compiled.js [app-ssr] (ecmascript)").vendored['react-ssr'].React; //# sourceMappingURL=react.js.map
+}),
+];
+
+//# sourceMappingURL=%5Broot-of-the-server%5D__36d931ce._.js.map
