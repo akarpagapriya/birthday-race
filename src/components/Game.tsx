@@ -100,6 +100,7 @@ export default function Game({ customData }: { customData?: { childName: string;
     const ctx = canvas.getContext('2d'); if(!ctx) return
 
     function resize(){
+      if(!canvas) return
       const r=canvas.getBoundingClientRect()
       if(r.width>0&&r.height>0){
         canvas.width=r.width; canvas.height=r.height
