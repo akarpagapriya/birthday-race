@@ -66,7 +66,7 @@ export default function CreatePage() {
   }
 
   return (
-    <div style={{ minHeight: '100vh', background: 'radial-gradient(ellipse at 50% 0%,#1e0042,#080010)', padding: '24px 16px', overflowY: 'auto' }}>
+    <div style={{ minHeight: '100vh', background: 'radial-gradient(ellipse at 50% 0%,#1e0042,#080010)', padding: '24px 16px', overflowY: 'scroll', height: '100vh' }}>
       <div style={{ maxWidth: 560, margin: '0 auto' }}>
 
         {/* Header */}
