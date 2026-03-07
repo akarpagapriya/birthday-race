@@ -422,8 +422,7 @@ export default function Game({ customData }: { customData?: { childName: string;
                 {/* Photo circle */}
                 <div style={{position:'relative',zIndex:2,width:'100%',height:'100%',borderRadius:'50%',overflow:'hidden',border:`4px solid ${wish.color}`,boxShadow:`0 0 0 3px #fff2,0 0 30px ${wish.color}99`,background:`linear-gradient(135deg,${wish.color}33,#1a0030)`,display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',animation:'photoFloat 3s 2.3s ease-in-out infinite'}}>
                   {wish.photo ? (
-                    /* ── REPLACE BELOW with <img src={`/photo${wish.photo}.jpg`} ... /> once you add real photos to /public ── */
-                    <img src={wish.photo} style={{width:'100%',height:'100%',objectFit:'cover',borderRadius:'50%'}} alt="Family photo" />
+                    <img src={`/photo${wish.photo}.jpg`} style={{width:'100%',height:'100%',objectFit:'cover',borderRadius:'50%'}} alt="Family photo" />
                   ) : (
                     <span style={{fontSize:'3.5rem'}}>{wish.av}</span>
                   )}
