@@ -3,7 +3,7 @@ export interface Wish {
   av: string
   color: string
   tag: string
-  photo: number | null
+  photo?: number | string
   text: string
 }
 
@@ -35,12 +35,12 @@ export const WISHES: Wish[] = [
   },
   {
     from: 'The Whole Family 🏠', av: '🏠', color: '#fca5a5',
-    tag: 'Stage 6 Complete! 🔴', photo: null,
+    tag: 'Stage 6 Complete! 🔴', photo: undefined,
     text: "Gunasekari, Karpagapriya, Durgadevi, Nimaleshwar & little Maadhangi — ALL of us say: Kabileshwar, you are our greatest joy, our loudest laugh, our warmest hug. We love you endlessly! 🌺💜"
   },
   {
     from: '⚡ Lightning Kabileshwar', av: '🏆', color: '#fde68a',
-    tag: '🏁 CHAMPION! All 7 Done!', photo: null,
+    tag: '🏁 CHAMPION! All 7 Done!', photo: undefined,
     text: "YOU DID IT! You finished all 7 stages and collected every family wish! You are not just ⚡ Lightning Kabileshwar the racer — you are the most loved, most wonderful 6-year-old in the whole universe. HAPPY BIRTHDAY! 🎂🎊🚗⭐🏆"
   },
 ]
