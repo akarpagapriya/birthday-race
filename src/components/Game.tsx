@@ -113,6 +113,7 @@ export default function Game({ customData }: { customData?: { childName: string;
     function loop(ts:number){
       rafRef.current=requestAnimationFrame(loop)
       const g=G.current
+      if(!canvas || !ctx) return
       const W=canvas.width, H=canvas.height
       if(W===0||H===0) return
 
