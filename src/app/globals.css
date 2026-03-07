@@ -148,3 +148,21 @@ html, body, #__next {
   0%,100% { transform: translateY(0) scale(1); }
   50%      { transform: translateY(-6px) scale(1.03); }
 }
+
+@keyframes trophyBounce {
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes starsMove {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-200px);
+  }
+}

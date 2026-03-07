@@ -8,9 +8,9 @@ function generateSlug(name: string): string {
   return `${clean}-${year}-${rand}`
 }
 
-async function uploadPhoto(file: File, slug: string, stage: number): Promise<string | null> {
+async function uploadPhoto(file: File, slug: string, name: string): Promise<string | null> {
   const ext = file.name.split('.').pop()
-  const path = `${slug}/stage-${stage}.${ext}`
+  const path = `${slug}/${name}.${ext}`
   const { error } = await supabase.storage.from('photos').upload(path, file, { upsert: true })
   if (error) { console.error('Photo upload error:', error); return null }
   const { data } = supabase.storage.from('photos').getPublicUrl(path)
@@ -21,26 +21,33 @@ export async function saveGame(state: BuilderState): Promise<string | null> {
   try {
     const slug = generateSlug(state.child_name)
 
-    // 1. Insert game row
+    // Upload kid photo if provided
+    let kid_photo_url = null
+    if (state.kid_photo_file) {
+      kid_photo_url = await uploadPhoto(state.kid_photo_file, slug, 'kid')
+    }
+
+    // Insert game row
     const { data: game, error: gameError } = await supabase
       .from('games')
       .insert({
         slug,
         child_name: state.child_name,
         age: state.age,
-        theme_color: state.theme_color,
+        car_color: state.car_color,
+        kid_photo_url,
       })
       .select()
       .single()
 
     if (gameError || !game) { console.error('Game insert error:', gameError); return null }
 
-    // 2. Upload photos + insert wishes
+    // Upload wish photos + insert wishes
     const wishRows = await Promise.all(
       state.wishes.map(async (w: WishEntry) => {
         let photo_url = null
         if (w.photo_file) {
-          photo_url = await uploadPhoto(w.photo_file, slug, w.stage)
+          photo_url = await uploadPhoto(w.photo_file, slug, `stage-${w.stage}`)
         }
         return {
           game_id: game.id,
