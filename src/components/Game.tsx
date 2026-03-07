@@ -1,6 +1,6 @@
 'use client'
 import { useEffect, useRef, useCallback, useState } from 'react'
-import { WISHES, STARS_NEEDED, STAGE_COLORS, STAGE_NAMES, STAGE_ICONS } from './gameData'
+import { WISHES, STARS_NEEDED, STAGE_COLORS, STAGE_NAMES, STAGE_ICONS, Wish } from './gameData'
 import { sndCollect, sndCrash, sndWin, sndRev, sndBday } from './audio'
 import { drawSpaceBg, drawRoad, drawToycar, drawStar3D, drawObstacle } from './drawUtils'
 
