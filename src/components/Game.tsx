@@ -560,10 +560,10 @@ export default function Game({ customData }: { customData?: { childName: string;
 
                 {/* Actual photo / avatar */}
                 <div style={{ width: '100%', height: '100%', position: 'relative', zIndex: 6 }}>
-                  {wish.photo
-                    ? <img src={`${wish.photo}`} style={{ width: '100%', height: '100%', objectFit: 'cover' }} alt="Family" />
-                    : <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 'clamp(5rem,20vw,8rem)' }}>{wish.av}</div>
-                  }
+{wish.photo
+  ? <img src={`${wish.photo}`} alt="Family" loading="eager" decoding="async" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+  : <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 'clamp(5rem,20vw,8rem)' }}>{wish.av}</div>
+}
 
                   {/* Dark overlay at bottom for wish text */}
                   <div style={{
@@ -739,7 +739,7 @@ export default function Game({ customData }: { customData?: { childName: string;
                   {/* Photo / fallback */}
                   <div style={{ width: '100%', height: '100%', position: 'relative', zIndex: 6 }}>
                     {kidPhotoUrl
-                      ? <img src={kidPhotoUrl} alt={childName} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                      ? <img src={kidPhotoUrl} alt={childName} loading="eager" decoding="async" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                       : <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 'clamp(4rem,16vw,7rem)' }}>🏆</div>
                     }
 
