@@ -264,12 +264,12 @@ export default function Game({ customData }: { customData?: { childName: string;
   const isTouch = typeof window !== 'undefined' && 'ontouchstart' in window
 
   return (
-    <div style={{ position: 'fixed', inset: 0, background: '#080010', fontFamily: "'Nunito',sans-serif" }}>
+    <div style={{ position: 'fixed', inset: 0, background: '#080010', fontFamily: "'Nunito',sans-serif", ['--car-color' as string]: carColor }}>
 
       {/* TRANSITION OVERLAY */}
       <div style={{
         position: 'fixed', inset: 0, zIndex: 500, pointerEvents: 'none',
-        background: 'linear-gradient(135deg,#6b21a8,#9333ea)',
+        background: `linear-gradient(135deg,${carColor}cc,${carColor})`,
         clipPath: transOpen ? 'circle(150% at 50% 50%)' : 'circle(0% at 50% 50%)',
         transition: 'clip-path 0.4s cubic-bezier(.7,0,.3,1)',
         display: 'flex', alignItems: 'center', justifyContent: 'center',
@@ -279,44 +279,153 @@ export default function Game({ customData }: { customData?: { childName: string;
 
       {/* ═══ INTRO ═══ */}
       {screen === 'intro' && (
-        <div style={{ position: 'fixed', inset: 0, background: 'radial-gradient(ellipse at 50% 40%,#1e0042 0%,#080010 75%)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 16, overflow: 'hidden' }}>
-          {/* Floating dots */}
+        <div style={{
+          position: 'fixed', inset: 0, overflow: 'hidden',
+          background: `radial-gradient(at 50% 30%, rgb(30, 0, 66), rgb(8, 0, 16))`,
+          display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
+        }}>
+          {/* Floating dot particles */}
           {dotParticles.map(d => (
-            <div key={d.id} style={{ position: 'absolute', borderRadius: '50%', width: d.size, height: d.size, left: `${d.left}%`, background: `rgba(147,51,234,${d.op})`, animation: `floatDot ${d.dur}s ${-d.delay}s linear infinite`, pointerEvents: 'none' }} />
+            <div key={d.id} style={{
+              position: 'absolute', borderRadius: '50%',
+              width: d.size, height: d.size, left: `${d.left}%`,
+              background: `${carColor}${Math.round(d.op * 255).toString(16).padStart(2, '0')}`,
+              animation: `floatDot ${d.dur}s ${-d.delay}s linear infinite`,
+              pointerEvents: 'none',
+            }} />
           ))}
-          <div style={{ fontSize: 'clamp(3rem,12vw,7rem)', filter: 'drop-shadow(0 0 30px #9333ea)', animation: 'flagWave 1.2s ease-in-out infinite alternate', zIndex: 2 }}>🏁</div>
-          <div style={{ fontFamily: "'Racing Sans One',cursive", fontSize: 'clamp(2.2rem,8vw,5.5rem)', color: '#d8b4fe', textAlign: 'center', textShadow: '0 0 40px #9333ea,0 0 80px #6b21a8,4px 4px 0 #3b0764', lineHeight: 1.1, padding: '0 16px', zIndex: 2 }}>
-            ⚡ Lightning<br />{childName}
+
+          {/* Road dashes at bottom — decorative */}
+          <div style={{
+            position: 'absolute', bottom: 0, left: 0, right: 0, height: 48,
+            background: `linear-gradient(180deg,transparent,${carColor}18)`,
+            borderTop: `2px dashed ${carColor}33`,
+            pointerEvents: 'none',
+          }} />
+
+          {/* Main content card */}
+          <div style={{
+            position: 'relative', zIndex: 2,
+            display: 'flex', flexDirection: 'column', alignItems: 'center',
+            gap: 0, padding: '0 20px', width: '100%', maxWidth: 460,
+          }}>
+
+            {/* Birthday badge — top pill */}
+            <div style={{
+              background: `linear-gradient(135deg,${carColor}33,${carColor}11)`,
+              border: `1.5px solid ${carColor}66`,
+              borderRadius: 40, padding: '6px 20px', marginBottom: 18,
+              fontFamily: "'Boogaloo',cursive",
+              fontSize: 'clamp(0.85rem,2.5vw,1.05rem)',
+              color: 'rgba(255,255,255,0.85)', letterSpacing: 1,
+            }}>
+              🎂 Happy {ordinal(customData?.age ?? 6)} Birthday, {childName}!
+            </div>
+
+
+            {/* Hero name */}
+            <div style={{
+              fontFamily: "'Racing Sans One',cursive",
+              fontSize: 'clamp(2rem,8vw,5rem)',
+              color: '#fff', textAlign: 'center', lineHeight: 1.05,
+              marginBottom: 6,
+            }}>
+              ⚡ Lightning<br />
+              <span style={{ color: carColor }}>
+                {childName}
+              </span>
+            </div>
+
+            {/* Subtitle */}
+            <div style={{
+              fontFamily: "'Racing Sans One',cursive",
+              fontSize: 'clamp(0.65rem,2vw,0.85rem)',
+              color: carColor, letterSpacing: 4, marginBottom: 22,
+              textShadow: `0 0 12px ${carColor}`,
+            }}>
+              BIRTHDAY RACE CHAMPION
+            </div>
+
+            {/* Instruction card */}
+            <div style={{
+              width: '100%',
+              background: 'rgba(0,0,0,0.35)',
+              border: `1.5px solid ${carColor}33`,
+              borderRadius: 18, padding: '16px 20px', marginBottom: 24,
+              backdropFilter: 'blur(8px)',
+            }}>
+              {/* 3 instruction rows */}
+              {[
+                { icon: '🚗', text: 'Steer your car & collect', highlight: '⭐ stars' },
+                { icon: '⚠️', text: 'Dodge obstacles on the road', highlight: '' },
+                { icon: '🎁', text: 'Win a stage → unlock a', highlight: 'family wish!' },
+              ].map((row, i) => (
+                <div key={i} style={{
+                  display: 'flex', alignItems: 'center', gap: 10,
+                  padding: '7px 0',
+                  borderBottom: i < 2 ? `1px solid ${carColor}18` : 'none',
+                }}>
+                  <span style={{ fontSize: '1.2rem', flexShrink: 0 }}>{row.icon}</span>
+                  <span style={{ fontFamily: "'Boogaloo',cursive", fontSize: 'clamp(0.85rem,2.5vw,1rem)', color: 'rgba(255,255,255,0.8)', lineHeight: 1.4 }}>
+                    {row.text}{' '}
+                    {row.highlight && <strong style={{ color: carColor }}>{row.highlight}</strong>}
+                  </span>
+                </div>
+              ))}
+
+              {/* Stage count strip */}
+              <div style={{
+                marginTop: 12, paddingTop: 10,
+                borderTop: `1px solid ${carColor}22`,
+                display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
+              }}>
+                {Array.from({ length: totalStages }, (_, i) => (
+                  <div key={i} style={{
+                    width: 28, height: 28, borderRadius: '50%',
+                    background: `${carColor}22`,
+                    border: `1.5px solid ${carColor}66`,
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    fontSize: '0.75rem', fontFamily: "'Racing Sans One',cursive",
+                    color: carColor,
+                  }}>{i + 1}</div>
+                ))}
+                <span style={{ fontFamily: "'Boogaloo',cursive", fontSize: '0.8rem', color: 'rgba(255,255,255,0.4)', marginLeft: 4 }}>
+                  {totalStages} {totalStages === 1 ? 'stage' : 'stages'} · {totalStages} {totalStages === 1 ? 'wish' : 'wishes'}
+                </span>
+              </div>
+            </div>
+
+            {/* Start button */}
+            <button onClick={startGame} style={{
+              fontFamily: "'Racing Sans One',cursive",
+              fontSize: 'clamp(1.1rem,3.5vw,1.6rem)',
+              background: `linear-gradient(135deg,${carColor},${carColor}99)`,
+              color: '#fff', border: 'none', borderRadius: 60,
+              padding: '16px 52px', cursor: 'pointer', letterSpacing: 2,
+              boxShadow: `0 7px 0 ${carColor}55, 0 0 40px ${carColor}66`,
+              animation: 'btnPulse 1.8s ease-in-out infinite',
+              width: '100%',
+            }}>
+              🚦 START RACING!
+            </button>
           </div>
-          <div style={{ fontFamily: "'Boogaloo',cursive", fontSize: 'clamp(1rem,3vw,1.6rem)', color: 'rgba(255,255,255,0.75)', zIndex: 2 }}>🎂 Happy {customData?.age ? `${customData.age}${[1, 'st', 2, 'nd', 3, 'rd'].includes(customData.age) ? ['st', 'nd', 'rd'][[1, 2, 3].indexOf(customData.age)] : 'th'}` : '6th'} Birthday! 🎂</div>
-          <div style={{ background: 'rgba(147,51,234,0.1)', border: '2px solid rgba(147,51,234,0.4)', borderRadius: 20, padding: '16px 26px', maxWidth: 400, margin: '0 16px', zIndex: 2 }}>
-            <p style={{ fontSize: 'clamp(0.85rem,2.5vw,1.05rem)', color: 'rgba(255,255,255,0.85)', lineHeight: 1.8, textAlign: 'center', fontFamily: "'Boogaloo',cursive" }}>
-              🚗 Steer your car &amp; <strong style={{ color: '#d8b4fe' }}>collect ⭐ stars!</strong><br />
-              Avoid obstacles on the road.<br />
-              Win a stage → unlock a <strong style={{ color: '#d8b4fe' }}>family wish! 💜</strong><br />
-              {totalStages} stages · {totalStages} wishes · 1 Champion!
-            </p>
-          </div>
-          <button onClick={startGame} style={{ fontFamily: "'Racing Sans One',cursive", fontSize: 'clamp(1.1rem,3.5vw,1.8rem)', background: 'linear-gradient(135deg,#9333ea,#6b21a8)', color: '#fff', border: 'none', borderRadius: 60, padding: '16px 44px', cursor: 'pointer', letterSpacing: 2, boxShadow: '0 7px 0 #3b0764,0 0 40px rgba(147,51,234,0.5)', animation: 'btnPulse 1.8s ease-in-out infinite', zIndex: 2 }}>
-            🚦 START RACING!
-          </button>
         </div>
       )}
 
       {/* ═══ GAME ═══ */}
       <div style={{ position: 'fixed', inset: 0, flexDirection: 'column', display: screen === 'game' ? 'flex' : 'none' }}>
         {/* HUD */}
-        <div style={{ width: '100%', height: 50, background: 'rgba(8,0,16,0.95)', borderBottom: '2px solid rgba(147,51,234,0.4)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 12px', gap: 6, flexShrink: 0, zIndex: 10 }}>
+        <div style={{ width: '100%', height: 50, background: 'rgba(8,0,16,0.95)', borderBottom: `2px solid ${carColor}66`, display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 12px', gap: 6, flexShrink: 0, zIndex: 10 }}>
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             <span style={{ fontFamily: "'Racing Sans One',cursive", fontSize: '0.58rem', letterSpacing: 2, color: 'rgba(255,255,255,0.38)', textTransform: 'uppercase' }}>Stage</span>
-            <span style={{ fontFamily: "'Boogaloo',cursive", fontSize: '1.2rem', color: '#d8b4fe' }}>{hStage}/{totalStages}</span>
+            <span style={{ fontFamily: "'Boogaloo',cursive", fontSize: '1.2rem', color: 'carColor' }}>{hStage}/{totalStages}</span>
           </div>
           {/* Stage nodes */}
           <div style={{ display: 'flex', alignItems: 'center', gap: 3 }}>
             {Array.from({ length: totalStages }, (_, i) => (
               <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 3 }}>
-                {i > 0 && <div style={{ width: 8, height: 3, background: i < hStage ? '#7c3aed' : '#1e0042', borderRadius: 2 }} />}
-                <div style={{ width: 20, height: 20, borderRadius: '50%', background: i + 1 < hStage ? '#7c3aed' : i + 1 === hStage ? '#d8b4fe' : '#1e0042', border: `2px solid ${i + 1 < hStage ? '#a78bfa' : i + 1 === hStage ? '#fff' : '#4c1d95'}`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.55rem', animation: i + 1 === hStage ? 'nodePulse 1s ease-in-out infinite' : undefined }}>
+                {i > 0 && <div style={{ width: 8, height: 3, background: i < hStage ? carColor : '#1e0042', borderRadius: 2 }} />}
+                <div style={{ width: 20, height: 20, borderRadius: '50%', background: i + 1 < hStage ? carColor : i + 1 === hStage ? '#fff' : '#1e0042', border: `2px solid ${i + 1 < hStage ? carColor : i + 1 === hStage ? '#fff' : carColor + '33'}`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.55rem', animation: i + 1 === hStage ? 'nodePulse 1s ease-in-out infinite' : undefined }}>
                   {STAGE_ICONS[i] ?? '⭐'}
                 </div>
               </div>
@@ -324,15 +433,15 @@ export default function Game({ customData }: { customData?: { childName: string;
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             <span style={{ fontFamily: "'Racing Sans One',cursive", fontSize: '0.58rem', letterSpacing: 2, color: 'rgba(255,255,255,0.38)', textTransform: 'uppercase' }}>Stars</span>
-            <span style={{ fontFamily: "'Boogaloo',cursive", fontSize: '1.2rem', color: '#d8b4fe' }}>{hStars}</span>
+            <span style={{ fontFamily: "'Boogaloo',cursive", fontSize: '1.2rem', color: carColor }}>{hStars}</span>
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             <span style={{ fontFamily: "'Racing Sans One',cursive", fontSize: '0.58rem', letterSpacing: 2, color: 'rgba(255,255,255,0.38)', textTransform: 'uppercase' }}>Score</span>
-            <span style={{ fontFamily: "'Boogaloo',cursive", fontSize: '1.2rem', color: '#d8b4fe' }}>{hScore}</span>
+            <span style={{ fontFamily: "'Boogaloo',cursive", fontSize: '1.2rem', color: 'carColor' }}>{hScore}</span>
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             <span style={{ fontFamily: "'Racing Sans One',cursive", fontSize: '0.58rem', letterSpacing: 2, color: 'rgba(255,255,255,0.38)', textTransform: 'uppercase' }}>Lives</span>
-            <span style={{ fontFamily: "'Boogaloo',cursive", fontSize: '1.2rem', color: '#d8b4fe' }}>{'❤️'.repeat(Math.max(0, hLives))}</span>
+            <span style={{ fontFamily: "'Boogaloo',cursive", fontSize: '1.2rem', color: 'carColor' }}>{'❤️'.repeat(Math.max(0, hLives))}</span>
           </div>
         </div>
 
@@ -341,8 +450,8 @@ export default function Game({ customData }: { customData?: { childName: string;
         {/* Progress bar */}
         <div style={{ width: '100%', height: 44, background: 'rgba(8,0,16,0.95)', borderTop: '2px solid rgba(147,51,234,0.3)', display: 'flex', alignItems: 'center', padding: '0 14px', gap: 10, flexShrink: 0 }}>
           <span style={{ fontFamily: "'Boogaloo',cursive", fontSize: '0.85rem', color: 'rgba(255,255,255,0.5)', whiteSpace: 'nowrap' }}>{progLab}</span>
-          <div style={{ flex: 1, height: 12, background: '#120024', borderRadius: 6, overflow: 'hidden', border: '2px solid #3b0764' }}>
-            <div style={{ height: '100%', width: `${progPct}%`, background: 'linear-gradient(90deg,#7c3aed,#d8b4fe)', borderRadius: 6, transition: 'width 0.25s' }} />
+          <div style={{ flex: 1, height: 12, background: '#120024', borderRadius: 6, overflow: 'hidden', border: `2px solid ${carColor}44` }}>
+            <div style={{ height: '100%', width: `${progPct}%`, background: `linear-gradient(90deg,${carColor}88,${carColor})`, borderRadius: 6, transition: 'width 0.25s' }} />
           </div>
           <span style={{ fontFamily: "'Boogaloo',cursive", fontSize: '0.85rem', color: 'rgba(255,255,255,0.5)', whiteSpace: 'nowrap' }}>{progCnt}</span>
         </div>
@@ -353,16 +462,15 @@ export default function Game({ customData }: { customData?: { childName: string;
             <div key={key}
               onTouchStart={e => { e.preventDefault(); keysRef.current[key] = true }}
               onTouchEnd={e => { e.preventDefault(); keysRef.current[key] = false }}
-              style={{ width: 72, height: 72, borderRadius: '50%', background: 'rgba(147,51,234,0.2)', border: '3px solid rgba(147,51,234,0.5)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.8rem', pointerEvents: 'all', userSelect: 'none', cursor: 'pointer' }}>
+              style={{ width: 72, height: 72, borderRadius: '50%', background: `${carColor}33`, border: `3px solid ${carColor}88`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.8rem', pointerEvents: 'all', userSelect: 'none', cursor: 'pointer' }}>
               {label}
             </div>
           ))}
         </div>
       </div>
-
-      {/* ═══ WISH OVERLAY — GIFT BOX UNWRAP ═══ */}
+      {/* ═══ WISH OVERLAY — POLAROID REVEAL ═══ */}
       {screen === 'wish' && wish && (
-        <div style={{ position: 'fixed', inset: 0, zIndex: 300, background: 'rgba(5,0,12,0.97)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: 20, backdropFilter: 'blur(14px)', overflow: 'hidden' }}>
+        <div style={{ position: 'fixed', inset: 0, zIndex: 300, background: 'radial-gradient(at 50% 30%, rgb(30, 0, 66), rgb(8, 0, 16))', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: 20, backdropFilter: 'blur(14px)', overflow: 'hidden' }}>
 
           {/* Background floating sparkles */}
           {Array.from({ length: 10 }, (_, i) => (
@@ -378,83 +486,173 @@ export default function Game({ customData }: { customData?: { childName: string;
             </div>
           ))}
 
-          {/* MAIN GIFT CARD — slides up from bottom */}
-          <div style={{ animation: 'giftSlideUp 0.6s cubic-bezier(.36,1.3,.5,1) both', width: 'min(420px,92vw)', position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+          {/* MAIN WRAPPER */}
+          <div style={{ animation: 'giftSlideUp 0.6s cubic-bezier(.36,1.3,.5,1) both', width: 'min(360px,92vw)', position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 0 }}>
 
-            {/* BOW — flies upward at 0.75s */}
-            <div style={{ position: 'absolute', top: -32, left: '50%', transform: 'translateX(-50%)', fontSize: '3rem', zIndex: 10, animation: 'bowFlyUp 0.7s 0.75s cubic-bezier(.36,1.3,.5,1) both', filter: 'drop-shadow(0 0 12px rgba(255,100,200,0.9))' }}>
-              🎀
+            {/* Stage pill — pops in first */}
+            <div style={{
+              animation: 'badgePop 0.5s 0.2s cubic-bezier(.36,1.5,.5,1) both',
+              background: `linear-gradient(135deg,${wish.color},${carColor})`,
+              borderRadius: 40, padding: '5px 18px', marginBottom: 10,
+              fontFamily: "'Racing Sans One',cursive", fontSize: '0.75rem',
+              color: '#fff', letterSpacing: 2,
+              boxShadow: `0 4px 16px ${wish.color}66`,
+            }}>
+              {wish.tag}
             </div>
 
-            {/* RIBBON — left slides left, right slides right at 0.6s */}
-            <div style={{ position: 'absolute', top: '18%', left: 0, right: 0, height: 20, zIndex: 9, display: 'flex', overflow: 'hidden', borderRadius: 4 }}>
-              <div style={{ flex: 1, background: `linear-gradient(90deg,transparent,${wish.color}cc,${wish.color})`, animation: 'ribbonLeft 0.55s 0.6s ease-in forwards', transformOrigin: 'right center' }} />
-              <div style={{ flex: 1, background: `linear-gradient(90deg,${wish.color},${wish.color}cc,transparent)`, animation: 'ribbonRight 0.55s 0.6s ease-in forwards', transformOrigin: 'left center' }} />
-            </div>
+            {/* ── POLAROID CARD ── */}
+            <div style={{
+              background: '#fdfaf5',
+              borderRadius: 10,
+              padding: '10px 10px 0 10px',
+              boxShadow: `0 0 0 2px ${wish.color}99, 0 24px 60px rgba(0,0,0,0.95), 0 0 100px ${wish.color}44`,
+              position: 'relative',
+              width: '100%',
+              transform: `rotate(${wishIdx % 2 === 0 ? '-1.5deg' : '1.5deg'})`,
+            }}>
 
-            {/* BOX LID — lifts off at 1.05s */}
-            <div style={{ animation: 'lidLift 0.65s 1.05s cubic-bezier(.36,1.3,.5,1) both', transformOrigin: 'center bottom', zIndex: 8, width: '100%' }}>
-              <div style={{ background: `linear-gradient(135deg,${wish.color}ee,${wish.color}88)`, borderRadius: '20px 20px 4px 4px', height: 56, border: `3px solid ${wish.color}`, boxShadow: `0 -6px 24px ${wish.color}66`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <span style={{ fontFamily: "'Racing Sans One',cursive", fontSize: '1rem', color: '#fff', letterSpacing: 2, textShadow: '0 2px 8px rgba(0,0,0,0.6)' }}>
-                  {wish.tag}
-                </span>
+              {/* Tape strip at top */}
+              <div style={{
+                position: 'absolute', top: -11, left: '50%',
+                transform: 'translateX(-50%)',
+                width: 56, height: 20, borderRadius: 3,
+                background: 'rgba(255,255,230,0.55)',
+                backdropFilter: 'blur(2px)',
+                border: '1px solid rgba(255,255,200,0.7)',
+                zIndex: 12,
+              }} />
+
+              {/* BOW — flies up */}
+              <div style={{
+                position: 'absolute', top: -30, left: '50%',
+                transform: 'translateX(-50%)',
+                fontSize: '2.2rem', zIndex: 10,
+                animation: 'bowFlyUp 0.7s 0.75s cubic-bezier(.36,1.3,.5,1) both',
+                filter: `drop-shadow(0 0 10px ${wish.color})`,
+              }}>🎀</div>
+
+              {/* RIBBON across photo */}
+              <div style={{ position: 'absolute', top: '20%', left: 0, right: 0, height: 14, zIndex: 9, display: 'flex', overflow: 'hidden' }}>
+                <div style={{ flex: 1, background: `linear-gradient(90deg,transparent,${wish.color}99,${wish.color})`, animation: 'ribbonLeft 0.55s 0.6s ease-in forwards' }} />
+                <div style={{ flex: 1, background: `linear-gradient(90deg,${wish.color},${wish.color}99,transparent)`, animation: 'ribbonRight 0.55s 0.6s ease-in forwards' }} />
               </div>
-            </div>
 
-            {/* BOX BODY */}
-            <div style={{ background: 'linear-gradient(160deg,#140028,#1e0038,#0e001e)', border: `3px solid ${wish.color}`, borderTop: 'none', borderRadius: '4px 4px 24px 24px', padding: '16px 24px 28px', boxShadow: `0 0 0 4px ${wish.color}22,0 20px 60px rgba(0,0,0,0.9),0 0 80px ${wish.color}33`, position: 'relative', overflow: 'hidden', width: '100%' }}>
+              {/* PHOTO AREA — square, fills polaroid top */}
+              <div style={{
+                width: '100%', aspectRatio: '1', borderRadius: 6,
+                overflow: 'hidden', position: 'relative',
+                background: `linear-gradient(135deg,${wish.color}33,#0e001e)`,
+              }}>
+                {/* Sparkle burst */}
+                <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%,-50%)', animation: 'sparkleBurst 0.65s 1.35s ease-out both', pointerEvents: 'none', zIndex: 5, fontSize: '3rem' }}>✨</div>
 
-              {/* Ribbon vertical stripe */}
-              <div style={{ position: 'absolute', top: 0, left: '50%', transform: 'translateX(-50%)', width: 20, height: '100%', background: `linear-gradient(180deg,${wish.color}88,${wish.color}33)`, pointerEvents: 'none' }} />
+                {/* Sparkle particles */}
+                {([
+                  { sx: '-80px', sy: '-70px', e: '⭐' }, { sx: '80px', sy: '-70px', e: '💫' },
+                  { sx: '-100px', sy: '10px', e: '✨' }, { sx: '100px', sy: '10px', e: '🌟' },
+                  { sx: '-55px', sy: '75px', e: '💜' }, { sx: '55px', sy: '75px', e: '⭐' },
+                ] as { sx: string; sy: string; e: string }[]).map((p, i) => (
+                  <div key={i} style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%,-50%)', ['--sx' as string]: p.sx, ['--sy' as string]: p.sy, animation: `sparkleOut 0.7s ${1.35 + i * .06}s ease-out both`, pointerEvents: 'none', zIndex: 5, fontSize: '1rem' }}>
+                    {p.e}
+                  </div>
+                ))}
 
-              {/* SPARKLE BURST — explodes at 1.35s */}
-              <div style={{ position: 'absolute', top: '35%', left: '50%', transform: 'translate(-50%,-50%)', animation: 'sparkleBurst 0.65s 1.35s ease-out both', pointerEvents: 'none', zIndex: 5, fontSize: '3.5rem' }}>
-                ✨
-              </div>
+                {/* Actual photo / avatar */}
+                <div style={{ width: '100%', height: '100%', position: 'relative', zIndex: 6 }}>
+                  {wish.photo
+                    ? <img src={`${wish.photo}`} style={{ width: '100%', height: '100%', objectFit: 'cover' }} alt="Family" />
+                    : <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 'clamp(5rem,20vw,8rem)' }}>{wish.av}</div>
+                  }
 
-              {/* Sparkle particles fly outward */}
-              {([
-                { sx: '-90px', sy: '-80px', e: '⭐' }, { sx: '90px', sy: '-80px', e: '💫' },
-                { sx: '-110px', sy: '10px', e: '✨' }, { sx: '110px', sy: '10px', e: '🌟' },
-                { sx: '-65px', sy: '85px', e: '💜' }, { sx: '65px', sy: '85px', e: '⭐' },
-              ] as { sx: string; sy: string; e: string }[]).map((p, i) => (
-                <div key={i} style={{ position: 'absolute', top: '35%', left: '50%', transform: 'translate(-50%,-50%)', ['--sx' as string]: p.sx, ['--sy' as string]: p.sy, animation: `sparkleOut 0.7s ${1.35 + i * .06}s ease-out both`, pointerEvents: 'none', zIndex: 5, fontSize: '1.1rem' }}>
-                  {p.e}
+                  {/* Dark overlay at bottom for wish text */}
+                  <div style={{
+                    position: 'absolute', bottom: 0, left: 0, right: 0,
+                    height: '42%',
+                    background: 'linear-gradient(transparent,rgba(0,0,0,0.82))',
+                    display: 'flex', alignItems: 'flex-end', justifyContent: 'center',
+                    padding: '0 14px 12px',
+                    animation: 'wishTextIn 0.5s 2.25s ease-out both',
+                    zIndex: 7,
+                  }}>
+                    <div style={{
+                      fontFamily: "'Boogaloo',cursive",
+                      fontSize: 'clamp(1rem,4vw,1.3rem)',
+                      color: '#fff', textAlign: 'center', lineHeight: 1.45,
+                      textShadow: `0 2px 10px rgba(0,0,0,0.9), 0 0 20px ${wish.color}88`,
+                    }}>
+                      {SHORT_WISHES[wishIdx]}
+                    </div>
+                  </div>
                 </div>
-              ))}
+              </div>
 
-              {/* PHOTO — reveals at 1.55s */}
-              <div style={{ animation: 'photoReveal 0.7s 1.55s cubic-bezier(.36,1.3,.5,1) both', margin: '18px auto 14px', width: 'clamp(110px,28vw,150px)', aspectRatio: '1', position: 'relative', zIndex: 6 }}>
-                {/* Spinning glow ring */}
-                <div style={{ position: 'absolute', inset: -6, borderRadius: '50%', background: `conic-gradient(${wish.color},#fff4,${wish.color},#fff4,${wish.color})`, animation: 'flagWave 3s linear infinite', opacity: 0.5 }} />
-                {/* Photo circle */}
-                <div style={{ position: 'relative', zIndex: 2, width: '100%', height: '100%', borderRadius: '50%', overflow: 'hidden', border: `4px solid ${wish.color}`, boxShadow: `0 0 0 3px #fff2,0 0 30px ${wish.color}99`, background: `linear-gradient(135deg,${wish.color}33,#1a0030)`, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', animation: 'photoFloat 3s 2.3s ease-in-out infinite' }}>
-                  {wish.photo ? (
-                    <img src={`${wish.photo}`} style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '50%' }} alt="Family photo" />
-                  ) : (
-                    <span style={{ fontSize: '3.5rem' }}>{wish.av}</span>
-                  )}
+              {/* POLAROID WHITE STRIP — sender info */}
+              <div style={{
+                padding: '10px 10px 16px',
+                display: 'flex', alignItems: 'center',
+                justifyContent: 'space-between', gap: 10,
+                animation: 'badgePop 0.5s 1.95s cubic-bezier(.36,1.5,.5,1) both',
+              }}>
+                {/* Avatar bubble + name */}
+                <div style={{ display: 'flex', alignItems: 'center', gap: 8, flex: 1, minWidth: 0 }}>
+                  <div style={{
+                    width: 38, height: 38, borderRadius: '50%', flexShrink: 0,
+                    background: `${wish.color}22`,
+                    border: `2.5px solid ${wish.color}`,
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    fontSize: '1.3rem',
+                    boxShadow: `0 0 12px ${wish.color}88`,
+                  }}>
+                    {wish.av}
+                  </div>
+                  <div style={{ minWidth: 0 }}>
+                    <div style={{ fontFamily: "'Racing Sans One',cursive", fontSize: '0.6rem', color: '#aaa', letterSpacing: 1 }}>FROM</div>
+                    <div style={{
+                      fontFamily: "'Racing Sans One',cursive", fontSize: '0.9rem',
+                      color: wish.color, letterSpacing: 1,
+                      textShadow: `0 0 8px ${wish.color}88`,
+                      whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis',
+                    }}>
+                      {wish.from}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Car badge pin */}
+                <div style={{
+                  width: 34, height: 34, borderRadius: '50%', flexShrink: 0,
+                  background: `linear-gradient(135deg,${carColor},${carColor}88)`,
+                  border: '2.5px solid rgba(255,255,255,0.25)',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  fontSize: '1rem',
+                  boxShadow: `0 0 14px ${carColor}, 0 3px 8px rgba(0,0,0,0.5)`,
+                }}>
+                  🏎️
                 </div>
               </div>
 
-              {/* SENDER BADGE — pops in at 1.95s */}
-              <div style={{ animation: 'badgePop 0.5s 1.95s cubic-bezier(.36,1.5,.5,1) both', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, margin: '0 auto 14px', background: `${wish.color}22`, border: `2px solid ${wish.color}66`, borderRadius: 40, padding: '6px 18px', width: 'fit-content', position: 'relative', zIndex: 6 }}>
-                <span style={{ fontSize: '1.5rem' }}>{wish.av}</span>
-                <span style={{ fontFamily: "'Racing Sans One',cursive", fontSize: 'clamp(0.85rem,3vw,1.05rem)', color: wish.color }}>
-                  From {wish.from}
-                </span>
-              </div>
-
-              {/* SHORT WISH — fades in at 2.25s */}
-              <div style={{ animation: 'wishTextIn 0.5s 2.25s ease-out both', fontFamily: "'Boogaloo',cursive", fontSize: 'clamp(1.15rem,4vw,1.55rem)', color: '#fff', textAlign: 'center', lineHeight: 1.55, padding: '0 8px', position: 'relative', zIndex: 6, textShadow: `0 0 20px ${wish.color}88` }}>
-                {SHORT_WISHES[wishIdx]}
-              </div>
-
-              {/* CONTINUE BUTTON — fades in at 2.65s */}
-              <button onClick={continueFromWish} style={{ animation: 'btnFadeUp 0.5s 2.65s ease-out both', marginTop: 20, display: 'block', fontFamily: "'Racing Sans One',cursive", fontSize: '1rem', background: `linear-gradient(135deg,${wish.color},#6b21a8)`, color: '#fff', border: 'none', borderRadius: 40, padding: '13px 36px', cursor: 'pointer', boxShadow: `0 6px 0 #3b0764,0 0 24px ${wish.color}55`, letterSpacing: 1, width: '100%', position: 'relative', zIndex: 6 }}>
-                {G.current.stage >= totalStages ? '🏆 CLAIM THE TROPHY!' : 'NEXT STAGE ⚡'}
-              </button>
+              {/* Racing stripe at very bottom of polaroid */}
+              <div style={{
+                height: 7, borderRadius: '0 0 8px 8px',
+                background: `linear-gradient(90deg,${wish.color},${carColor},${wish.color})`,
+                opacity: 0.9,
+              }} />
             </div>
+
+            {/* CONTINUE BUTTON — below polaroid */}
+            <button onClick={continueFromWish} style={{
+              animation: 'btnFadeUp 0.5s 2.65s ease-out both',
+              marginTop: 18, width: '100%',
+              fontFamily: "'Racing Sans One',cursive", fontSize: '1rem',
+              background: `linear-gradient(135deg,${wish.color},${carColor})`,
+              color: '#fff', border: 'none', borderRadius: 40,
+              padding: '13px 36px', cursor: 'pointer',
+              boxShadow: `0 6px 0 ${carColor}cc, 0 0 24px ${wish.color}55`,
+              letterSpacing: 1,
+            }}>
+              {G.current.stage >= totalStages ? '🏆 CLAIM THE TROPHY!' : 'NEXT STAGE ⚡'}
+            </button>
           </div>
         </div>
       )}
@@ -464,42 +662,286 @@ export default function Game({ customData }: { customData?: { childName: string;
         <div style={{ position: 'fixed', inset: 0, background: 'radial-gradient(ellipse at 50% 40%,#1a0010,#080010)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 16 }}>
           <div style={{ fontSize: '4rem' }}>💥</div>
           <h2 style={{ fontFamily: "'Racing Sans One',cursive", fontSize: 'clamp(2rem,7vw,3.5rem)', color: '#f87171', textShadow: '0 0 30px rgba(248,113,113,.7)', textAlign: 'center' }}>OH NO! CRASH!</h2>
-          <p style={{ fontFamily: "'Boogaloo',cursive", fontSize: 'clamp(1rem,3vw,1.3rem)', color: 'rgba(255,255,255,.8)', textAlign: 'center', padding: '0 20px' }}>Don't worry Kabileshwar!<br />Every champion crashes sometimes!</p>
-          <div style={{ fontFamily: "'Boogaloo',cursive", fontSize: '1.4rem', color: '#d8b4fe' }}>⭐ Stars: {goScore}</div>
-          <button onClick={retry} style={{ fontFamily: "'Racing Sans One',cursive", fontSize: 'clamp(1.1rem,3.5vw,1.8rem)', background: 'linear-gradient(135deg,#9333ea,#6b21a8)', color: '#fff', border: 'none', borderRadius: 60, padding: '16px 44px', cursor: 'pointer', letterSpacing: 2, boxShadow: '0 7px 0 #3b0764' }}>
+          <p style={{ fontFamily: "'Boogaloo',cursive", fontSize: 'clamp(1rem,3vw,1.3rem)', color: 'rgba(255,255,255,.8)', textAlign: 'center', padding: '0 20px' }}>Don't worry {childName}!<br />Every champion crashes sometimes!</p>
+          <div style={{ fontFamily: "'Boogaloo',cursive", fontSize: '1.4rem', color: 'carColor' }}>⭐ Stars: {goScore}</div>
+          <button onClick={retry} style={{ fontFamily: "'Racing Sans One',cursive", fontSize: 'clamp(1.1rem,3.5vw,1.8rem)', background: `linear-gradient(135deg,${carColor},${carColor}88)`, color: '#fff', border: 'none', borderRadius: 60, padding: '16px 44px', cursor: 'pointer', letterSpacing: 2, boxShadow: '0 7px 0 #3b0764' }}>
             🔄 TRY AGAIN!
           </button>
         </div>
       )}
 
       {/* ═══ WINNER ═══ */}
-      {screen==='winner' && (
-        <div style={{position:'fixed',inset:0,background:'radial-gradient(ellipse at 50% 30%,#1e0042,#080010)',display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',gap:12,padding:20,overflowY:'auto'}}>
-          <div style={{fontFamily:"'Racing Sans One',cursive",fontSize:'clamp(1.6rem,5.5vw,3.5rem)',color:carColor,textAlign:'center',textShadow:`0 0 40px ${carColor}88`,lineHeight:1.1}}>⚡ LIGHTNING {childName.toUpperCase()}<br/>IS THE CHAMPION! 🏆</div>
-          <div className="anim-trophy" style={{fontSize:'2.2rem'}}>🏆🥇🎊⭐🚗⚡🎂</div>
-          <div className="anim-winfloat" style={{width:'clamp(100px,22vw,140px)',aspectRatio:'1',borderRadius:'50%',overflow:'hidden',border:`5px solid ${carColor}`,boxShadow:`0 0 0 4px ${carColor}88,0 0 60px ${carColor}77`,background:'#180030',display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',gap:4,color:'rgba(255,255,255,.35)'}}>
-            {kidPhotoUrl
-              ? <img src={kidPhotoUrl} style={{width:'100%',height:'100%',objectFit:'cover'}} alt={childName} />
-              : <><span style={{fontSize:'2.5rem'}}>🏆</span><small style={{fontSize:'.6rem',letterSpacing:1,textTransform:'uppercase'}}>Champion!</small></>
-            }
+      {screen === 'winner' && (
+        <div style={{
+          position: 'fixed', inset: 0,
+          background: `radial-gradient(at 50% 30%, rgb(30, 0, 66), rgb(8, 0, 16))`,
+          display: 'flex', flexDirection: 'column', alignItems: 'center',
+          overflowY: 'auto', overflowX: 'hidden',
+          padding: '24px 16px 40px',
+          gap: 20,
+        }}>
+          {/* Background floating sparkles */}
+          {Array.from({ length: 10 }, (_, i) => (
+            <div key={i} style={{
+              position: 'absolute',
+              left: `${5 + i * 10}%`,
+              top: `${10 + ((i * 37) % 70)}%`,
+              animation: `floatSparkle ${1.5 + i * .3}s ${i * .2}s ease-in-out infinite`,
+              pointerEvents: 'none',
+              fontSize: i % 2 === 0 ? '1.2rem' : '0.85rem',
+            } as React.CSSProperties}>
+              {['✨', '⭐', '💫', '🌟', '💜'][i % 5]}
+            </div>
+          ))}
+
+          {/* ── TOP TITLE ── */}
+          <div style={{ textAlign: 'center', paddingTop: 8, width: '100%', zIndex: 6 }}>
+            <div style={{
+              fontFamily: "'Racing Sans One',cursive",
+              fontSize: 'clamp(1rem,4vw,1.4rem)',
+              color: carColor, letterSpacing: 4,
+              textShadow: `0 0 20px ${carColor}`,
+              marginBottom: 4,
+            }}>
+              🏁 RACE COMPLETE 🏁
+            </div>
+            <div style={{
+              fontFamily: "'Racing Sans One',cursive",
+              fontSize: 'clamp(1.6rem,6vw,3rem)',
+              color: '#fff', lineHeight: 1.15, textAlign: 'center',
+            }}>
+              ⚡ {childName.toUpperCase()}<br />
+              <span style={{ color: carColor }}>IS THE CHAMPION!</span>
+            </div>
           </div>
-          <p style={{fontFamily:"'Boogaloo',cursive",fontSize:'1rem',color:'rgba(255,255,255,.65)',textAlign:'center',maxWidth:480,padding:'0 16px'}}>
-            You collected all {totalStages} wishes from your whole family! 💜
-          </p>
-          <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fit,minmax(175px,1fr))',gap:8,width:'100%',maxWidth:660}}>
-            {activeWishes.map((w,i)=>(
-              <div key={i} style={{background:`${carColor}08`,border:`2px solid ${w.color}44`,borderRadius:14,padding:'10px 12px',textAlign:'center'}}>
-                <div style={{fontSize:'1.5rem'}}>{w.av}</div>
-                <div style={{fontFamily:"'Racing Sans One',cursive",fontSize:'.75rem',color:carColor,margin:'3px 0',letterSpacing:1}}>{w.from}</div>
-                <div style={{fontFamily:"'Boogaloo',cursive",fontSize:'.82rem',color:'rgba(255,255,255,.8)',lineHeight:1.5}}>{w.text}</div>
+
+          {/* ── POLAROID + EMOJI ROW ── */}
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 16, width: '100%' }}>
+
+            {/* Polaroid card */}
+            <div className="anim-winfloat" style={{ position: 'relative', flexShrink: 0 }}>
+              <div style={{
+                background: 'linear-gradient(180deg,#ffffff,#f8f4f0)',
+                borderRadius: 12, padding: '8px 8px 32px 8px',
+                boxShadow: `0 0 0 2px ${carColor}99, 0 20px 60px rgba(0,0,0,0.9), 0 0 80px ${carColor}55`,
+                position: 'relative',
+                width: 'clamp(150px,36vw,260px)',
+                transform: 'rotate(-1.5deg)',
+              }}>
+
+                {/* Photo — same style as wish overlay */}
+                <div style={{
+                  width: '100%', aspectRatio: '1', borderRadius: 6,
+                  overflow: 'hidden', position: 'relative',
+                  background: `linear-gradient(135deg,${carColor}33,#0e001e)`,
+                }}>
+
+                  {/* Photo / fallback */}
+                  <div style={{ width: '100%', height: '100%', position: 'relative', zIndex: 6 }}>
+                    {kidPhotoUrl
+                      ? <img src={kidPhotoUrl} alt={childName} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                      : <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 'clamp(4rem,16vw,7rem)' }}>🏆</div>
+                    }
+
+                    {/* Shine sweep */}
+                    <div style={{
+                      position: 'absolute', top: 0, left: '-60%', width: '40%', height: '100%',
+                      background: 'linear-gradient(120deg,transparent,rgba(255,255,255,0.22),transparent)',
+                      transform: 'skewX(-20deg)', animation: 'shine 4s 1.5s infinite',
+                      zIndex: 8, pointerEvents: 'none',
+                    }} />
+
+                    {/* Birthday overlay at bottom */}
+                    <div style={{
+                      position: 'absolute', bottom: 0, left: 0, right: 0,
+                      height: '42%',
+                      background: 'linear-gradient(transparent,rgba(0,0,0,0.82))',
+                      display: 'flex', flexDirection: 'column',
+                      alignItems: 'center', justifyContent: 'flex-end',
+                      padding: '0 8px 10px', zIndex: 7,
+                    }}>
+                      <div style={{
+                        fontFamily: "'Racing Sans One',cursive",
+                        fontSize: 'clamp(0.55rem,2vw,0.8rem)',
+                        color: '#fff', letterSpacing: 1.5, textAlign: 'center',
+                        textShadow: `0 2px 6px rgba(0,0,0,0.9), 0 0 12px ${carColor}88`,
+                      }}>
+                        🎂 HAPPY {customData?.age ? ordinal(customData.age).toUpperCase() : '6TH'} BIRTHDAY
+                      </div>
+                      <div style={{
+                        fontFamily: "'Boogaloo',cursive",
+                        fontSize: 'clamp(0.5rem,1.8vw,0.75rem)',
+                        color: 'rgba(255,255,255,0.9)', letterSpacing: 2, textAlign: 'center',
+                        textShadow: `0 0 10px ${carColor}`,
+                      }}>
+                        ⚡ {childName.toUpperCase()}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Caption */}
+                <div style={{ paddingTop: 8, textAlign: 'center', fontFamily: "'Racing Sans One',cursive", fontSize: 'clamp(0.6rem,2vw,0.82rem)', color: carColor, letterSpacing: 2, textShadow: `0 0 10px ${carColor}` }}>
+                  🏁 CHAMPION 🏁
+                </div>
+
+                {/* Car pin */}
+                <div style={{ position: 'absolute', top: -14, right: -14, width: 34, height: 34, borderRadius: '50%', background: `linear-gradient(135deg,${carColor},${carColor}88)`, border: '3px solid #fff', boxShadow: `0 0 14px ${carColor}, 0 4px 8px rgba(0,0,0,0.5)`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.1rem', zIndex: 10 }}>🏎️</div>
+
+                {/* Star pin */}
+                <div style={{ position: 'absolute', top: -14, left: -14, width: 30, height: 30, borderRadius: '50%', background: 'linear-gradient(135deg,#fde68a,#f59e0b)', border: '3px solid #fff', boxShadow: '0 0 12px #f59e0b, 0 4px 8px rgba(0,0,0,0.5)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.9rem', zIndex: 10 }}>⭐</div>
+
+                {/* Tape */}
+                <div style={{ position: 'absolute', top: -9, left: '50%', transform: 'translateX(-50%)', width: 48, height: 15, borderRadius: 3, background: 'rgba(255,255,255,0.38)', backdropFilter: 'blur(4px)', border: '1px solid rgba(255,255,255,0.6)', zIndex: 11 }} />
+
+                {/* Racing stripe */}
+                <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: 5, borderRadius: '0 0 10px 10px', background: `linear-gradient(90deg,${carColor},#fff,${carColor})` }} />
               </div>
-            ))}
+            </div>
           </div>
-          <button onClick={playAgain} style={{marginTop:8,fontFamily:"'Racing Sans One',cursive",fontSize:'clamp(1.1rem,3.5vw,1.8rem)',background:`linear-gradient(135deg,${carColor},#6b21a8)`,color:'#fff',border:'none',borderRadius:60,padding:'16px 44px',cursor:'pointer',letterSpacing:2,boxShadow:'0 7px 0 #3b0764'}}>
+
+{/* ── WISHES UNLOCKED ── */}
+          <div style={{ width: '100%', maxWidth: 600 }}>
+
+            {/* Header */}
+            <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 16, justifyContent: 'center' }}>
+              <div style={{ flex: 1, height: 1, background: `linear-gradient(90deg,transparent,${carColor}55)` }} />
+              <div style={{ fontFamily: "'Racing Sans One',cursive", fontSize: '0.7rem', color: carColor, letterSpacing: 3, whiteSpace: 'nowrap' }}>
+                🏁 VICTORY LAP · {totalStages} {totalStages === 1 ? 'WISH' : 'WISHES'}
+              </div>
+              <div style={{ flex: 1, height: 1, background: `linear-gradient(90deg,${carColor}55,transparent)` }} />
+            </div>
+
+            {/* Result rows */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+              {activeWishes.map((w, i) => (
+                <div key={i} style={{
+                  display: 'flex', alignItems: 'center', gap: 12,
+                  background: `linear-gradient(100deg,${w.color}14,${carColor}06,rgba(0,0,0,0.25))`,
+                  border: `1.5px solid ${w.color}44`,
+                  borderRadius: 16, padding: '10px 14px 10px 10px',
+                  position: 'relative', overflow: 'hidden',
+                  animation: `btnFadeUp 0.4s ${i * 0.08}s ease-out both`,
+                  boxShadow: `0 4px 20px ${w.color}18`,
+                }}>
+
+                  {/* Left glow bar */}
+                  <div style={{
+                    position: 'absolute', left: 0, top: 0, bottom: 0, width: 4,
+                    background: `linear-gradient(180deg,${w.color},${carColor})`,
+                    borderRadius: '16px 0 0 16px',
+                  }} />
+
+                  {/* Position badge */}
+                  <div style={{
+                    flexShrink: 0, width: 28, height: 28, borderRadius: '50%',
+                    background: i === 0 ? 'linear-gradient(135deg,#fde68a,#f59e0b)'
+                      : i === 1 ? 'linear-gradient(135deg,#e2e8f0,#94a3b8)'
+                      : i === 2 ? 'linear-gradient(135deg,#fed7aa,#c2410c)'
+                      : `${w.color}33`,
+                    border: `2px solid ${i < 3 ? '#fff4' : w.color + '66'}`,
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    fontFamily: "'Racing Sans One',cursive",
+                    fontSize: i < 3 ? '0.75rem' : '0.6rem',
+                    color: i < 3 ? '#000' : w.color,
+                    fontWeight: 'bold',
+                    boxShadow: i === 0 ? '0 0 12px #f59e0b88' : i === 1 ? '0 0 10px #94a3b888' : i === 2 ? '0 0 10px #c2410c88' : 'none',
+                    flexDirection: 'column', lineHeight: 1,
+                  }}>
+                    {i === 0 ? '🥇' : i === 1 ? '🥈' : i === 2 ? '🥉' : `${i + 1}`}
+                  </div>
+
+                  {/* Wisher photo / avatar */}
+                  <div style={{
+                    flexShrink: 0, width: 48, height: 48, borderRadius: '50%',
+                    overflow: 'hidden',
+                    border: `2.5px solid ${w.color}`,
+                    boxShadow: `0 0 14px ${w.color}66`,
+                    background: `linear-gradient(135deg,${w.color}33,#0e001e)`,
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    fontSize: '1.6rem',
+                  }}>
+                    {w.photo
+                      ? <img src={`${w.photo}`} style={{ width: '100%', height: '100%', objectFit: 'cover' }} alt={w.from} />
+                      : w.av
+                    }
+                  </div>
+
+                  {/* Text content */}
+                  <div style={{ flex: 1, minWidth: 0 }}>
+                    {/* Name + stage tag row */}
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 4 }}>
+                      <div style={{
+                        fontFamily: "'Racing Sans One',cursive",
+                        fontSize: 'clamp(0.75rem,2.5vw,0.95rem)',
+                        color: w.color, letterSpacing: 1,
+                        textShadow: `0 0 8px ${w.color}88`,
+                        whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis',
+                      }}>
+                        {w.from}
+                      </div>
+                      <div style={{
+                        flexShrink: 0,
+                        background: `${w.color}22`, border: `1px solid ${w.color}55`,
+                        borderRadius: 20, padding: '1px 7px',
+                        fontFamily: "'Racing Sans One',cursive",
+                        fontSize: '0.52rem', color: w.color, letterSpacing: 1,
+                        whiteSpace: 'nowrap',
+                      }}>
+                        STAGE {i + 1}
+                      </div>
+                    </div>
+
+                    {/* Wish text */}
+                    <div style={{
+                      fontFamily: "'Boogaloo',cursive",
+                      fontSize: 'clamp(0.82rem,2.5vw,1rem)',
+                      color: 'rgba(255,255,255,0.88)',
+                      lineHeight: 1.4,
+                    }}>
+                      {w.text}
+                    </div>
+                  </div>
+
+                  {/* Right emoji */}
+                  <div style={{
+                    flexShrink: 0, fontSize: '1.3rem',
+                    filter: `drop-shadow(0 0 6px ${w.color})`,
+                    animation: `photoFloat ${2 + i * 0.2}s ${i * 0.15}s ease-in-out infinite`,
+                  }}>
+                    {i === 0 ? '🏆' : i === 1 ? '⭐' : i === 2 ? '🎖️' : '💜'}
+                  </div>
+
+                  {/* Bottom racing stripe */}
+                  <div style={{
+                    position: 'absolute', bottom: 0, left: 0, right: 0, height: 3,
+                    background: `linear-gradient(90deg,${w.color}88,${carColor}88,transparent)`,
+                    borderRadius: '0 0 14px 14px',
+                  }} />
+                </div>
+              ))}
+            </div>
+
+            {/* Footer line */}
+            <div style={{ textAlign: 'center', marginTop: 14, fontFamily: "'Racing Sans One',cursive", fontSize: '0.65rem', color: `${carColor}66`, letterSpacing: 3 }}>
+              ⚡ ALL STAGES COMPLETE ⚡
+            </div>
+          </div>
+
+          {/* ── RACE AGAIN BUTTON ── */}
+          <button onClick={playAgain} style={{
+            fontFamily: "'Racing Sans One',cursive",
+            fontSize: 'clamp(1rem,3.5vw,1.5rem)',
+            background: `linear-gradient(135deg,${carColor},${carColor}88)`,
+            color: '#fff', border: 'none', borderRadius: 60,
+            padding: '14px 44px', cursor: 'pointer', letterSpacing: 2,
+            boxShadow: `0 7px 0 ${carColor}55, 0 0 30px ${carColor}66`,
+            animation: 'btnPulse 1.8s ease-in-out infinite',
+          }}>
             🏁 RACE AGAIN!
           </button>
         </div>
-      )}      
+      )}
     </div>
   )
 }

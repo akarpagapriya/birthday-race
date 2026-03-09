@@ -53,140 +53,107 @@ export function drawRoad(
 
 export function drawToycar(
   ctx: CanvasRenderingContext2D,
-  x: number, y: number,
-  w: number, h: number,
-  stageColor: string
+  x: number,
+  y: number,
+  w: number,
+  h: number,
+  carColor: string
 ) {
-  const cw = w * 1.5
-  ctx.save()
+  ctx.save();
+  ctx.translate(x, y);
 
-  // ground shadow
-  const sg = ctx.createRadialGradient(x,y+h*.52,0,x,y+h*.52,cw*.75)
-  sg.addColorStop(0,'rgba(0,0,0,0.45)'); sg.addColorStop(1,'rgba(0,0,0,0)')
-  ctx.fillStyle = sg; ctx.beginPath(); ctx.ellipse(x,y+h*.53,cw*.7,h*.1,0,0,Math.PI*2); ctx.fill()
+  // 1. SOFT GROUND SHADOW
+  ctx.fillStyle = "rgba(0,0,0,0.15)";
+  ctx.beginPath();
+  ctx.roundRect(-w * 0.55, -h * 0.5, w * 1.1, h * 1.1, 30);
+  ctx.fill();
 
-  // engine glow
-  const eg = ctx.createRadialGradient(x,y+h*.2,0,x,y+h*.2,cw)
-  eg.addColorStop(0, stageColor+'50'); eg.addColorStop(1,'transparent')
-  ctx.fillStyle = eg; ctx.beginPath(); ctx.ellipse(x,y+h*.2,cw,h*.55,0,0,Math.PI*2); ctx.fill()
+  // 2. THE "TOY" BODY (Contoured with Fenders)
+  // This shape creates the "waist" in the middle
+  ctx.fillStyle = carColor;
+  ctx.beginPath();
+  ctx.moveTo(-w * 0.4, -h * 0.5); // Front top left
+  ctx.quadraticCurveTo(-w * 0.6, -h * 0.25, -w * 0.45, 0); // Front Fender
+  ctx.quadraticCurveTo(-w * 0.6, h * 0.25, -w * 0.4, h * 0.5);  // Rear Fender
+  ctx.lineTo(w * 0.4, h * 0.5);   // Rear bottom
+  ctx.quadraticCurveTo(w * 0.6, h * 0.25, w * 0.45, 0);  // Rear Fender
+  ctx.quadraticCurveTo(w * 0.6, -h * 0.25, w * 0.4, -h * 0.5); // Front Fender
+  ctx.closePath();
+  ctx.fill();
 
-  // chassis
-  ctx.save()
-  ctx.shadowColor = stageColor; ctx.shadowBlur = 20
-  const cg = ctx.createLinearGradient(x-cw*.5,y+h*.05,x+cw*.5,y+h*.5)
-  cg.addColorStop(0,'#ff3a6e'); cg.addColorStop(.3,'#e81060')
-  cg.addColorStop(.7,'#c0004a'); cg.addColorStop(1,'#7a0030')
-  ctx.fillStyle = cg
-  ctx.beginPath()
-  ctx.moveTo(x-cw*.48, y+h*.48); ctx.lineTo(x-cw*.52, y+h*.08)
-  ctx.quadraticCurveTo(x-cw*.52,y-h*.02,x-cw*.4,y-h*.02)
-  ctx.lineTo(x+cw*.4,y-h*.02)
-  ctx.quadraticCurveTo(x+cw*.52,y-h*.02,x+cw*.52,y+h*.08)
-  ctx.lineTo(x+cw*.48,y+h*.48); ctx.closePath(); ctx.fill()
-  ctx.restore()
+  // 3. INTERNAL 3D SHADING (Makes it look rounded)
+  ctx.strokeStyle = "rgba(0,0,0,0.1)";
+  ctx.lineWidth = w * 0.08;
+  ctx.stroke();
 
-  // cabin roof
-  ctx.save()
-  const rg = ctx.createLinearGradient(x-cw*.28,y-h*.5,x+cw*.28,y+h*.02)
-  rg.addColorStop(0,'#ff7aaa'); rg.addColorStop(.4,'#e8105e'); rg.addColorStop(1,'#a0003e')
-  ctx.fillStyle = rg
-  ctx.beginPath()
-  ctx.moveTo(x-cw*.25,y-h*.02); ctx.lineTo(x-cw*.32,y-h*.38)
-  ctx.quadraticCurveTo(x-cw*.30,y-h*.52,x-cw*.15,y-h*.52)
-  ctx.lineTo(x+cw*.15,y-h*.52)
-  ctx.quadraticCurveTo(x+cw*.30,y-h*.52,x+cw*.32,y-h*.38)
-  ctx.lineTo(x+cw*.25,y-h*.02); ctx.closePath(); ctx.fill()
-  // cabin highlight
-  ctx.fillStyle='rgba(255,200,220,0.18)'
-  ctx.beginPath()
-  ctx.moveTo(x-cw*.23,y-h*.04); ctx.lineTo(x-cw*.28,y-h*.35)
-  ctx.lineTo(x-cw*.12,y-h*.35); ctx.lineTo(x-cw*.1,y-h*.04); ctx.closePath(); ctx.fill()
-  ctx.restore()
+  // 4. LARGE BUBBLE WINDSHIELD
+  const glassGrad = ctx.createLinearGradient(0, -h * 0.4, 0, -h * 0.1);
+  glassGrad.addColorStop(0, "#c8ecff");
+  glassGrad.addColorStop(1, "#6ebfff");
+  
+  ctx.fillStyle = glassGrad;
+  ctx.beginPath();
+  ctx.roundRect(-w * 0.35, -h * 0.35, w * 0.7, h * 0.3, 12);
+  ctx.fill();
 
-  // windshield
-  const wg = ctx.createLinearGradient(x,y-h*.5,x,y-h*.05)
-  wg.addColorStop(0,'rgba(180,240,255,0.78)'); wg.addColorStop(.4,'rgba(100,200,255,0.55)'); wg.addColorStop(1,'rgba(30,80,200,0.3)')
-  ctx.fillStyle = wg
-  ctx.beginPath()
-  ctx.moveTo(x-cw*.26,y-h*.04); ctx.lineTo(x-cw*.3,y-h*.36)
-  ctx.lineTo(x+cw*.3,y-h*.36); ctx.lineTo(x+cw*.26,y-h*.04); ctx.closePath(); ctx.fill()
-  ctx.strokeStyle='rgba(255,255,255,0.55)'; ctx.lineWidth=1.5
-  ctx.beginPath(); ctx.moveTo(x-cw*.22,y-h*.06); ctx.lineTo(x-cw*.26,y-h*.32); ctx.stroke()
+  // Windshield Shine
+  ctx.fillStyle = "rgba(255,255,255,0.3)";
+  ctx.beginPath();
+  ctx.roundRect(-w * 0.28, -h * 0.32, w * 0.15, h * 0.05, 5);
+  ctx.fill();
 
-  // side windows
-  ;[[x-cw*.38,y-h*.28,cw*.09,h*.18],[x+cw*.29,y-h*.28,cw*.09,h*.18]].forEach(([wx,wy,ww,wh]) => {
-    ctx.fillStyle='rgba(120,200,255,0.4)'
-    ctx.beginPath(); ctx.roundRect(wx,wy,ww,wh,3); ctx.fill()
-    ctx.strokeStyle='rgba(255,255,255,0.2)'; ctx.lineWidth=1; ctx.stroke()
-  })
+  // 5. SIDE MIRRORS (The "Toy" Ears)
+  ctx.fillStyle = carColor;
+  ctx.beginPath();
+  ctx.roundRect(-w * 0.65, -h * 0.2, w * 0.15, h * 0.12, 5); // Left
+  ctx.roundRect(w * 0.5, -h * 0.2, w * 0.15, h * 0.12, 5);  // Right
+  ctx.fill();
 
-  // hood stripes
-  ctx.strokeStyle='rgba(255,255,255,0.15)'; ctx.lineWidth=2
-  ;[x-cw*.1,x+cw*.1].forEach(sx => {
-    ctx.beginPath(); ctx.moveTo(sx,y-h*.02); ctx.lineTo(sx,y+h*.35); ctx.stroke()
-  })
+  // 6. WHEELS (Visible from top slightly)
+  ctx.fillStyle = "#333";
+  const wheelW = w * 0.15;
+  const wheelH = h * 0.2;
+  ctx.fillRect(-w * 0.6, -h * 0.4, wheelW, wheelH); // Front L
+  ctx.fillRect(w * 0.45, -h * 0.4, wheelW, wheelH); // Front R
+  ctx.fillRect(-w * 0.6, h * 0.2, wheelW, wheelH);  // Rear L
+  ctx.fillRect(w * 0.45, h * 0.2, wheelW, wheelH);  // Rear R
 
-  // lightning decal
-  ctx.fillStyle='rgba(255,230,0,0.85)'
-  ctx.shadowColor='#FFD600'; ctx.shadowBlur=10
-  ctx.font=`bold ${Math.max(9,cw*.22)}px serif`
-  ctx.textAlign='center'; ctx.textBaseline='middle'
-  ctx.fillText('⚡',x,y+h*.15)
+  // 7. BIG "BUG" HEADLIGHTS
+  ctx.fillStyle = "#fff";
+  ctx.beginPath();
+  ctx.ellipse(-w * 0.25, -h * 0.45, w * 0.12, h * 0.08, 0, 0, Math.PI * 2);
+  ctx.ellipse(w * 0.25, -h * 0.45, w * 0.12, h * 0.08, 0, 0, Math.PI * 2);
+  ctx.fill();
+  
+  // Lens detail
+  ctx.fillStyle = "#fffae3";
+  ctx.beginPath();
+  ctx.ellipse(-w * 0.25, -h * 0.45, w * 0.06, h * 0.04, 0, 0, Math.PI * 2);
+  ctx.ellipse(w * 0.25, -h * 0.45, w * 0.06, h * 0.04, 0, 0, Math.PI * 2);
+  ctx.fill();
 
-  // racing number
-  ctx.shadowBlur=0
-  ctx.fillStyle='rgba(255,255,255,0.22)'
-  ctx.beginPath(); ctx.roundRect(x+cw*.15,y-h*.01,cw*.22,h*.28,4); ctx.fill()
-  ctx.fillStyle='#fff'
-  ctx.font=`bold ${Math.max(8,cw*.18)}px 'Boogaloo',cursive`
-  ctx.fillText('6',x+cw*.26,y+h*.13)
+  // 8. RACING STRIPE (Classy touch)
+  ctx.fillStyle = "rgba(255,255,255,0.3)";
+  ctx.fillRect(-w * 0.05, -h * 0.5, w * 0.1, h * 0.15); // Front stripe
+  ctx.fillRect(-w * 0.05, h * 0.35, w * 0.1, h * 0.15); // Rear stripe
 
-  // headlights
-  ;[[x-cw*.34,y-h*.5],[x+cw*.34,y-h*.5]].forEach(([lx,ly]) => {
-    ctx.fillStyle='#222'; ctx.beginPath(); ctx.roundRect(lx-cw*.09,ly,cw*.18,h*.1,3); ctx.fill()
-    const lg = ctx.createRadialGradient(lx,ly+h*.05,0,lx,ly+h*.05,cw*.1)
-    lg.addColorStop(0,'rgba(255,255,210,1)'); lg.addColorStop(.5,'rgba(255,210,80,0.8)'); lg.addColorStop(1,'rgba(255,140,0,0)')
-    ctx.fillStyle=lg; ctx.beginPath(); ctx.arc(lx,ly+h*.05,cw*.1,0,Math.PI*2); ctx.fill()
-    ctx.save(); ctx.globalAlpha=0.1
-    const bg=ctx.createRadialGradient(lx,ly-h*.08,0,lx,ly-h*.08,cw*.55)
-    bg.addColorStop(0,'rgba(255,255,180,1)'); bg.addColorStop(1,'transparent')
-    ctx.fillStyle=bg; ctx.beginPath(); ctx.arc(lx,ly-h*.08,cw*.55,0,Math.PI*2); ctx.fill()
-    ctx.restore()
-  })
+  ctx.restore();
+}
 
-  // tail lights
-  ;[[x-cw*.36,y+h*.44],[x+cw*.36,y+h*.44]].forEach(([lx,ly]) => {
-    ctx.fillStyle='#ff2200'; ctx.shadowColor='#ff4400'; ctx.shadowBlur=8
-    ctx.beginPath(); ctx.roundRect(lx-cw*.07,ly-h*.04,cw*.14,h*.07,2); ctx.fill()
-  })
-
-  // wheels
-  const wr = cw*.13
-  ;[[x-cw*.44,y+h*.28],[x+cw*.44,y+h*.28],[x-cw*.44,y+h*.42],[x+cw*.44,y+h*.42]].forEach(([wx,wy]) => {
-    ctx.save()
-    ctx.shadowBlur=0
-    ctx.beginPath(); ctx.arc(wx,wy,wr,0,Math.PI*2)
-    ctx.fillStyle='#0d0020'; ctx.fill()
-    ctx.beginPath(); ctx.arc(wx,wy,wr,0,Math.PI*2)
-    ctx.strokeStyle='#2a0050'; ctx.lineWidth=wr*.28; ctx.stroke()
-    const rimG = ctx.createRadialGradient(wx-wr*.15,wy-wr*.15,0,wx,wy,wr*.72)
-    rimG.addColorStop(0,'rgba(255,255,255,0.9)')
-    rimG.addColorStop(.3,stageColor+'dd')
-    rimG.addColorStop(.7,'rgba(100,0,200,0.5)')
-    rimG.addColorStop(1,'rgba(40,0,80,0.4)')
-    ctx.beginPath(); ctx.arc(wx,wy,wr*.72,0,Math.PI*2); ctx.fillStyle=rimG; ctx.fill()
-    ctx.beginPath(); ctx.arc(wx,wy,wr*.28,0,Math.PI*2); ctx.fillStyle='rgba(255,255,255,0.85)'; ctx.fill()
-    ctx.strokeStyle='rgba(255,255,255,0.5)'; ctx.lineWidth=wr*.1
-    for(let s=0;s<4;s++){
-      const a=s*Math.PI/2
-      ctx.beginPath()
-      ctx.moveTo(wx+Math.cos(a)*wr*.28,wy+Math.sin(a)*wr*.28)
-      ctx.lineTo(wx+Math.cos(a)*wr*.68,wy+Math.sin(a)*wr*.68); ctx.stroke()
-    }
-    ctx.restore()
-  })
-
-  ctx.restore()
+// ── colour helpers ──
+function lighten(hex: string, amt: number): string {
+  const n = parseInt(hex.slice(1), 16)
+  const r = Math.min(255, (n >> 16) + amt)
+  const g = Math.min(255, ((n >> 8) & 0xff) + amt)
+  const b = Math.min(255, (n & 0xff) + amt)
+  return `rgb(${r},${g},${b})`
+}
+function darken(hex: string, amt: number): string {
+  const n = parseInt(hex.slice(1), 16)
+  const r = Math.max(0, (n >> 16) - amt)
+  const g = Math.max(0, ((n >> 8) & 0xff) - amt)
+  const b = Math.max(0, (n & 0xff) - amt)
+  return `rgb(${r},${g},${b})`
 }
 
 export function drawStar3D(ctx: CanvasRenderingContext2D, x:number, y:number, r:number, spin:number) {

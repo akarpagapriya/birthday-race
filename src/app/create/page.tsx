@@ -175,7 +175,7 @@ export default function CreatePage() {
                   {CAR_COLORS.map(cc => (
                     <button key={cc.value} onClick={() => setState(s => ({ ...s, car_color: cc.value }))}
                       style={{ padding: '10px 6px', borderRadius: 12, cursor: 'pointer', border: `2px solid ${state.car_color === cc.value ? '#fff' : cc.value + '44'}`, background: state.car_color === cc.value ? cc.value + '33' : 'rgba(255,255,255,0.03)', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 4, transition: 'all 0.15s', boxShadow: state.car_color === cc.value ? `0 0 16px ${cc.value}88` : 'none' }}>
-                      <div style={{ width: 28, height: 28, borderRadius: '50%', background: cc.value, boxShadow: `0 0 10px ${cc.value}` }} />
+                      <div style={{ width: 28, height: 28, borderRadius: '50%', background: cc.value, }} />
                       <span style={{ fontFamily: "'Boogaloo',cursive", fontSize: '0.7rem', color: state.car_color === cc.value ? '#fff' : 'rgba(255,255,255,0.5)', textAlign: 'center', lineHeight: 1.2 }}>{cc.label}</span>
                     </button>
                   ))}
@@ -282,8 +282,8 @@ export default function CreatePage() {
                     {/* Inputs */}
                     <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
                       <div>
-                        <div style={{ fontFamily: "'Boogaloo',cursive", fontSize: '0.8rem', color: 'rgba(255,255,255,0.4)', marginBottom: 6 }}>Their name — anything works! Paati, Dad, Coach, BFF...</div>
-                        <input style={inp} placeholder="e.g. Paati, Appa, Uncle Raj, Best Friend..."
+                        <div style={{ fontFamily: "'Boogaloo',cursive", fontSize: '0.8rem', color: 'rgba(255,255,255,0.4)', marginBottom: 6 }}>Their name — anything works! Mom, Dad, Coach, BFF...</div>
+                        <input style={inp} placeholder="e.g. Mom, Dad, Uncle, Best Friend..."
                           value={w.from_name} onChange={e => updateWish(i, 'from_name', e.target.value)} />
                       </div>
                       <div>
