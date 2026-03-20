@@ -5,65 +5,97 @@ import heroImg from '@/assets/race-hero.png'
 
 export default function HomePage() {
   return (
-    <>
+ <>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Racing+Sans+One&family=Boogaloo&family=Nunito:wght@400;700&display=swap');
 
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-        body { background: #06000f; }
+        html, body { width: 100%; overflow-x: hidden; background: #06000f; }
 
         @keyframes floatY {
           0%,100% { transform: translateY(0); }
           50%      { transform: translateY(-10px); }
         }
         @keyframes flagWave {
-          0%   { transform: rotate(-8deg) scale(1); }
-          100% { transform: rotate(8deg) scale(1.05); }
+          0%   { transform: rotate(-6deg) scale(1); }
+          100% { transform: rotate(6deg) scale(1.05); }
         }
         @keyframes roadScroll {
           from { background-position: 0 0; }
-          to   { background-position: 0 80px; }
+          to   { background-position: 80px 0; }
         }
         @keyframes carDrive {
-          0%   { left: -80px; }
-          100% { left: calc(100% + 80px); }
+          0%   { left: -100px; opacity: 0; }
+          5%   { opacity: 1; }
+          95%  { opacity: 1; }
+          100% { left: calc(100% + 100px); opacity: 0; }
         }
         @keyframes fadeUp {
-          from { opacity: 0; transform: translateY(24px); }
+          from { opacity: 0; transform: translateY(20px); }
           to   { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes glowPulse {
-          0%,100% { opacity: 0.5; }
-          50%      { opacity: 1; }
         }
         @keyframes shimmer {
           0%   { background-position: -200% center; }
           100% { background-position: 200% center; }
         }
         @keyframes starFloat {
-          0%,100% { transform: translateY(0) rotate(0deg); opacity:0.7; }
-          50%      { transform: translateY(-14px) rotate(20deg); opacity:1; }
+          0%,100% { transform: translateY(0) rotate(0deg); opacity: 0.5; }
+          50%      { transform: translateY(-12px) rotate(15deg); opacity: 1; }
         }
         @keyframes btnBounce {
-          0%,100% { transform: translateY(0); box-shadow: 0 8px 0 #2a0060, 0 0 40px #9333ea88; }
-          50%      { transform: translateY(-4px); box-shadow: 0 12px 0 #2a0060, 0 0 60px #9333eacc; }
+          0%,100% { transform: translateY(0); box-shadow: 0 7px 0 #2a0060, 0 0 30px #9333ea77; }
+          50%      { transform: translateY(-3px); box-shadow: 0 10px 0 #2a0060, 0 0 50px #9333eaaa; }
         }
-        @keyframes dotDrift {
-          0%   { transform: translate(0,0); opacity: 0; }
-          10%  { opacity: 1; }
-          90%  { opacity: 1; }
-          100% { transform: translate(var(--dx), var(--dy)); opacity: 0; }
+
+        .page-wrap {
+          width: 100%;
+          min-height: 100vh;
+          max-height: 100dvh;
+          background: radial-gradient(ellipse at 50% 0%, #1e0042 0%, #06000f 60%);
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          font-family: 'Nunito', sans-serif;
+          overflow-x: hidden;
+          overflow-y: auto;
+          position: relative;
+        }
+
+        .floating-star {
+          position: fixed;
+          pointer-events: none;
+          animation: starFloat var(--dur) var(--delay) ease-in-out infinite;
+          z-index: 0;
+        }
+
+        /* Hero */
+        .hero {
+          width: 100%;
+          max-width: 640px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          padding: clamp(40px, 8vw, 72px) 20px 0;
+          position: relative;
+          z-index: 1;
+        }
+
+        .hero-img-wrap {
+          animation: flagWave 1.6s ease-in-out infinite alternate, fadeUp 0.5s ease-out both;
+          margin-bottom: 16px;
         }
 
         .hero-title {
           font-family: 'Racing Sans One', cursive;
-          font-size: clamp(3rem, 11vw, 7.5rem);
+          font-size: clamp(2.8rem, 10vw, 7rem);
           line-height: 0.95;
           color: #fff;
           text-align: center;
-          animation: fadeUp 0.7s 0.1s ease-out both;
+          text-shadow: 3px 3px 0 #3b076488;
+          animation: fadeUp 0.6s 0.1s ease-out both;
+          margin-bottom: 10px;
         }
+
         .hero-accent {
           background: linear-gradient(90deg, #c084fc, #e879f9, #a78bfa, #c084fc);
           background-size: 200% auto;
@@ -72,44 +104,229 @@ export default function HomePage() {
           background-clip: text;
           animation: shimmer 3s linear infinite;
         }
+
+        .tagline {
+          font-family: 'Boogaloo', cursive;
+          font-size: clamp(1rem, 3vw, 1.35rem);
+          color: rgba(255,255,255,0.7);
+          text-align: center;
+          line-height: 1.65;
+          max-width: 420px;
+          padding: 0 8px;
+          margin-bottom: 18px;
+          animation: fadeUp 0.6s 0.2s ease-out both;
+        }
+
+        .pills {
+          display: flex;
+          gap: 8px;
+          flex-wrap: wrap;
+          justify-content: center;
+          margin-bottom: 28px;
+          animation: fadeUp 0.6s 0.3s ease-out both;
+        }
+
+        .pill {
+          font-family: 'Boogaloo', cursive;
+          font-size: clamp(0.78rem, 2vw, 0.92rem);
+          color: rgba(255,255,255,0.5);
+          background: rgba(255,255,255,0.05);
+          border: 1px solid rgba(255,255,255,0.1);
+          border-radius: 40px;
+          padding: 4px 14px;
+          white-space: nowrap;
+        }
+
+        .cta-wrap {
+          animation: fadeUp 0.6s 0.4s ease-out both;
+          margin-bottom: 12px;
+          width: 100%;
+          display: flex;
+          justify-content: center;
+        }
+
         .cta-btn {
           font-family: 'Racing Sans One', cursive;
-          font-size: clamp(1rem, 3.5vw, 1.4rem);
+          font-size: clamp(0.95rem, 3vw, 1.3rem);
           background: linear-gradient(135deg, #9333ea, #6b21a8);
           color: #fff;
           border: none;
           border-radius: 60px;
-          padding: 18px 52px;
+          padding: clamp(14px, 3vw, 18px) clamp(32px, 6vw, 52px);
           cursor: pointer;
           letter-spacing: 2px;
           text-decoration: none;
           display: inline-block;
           animation: btnBounce 2s ease-in-out infinite;
-          position: relative;
-          z-index: 2;
+          white-space: nowrap;
+          max-width: 100%;
+        }
+
+        .credit {
+          font-family: 'Boogaloo', cursive;
+          font-size: 0.8rem;
+          color: rgba(255,255,255,0.2);
+          margin-bottom: 44px;
+          animation: fadeUp 0.6s 0.45s ease-out both;
           text-align: center;
         }
-        .step-card {
-          animation: fadeUp 0.5s ease-out both;
+
+.road-strip {
+          width: 100%;
+          flex-shrink: 0;
+          position: relative;
+          background: #0e001e;
+          border-top: 2px solid #3b0764;
+          border-bottom: 2px solid #3b0764;
+          height: 68px;
+          overflow: hidden;
+          margin-bottom: clamp(36px, 6vw, 56px);
+          z-index: 1;
         }
-        .step-card:hover {
-          transform: translateY(-4px);
+
+        .road-dashes {
+          position: absolute;
+          inset: 0;
+          background-image: repeating-linear-gradient(
+            90deg,
+            transparent 0px, transparent 30px,
+            #9333ea44 30px, #9333ea44 60px
+          );
+          background-size: 80px 4px;
+          background-repeat: repeat-x;
+          background-position: 0 center;
+          animation: roadScroll 0.5s linear infinite;
+        }
+
+        .road-car {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          font-size: clamp(1.6rem, 5vw, 2.4rem);
+          animation: carDrive 3.2s linear infinite;
+          filter: drop-shadow(0 0 10px #9333ea);
+        }
+
+        .road-gift {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          font-size: clamp(1rem, 3vw, 1.3rem);
+          opacity: 0.45;
+        }
+
+        /* How it works */
+        .hiw-section {
+          width: 100%;
+          max-width: 620px;
+          padding: 0 16px;
+          margin-bottom: clamp(40px, 8vw, 64px);
+          z-index: 1;
+        }
+
+        .hiw-header {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          margin-bottom: 20px;
+        }
+
+        .hiw-line {
+          flex: 1;
+          height: 1px;
+        }
+
+        .hiw-label {
+          font-family: 'Racing Sans One', cursive;
+          font-size: clamp(0.6rem, 1.8vw, 0.75rem);
+          color: #9333ea;
+          letter-spacing: 4px;
+          white-space: nowrap;
+        }
+
+        .steps {
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+        }
+
+        .step-card {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          border-radius: 16px;
+          padding: clamp(12px, 2.5vw, 16px) clamp(12px, 3vw, 18px);
+          position: relative;
+          overflow: hidden;
+          animation: fadeUp 0.5s ease-out both;
           transition: transform 0.2s ease;
         }
-        .floating-star {
-          position: absolute;
-          pointer-events: none;
-          animation: starFloat var(--dur) var(--delay) ease-in-out infinite;
+
+        .step-card:hover { transform: translateY(-3px); }
+
+        .step-num {
+          flex-shrink: 0;
+          width: clamp(30px, 5vw, 38px);
+          height: clamp(30px, 5vw, 38px);
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-family: 'Racing Sans One', cursive;
+          font-size: clamp(0.6rem, 1.5vw, 0.72rem);
+          letter-spacing: 1px;
+        }
+
+        .step-icon {
+          font-size: clamp(1.3rem, 3.5vw, 1.6rem);
+          flex-shrink: 0;
+        }
+
+        .step-title {
+          font-family: 'Racing Sans One', cursive;
+          font-size: clamp(0.75rem, 2vw, 0.88rem);
+          letter-spacing: 1px;
+          margin-bottom: 2px;
+        }
+
+        .step-desc {
+          font-family: 'Boogaloo', cursive;
+          font-size: clamp(0.8rem, 2vw, 0.92rem);
+          color: rgba(255,255,255,0.6);
+          line-height: 1.4;
+        }
+
+        /* Bottom CTA */
+        .bottom-cta {
+          width: 100%;
+          max-width: 460px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          padding: 0 20px clamp(48px, 10vw, 72px);
+          gap: 16px;
+          animation: fadeUp 0.6s 0.6s ease-out both;
+          z-index: 1;
+        }
+
+        .bottom-title {
+          font-family: 'Racing Sans One', cursive;
+          font-size: clamp(1.1rem, 4vw, 1.7rem);
+          color: #fff;
+          text-align: center;
+          line-height: 1.25;
+          text-shadow: 0 0 24px #9333ea77;
+        }
+
+        /* Mobile tweaks */
+        @media (max-width: 400px) {
+          .cta-btn { letter-spacing: 1px; }
+          .pills { gap: 6px; }
         }
       `}</style>
 
-      <div style={{
-        minHeight: '100vh',
-        background: 'radial-gradient(ellipse at 50% 0%, #1e0042 0%, #06000f 55%)',
-        display: 'flex', flexDirection: 'column', alignItems: 'center',
-        fontFamily: "'Nunito', sans-serif",
-        overflowX: 'hidden', position: 'relative',
-      }}>
+      <div className="page-wrap">
+
 
         {/* ── FLOATING STARS BG ── */}
         {[
@@ -204,45 +421,20 @@ export default function HomePage() {
 
           <p style={{
             fontFamily: "'Boogaloo', cursive", fontSize: '0.82rem',
-            color: 'rgba(255,255,255,0.22)', marginBottom: 52,
+            color: 'rgba(255,255,255,0.22)', marginBottom: 36,
             animation: 'fadeUp 0.6s 0.5s ease-out both',
           }}>
-            Made with 💜 by Birthday Race
+            Made with 💜 by <span style={{ color: '#9333ea' }}>Karpagapriya</span>
           </p>
         </div>
 
-        {/* ── ANIMATED ROAD STRIP ── */}
-        <div style={{
-          width: '100%', position: 'relative',
-          background: '#0e001e',
-          borderTop: '2px solid #3b0764',
-          borderBottom: '2px solid #3b0764',
-          height: 64, overflow: 'hidden',
-          marginBottom: 52,
-        }}>
-          {/* Scrolling dashes */}
-          <div style={{
-            position: 'absolute', inset: 0,
-            backgroundImage: 'repeating-linear-gradient(90deg, transparent 0px, transparent 30px, #9333ea44 30px, #9333ea44 60px)',
-            backgroundSize: '80px 4px',
-            backgroundRepeat: 'repeat-x',
-            backgroundPosition: 'center',
-            animation: 'roadScroll 0.6s linear infinite',
-          }} />
-          {/* Driving car */}
-          <div style={{
-            position: 'absolute', top: '50%', transform: 'translateY(-50%)',
-            fontSize: 'clamp(1.8rem,6vw,2.8rem)',
-            animation: 'carDrive 3.5s linear infinite',
-            filter: 'drop-shadow(0 0 12px #9333ea)',
-          }}>🏎️</div>
-          {/* Gift boxes trailing */}
-          {[{ delay: '0.8s', left: 'calc(100% + 20px)' }, { delay: '1.6s', left: 'calc(100% + 60px)' }].map((g, i) => (
-            <div key={i} style={{
-              position: 'absolute', top: '50%', transform: 'translateY(-50%)',
-              fontSize: '1.4rem',
-              animation: `carDrive 3.5s ${g.delay} linear infinite`,
-              opacity: 0.5,
+        {/* ── ROAD STRIP ── */}
+        <div className="road-strip">
+          <div className="road-dashes" />
+          <div className="road-car">🏎️</div>
+          {[{ delay: '0.9s' }, { delay: '1.8s' }].map((g, i) => (
+            <div key={i} className="road-gift" style={{
+              animation: `carDrive 3.2s ${g.delay} linear infinite`,
             }}>🎁</div>
           ))}
         </div>
@@ -341,7 +533,7 @@ export default function HomePage() {
           </div>
 
           <Link href="/create" className="cta-btn" style={{ fontSize: 'clamp(0.9rem,3vw,1.2rem)', padding: '14px 40px' }}>
-            🚦 LET'S BUILD THE GAME
+            LET'S BUILD THE GAME
           </Link>
         </div>
       </div>

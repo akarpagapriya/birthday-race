@@ -1,6 +1,10 @@
 {
   "name": "Birthday Race",
   "short_name": "BdayRace",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#06000f",
+  "theme_color": "#9333ea",
   "icons": [
     {
       "src": "/web-app-manifest-192x192.png",
@@ -14,8 +18,5 @@
       "type": "image/png",
       "purpose": "maskable"
     }
-  ],
-  "theme_color": "#ffffff",
-  "background_color": "#ffffff",
-  "display": "standalone"
+  ]
 }
