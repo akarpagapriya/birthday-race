@@ -3,6 +3,8 @@ import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { BuilderState, WishEntry, AVATARS, CAR_COLORS, STEP_LABELS } from '@/lib/types'
 import { saveGame } from '@/lib/gameService'
+import Image from 'next/image'
+import raceNotifyheart from '@/assets/race-notify-heart.png'
 
 function defaultWishes(): WishEntry[] {
   return [{ stage: 1, from_name: '', avatar: '👵', short_wish: '' }]
@@ -74,7 +76,7 @@ export default function CreatePage() {
   const currentStep = STEP_LABELS[step - 1]
 
   return (
-    <div style={{ height: '100vh', overflowY: 'scroll', background: '#060010' }}>
+    <div style={{ height: '100vh', overflowY: 'scroll', background: 'radial-gradient(at 50% 30%, rgb(30, 0, 66), rgb(8, 0, 16))' }}>
 
       {/* ── CHECKERED HEADER ── */}
       <div style={{ position: 'relative', overflow: 'hidden', padding: '28px 20px 20px', textAlign: 'center' }}>
@@ -83,7 +85,20 @@ export default function CreatePage() {
           backgroundImage: 'linear-gradient(45deg,#fff 25%,transparent 25%),linear-gradient(-45deg,#fff 25%,transparent 25%),linear-gradient(45deg,transparent 75%,#fff 75%),linear-gradient(-45deg,transparent 75%,#fff 75%)',
           backgroundSize: '20px 20px', backgroundPosition: '0 0,0 10px,10px -10px,-10px 0' }} />
         <div style={{ position: 'relative', zIndex: 1 }}>
-          <div style={{ fontSize: '2.8rem', marginBottom: 4 }}>🏁</div>
+          <div style={{ fontSize: '2.8rem', marginBottom: 4, alignItems: 'center', display: 'flex', justifyContent: 'center', gap: 12, flexWrap: 'wrap' }}>
+            <Image
+              src={raceNotifyheart}
+              alt="Birthday Notify Heart"
+              width={150}
+              height={150}
+              style={{
+                animation: 'flagWave 1.4s ease-in-out infinite alternate',
+                marginBottom: 12,
+                width: 'clamp(80px, 20vw, 150px)',
+                height: 'auto',
+              }}
+            />
+            </div>
           <h1 style={{ fontFamily: "'Racing Sans One',cursive", fontSize: 'clamp(1.4rem,5vw,2.2rem)', color: '#fff', margin: 0, letterSpacing: 2 }}>
             BUILD THE ULTIMATE
           </h1>

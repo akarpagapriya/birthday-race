@@ -3,6 +3,9 @@ import { useEffect, useRef, useCallback, useState } from 'react'
 import { WISHES, STARS_NEEDED, STAGE_COLORS, STAGE_NAMES, STAGE_ICONS, Wish } from './gameData'
 import { sndCollect, sndCrash, sndWin, sndRev, sndBday } from './audio'
 import { drawSpaceBg, drawRoad, drawToycar, drawStar3D, drawObstacle } from './drawUtils'
+import Image from 'next/image'
+import raceFlash from '@/assets/race-flash.png'
+import raceTrophy from '@/assets/race-trophy.png'
 
 type Screen = 'intro' | 'game' | 'wish' | 'gameover' | 'winner'
 type ObsType = 'rock' | 'barrier' | 'fuel' | 'light'
@@ -326,11 +329,20 @@ export default function Game({ customData }: { customData?: { childName: string;
             {/* Hero name */}
             <div style={{
               fontFamily: "'Racing Sans One',cursive",
+              justifyContent: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center',
               fontSize: 'clamp(2rem,8vw,5rem)',
               color: '#fff', textAlign: 'center', lineHeight: 1.05,
-              marginBottom: 6,
             }}>
-              ⚡ Lightning<br />
+              <Image
+                src={raceFlash}
+                alt="Birthday Trophy"
+                width={150}
+                height={150}
+                style={{
+                  width: 'clamp(80px, 20vw, 80px)',
+                  height: 'auto',
+                }}
+              /> Lightning<br />
               <span style={{ color: carColor }}>
                 {childName}
               </span>
@@ -560,10 +572,10 @@ export default function Game({ customData }: { customData?: { childName: string;
 
                 {/* Actual photo / avatar */}
                 <div style={{ width: '100%', height: '100%', position: 'relative', zIndex: 6 }}>
-{wish.photo
-  ? <img src={`${wish.photo}`} alt="Family" loading="eager" decoding="async" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-  : <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 'clamp(5rem,20vw,8rem)' }}>{wish.av}</div>
-}
+                  {wish.photo
+                    ? <img src={`${wish.photo}`} alt="Family" loading="eager" decoding="async" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                    : <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 'clamp(5rem,20vw,8rem)' }}>{wish.av}</div>
+                  }
 
                   {/* Dark overlay at bottom for wish text */}
                   <div style={{
@@ -659,11 +671,11 @@ export default function Game({ customData }: { customData?: { childName: string;
 
       {/* ═══ GAME OVER ═══ */}
       {screen === 'gameover' && (
-        <div style={{ position: 'fixed', inset: 0, background: 'radial-gradient(ellipse at 50% 40%,#1a0010,#080010)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 16 }}>
+        <div style={{ position: 'fixed', inset: 0, background: 'radial-gradient(at 50% 30%, rgb(30, 0, 66), rgb(8, 0, 16))', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 16 }}>
           <div style={{ fontSize: '4rem' }}>💥</div>
-          <h2 style={{ fontFamily: "'Racing Sans One',cursive", fontSize: 'clamp(2rem,7vw,3.5rem)', color: '#f87171', textShadow: '0 0 30px rgba(248,113,113,.7)', textAlign: 'center' }}>OH NO! CRASH!</h2>
+          <h2 style={{ fontFamily: "'Racing Sans One',cursive", fontSize: 'clamp(2rem,7vw,3.5rem)', color: '#f87171', textAlign: 'center' }}>OH NO! CRASH!</h2>
           <p style={{ fontFamily: "'Boogaloo',cursive", fontSize: 'clamp(1rem,3vw,1.3rem)', color: 'rgba(255,255,255,.8)', textAlign: 'center', padding: '0 20px' }}>Don't worry {childName}!<br />Every champion crashes sometimes!</p>
-          <div style={{ fontFamily: "'Boogaloo',cursive", fontSize: '1.4rem', color: 'carColor' }}>⭐ Stars: {goScore}</div>
+          <div style={{ fontFamily: "'Boogaloo',cursive", fontSize: '1.4rem', color: 'gold' }}>⭐ Stars: {goScore}</div>
           <button onClick={retry} style={{ fontFamily: "'Racing Sans One',cursive", fontSize: 'clamp(1.1rem,3.5vw,1.8rem)', background: `linear-gradient(135deg,${carColor},${carColor}88)`, color: '#fff', border: 'none', borderRadius: 60, padding: '16px 44px', cursor: 'pointer', letterSpacing: 2, boxShadow: '0 7px 0 #3b0764' }}>
             🔄 TRY AGAIN!
           </button>
@@ -708,9 +720,19 @@ export default function Game({ customData }: { customData?: { childName: string;
             <div style={{
               fontFamily: "'Racing Sans One',cursive",
               fontSize: 'clamp(1.6rem,6vw,3rem)',
+              justifyContent: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center',
               color: '#fff', lineHeight: 1.15, textAlign: 'center',
             }}>
-              ⚡ {childName.toUpperCase()}<br />
+              <Image
+                src={raceTrophy}
+                alt="Birthday Trophy"
+                width={150}
+                height={150}
+                style={{
+                  width: 'clamp(80px, 20vw, 80px)',
+                  height: 'auto',
+                }}
+              /> {childName.toUpperCase()}<br />
               <span style={{ color: carColor }}>IS THE CHAMPION!</span>
             </div>
           </div>
@@ -800,7 +822,7 @@ export default function Game({ customData }: { customData?: { childName: string;
             </div>
           </div>
 
-{/* ── WISHES UNLOCKED ── */}
+          {/* ── WISHES UNLOCKED ── */}
           <div style={{ width: '100%', maxWidth: 600 }}>
 
             {/* Header */}
@@ -837,8 +859,8 @@ export default function Game({ customData }: { customData?: { childName: string;
                     flexShrink: 0, width: 28, height: 28, borderRadius: '50%',
                     background: i === 0 ? 'linear-gradient(135deg,#fde68a,#f59e0b)'
                       : i === 1 ? 'linear-gradient(135deg,#e2e8f0,#94a3b8)'
-                      : i === 2 ? 'linear-gradient(135deg,#fed7aa,#c2410c)'
-                      : `${w.color}33`,
+                        : i === 2 ? 'linear-gradient(135deg,#fed7aa,#c2410c)'
+                          : `${w.color}33`,
                     border: `2px solid ${i < 3 ? '#fff4' : w.color + '66'}`,
                     display: 'flex', alignItems: 'center', justifyContent: 'center',
                     fontFamily: "'Racing Sans One',cursive",

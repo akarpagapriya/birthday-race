@@ -8,41 +8,13 @@ export interface Wish {
 }
 
 export const WISHES: Wish[] = [
-  {
-    from: 'Paati Gunasekari', av: '👵', color: '#c084fc',
-    tag: 'Stage 1 Complete! 🏁', photo: 1,
-    text: "My dearest Kabileshwar, you are the brightest star in our family sky! Paati loves you more than all the stars in this game put together. Happy 6th Birthday, my little champion! 🌟💜"
-  },
-  {
-    from: 'Amma Karpagapriya', av: '💛', color: '#fde68a',
-    tag: 'Stage 2 Complete! ✨', photo: 2,
-    text: "Kabi my love, you came into my life and made everything perfect. Watching you grow into this amazing little racer fills my heart with so much joy. I love you more than words can say. Happy Birthday, my sunshine! ☀️💛"
-  },
-  {
-    from: 'Amma Durgadevi', av: '💜', color: '#e879f9',
-    tag: 'Stage 3 Complete! ⚡', photo: 3,
-    text: "My sweet Kabileshwar, you know you have two mummies who love you endlessly! You make every day so special just by being you. Zoom through life always — we'll always be cheering for you! 💜🚗"
-  },
-  {
-    from: 'Brother Nimaleshwar', av: '👦', color: '#6ee7b7',
-    tag: 'Stage 4 Complete! 🏆', photo: 4,
-    text: "Anna Kabi! You're the coolest! Let's race our toy cars forever and ever! I'm SO happy you're my brother. Happy Birthday, let's play ALL day today! 🚗🚕💚"
-  },
-  {
-    from: 'Baby Sister Maadhangi', av: '👶', color: '#93c5fd',
-    tag: 'Stage 5 Complete! 📣', photo: 5,
-    text: "Boo boo baa! 🍼 (That means: Anna Kabileshwar, I don't know much yet — but I already know you are the BEST big brother in the whole world! I love you so much! 💙👶)"
-  },
-  {
-    from: 'The Whole Family 🏠', av: '🏠', color: '#fca5a5',
-    tag: 'Stage 6 Complete! 🔴', photo: null,
-    text: "Gunasekari, Karpagapriya, Durgadevi, Nimaleshwar & little Maadhangi — ALL of us say: Kabileshwar, you are our greatest joy, our loudest laugh, our warmest hug. We love you endlessly! 🌺💜"
-  },
-  {
-    from: '⚡ Lightning Kabileshwar', av: '🏆', color: '#fde68a',
-    tag: '🏁 CHAMPION! All 7 Done!', photo: null,
-    text: "YOU DID IT! You finished all 7 stages and collected every family wish! You are not just ⚡ Lightning Kabileshwar the racer — you are the most loved, most wonderful 6-year-old in the whole universe. HAPPY BIRTHDAY! 🎂🎊🚗⭐🏆"
-  },
+  { from: 'Grandparent', av: '👵', color: '#c084fc', tag: 'Stage 1 Complete! 🏁', photo: null, text: "Wishing you a wonderful birthday full of joy and laughter! 🌟" },
+  { from: 'Mum',         av: '💛', color: '#fde68a', tag: 'Stage 2 Complete! ✨', photo: null, text: "You make every single day brighter just by being you! Happy Birthday! ☀️" },
+  { from: 'Dad',         av: '💜', color: '#e879f9', tag: 'Stage 3 Complete! ⚡', photo: null, text: "So proud of you every single day. Keep racing through life! 🚗" },
+  { from: 'Sibling',     av: '👦', color: '#6ee7b7', tag: 'Stage 4 Complete! 🏆', photo: null, text: "Happy Birthday! You are the best! Let's play all day! 🎉" },
+  { from: 'Family',      av: '🏠', color: '#fca5a5', tag: 'Stage 5 Complete! 🔴', photo: null, text: "The whole family is cheering for you! We love you so much! 💜" },
+  { from: 'Best Friend', av: '⭐', color: '#93c5fd', tag: 'Stage 6 Complete! 📣', photo: null, text: "You are amazing and today is YOUR day! Happy Birthday champion! 🏆" },
+  { from: 'Champion!',   av: '🏆', color: '#fde68a', tag: '🏁 ALL DONE!',         photo: null, text: "YOU DID IT! You finished every stage! Happy Birthday superstar! 🎂🎊" },
 ]
 
 export const STARS_NEEDED = [10, 12, 13, 14, 14, 15, 16]

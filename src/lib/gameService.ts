@@ -42,22 +42,18 @@ export async function saveGame(state: BuilderState): Promise<string | null> {
 
     if (gameError || !game) { console.error('Game insert error:', gameError); return null }
 
-    // Upload wish photos + insert wishes
+// Upload all wish photos in parallel for speed
     const wishRows = await Promise.all(
-      state.wishes.map(async (w: WishEntry) => {
-        let photo_url = null
-        if (w.photo_file) {
-          photo_url = await uploadPhoto(w.photo_file, slug, `stage-${w.stage}`)
-        }
-        return {
-          game_id: game.id,
-          stage: w.stage,
-          from_name: w.from_name,
-          avatar: w.avatar,
-          short_wish: w.short_wish,
-          photo_url,
-        }
-      })
+      state.wishes.map(async (w: WishEntry) => ({
+        game_id: game.id,
+        stage: w.stage,
+        from_name: w.from_name,
+        avatar: w.avatar,
+        short_wish: w.short_wish,
+        photo_url: w.photo_file
+          ? await uploadPhoto(w.photo_file, slug, `stage-${w.stage}`)
+          : null,
+      }))
     )
 
     const { error: wishError } = await supabase.from('wishes').insert(wishRows)

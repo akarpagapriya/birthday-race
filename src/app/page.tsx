@@ -206,7 +206,7 @@ export default function HomePage() {
             color: 'rgba(255,255,255,0.22)', marginBottom: 52,
             animation: 'fadeUp 0.6s 0.5s ease-out both',
           }}>
-            Made with 💜 for Kabileshwar's 6th birthday
+            Made with 💜 by Birthday Race
           </p>
         </div>
 
