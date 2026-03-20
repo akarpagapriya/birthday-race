@@ -237,10 +237,17 @@ export default function Game({ customData }: { customData?: { childName: string;
   // Intro confetti
   useEffect(() => { setTimeout(() => spawnConfetti(30), 600) }, [])
 
-  const startGame = useCallback(() => {
-    sndRev(); G.current.lives = 3; G.current.totalScore = 0
-    doTransition('STAGE 1 🏁', () => { setScreen('game'); initStage(1) })
-  }, [doTransition, initStage])
+const startGame = useCallback(() => {
+  sndRev(); G.current.lives = 3; G.current.totalScore = 0
+  // Silently preload all wish photos in background
+  activeWishes.forEach(w => {
+    if (w.photo) {
+      const img = new window.Image()
+      img.src = `${w.photo}`
+    }
+  })
+  doTransition('STAGE 1 🏁', () => { setScreen('game'); initStage(1) })
+}, [doTransition, initStage, activeWishes])
 
   const continueFromWish = useCallback(() => {
     const stage = G.current.stage
@@ -573,7 +580,14 @@ export default function Game({ customData }: { customData?: { childName: string;
                 {/* Actual photo / avatar */}
                 <div style={{ width: '100%', height: '100%', position: 'relative', zIndex: 6 }}>
                   {wish.photo
-                    ? <img src={`${wish.photo}`} alt="Family" loading="eager" decoding="async" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                    ? <img
+                        src={`${wish.photo}`}
+                        alt="Family"
+                        loading="eager"
+                        decoding="async"
+                        style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                        onError={e => { (e.target as HTMLImageElement).style.display = 'none' }}
+                      />
                     : <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 'clamp(5rem,20vw,8rem)' }}>{wish.av}</div>
                   }
 

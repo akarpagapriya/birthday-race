@@ -8,10 +8,30 @@ function generateSlug(name: string): string {
   return `${clean}-${year}-${rand}`
 }
 
+async function compressImage(file: File, maxWidth = 800): Promise<File> {
+  return new Promise((resolve) => {
+    const img = new Image()
+    const url = URL.createObjectURL(file)
+    img.onload = () => {
+      const scale = Math.min(1, maxWidth / img.width)
+      const canvas = document.createElement('canvas')
+      canvas.width = img.width * scale
+      canvas.height = img.height * scale
+      const ctx = canvas.getContext('2d')!
+      ctx.drawImage(img, 0, 0, canvas.width, canvas.height)
+      canvas.toBlob(blob => {
+        URL.revokeObjectURL(url)
+        resolve(new File([blob!], file.name, { type: 'image/jpeg' }))
+      }, 'image/jpeg', 0.75) // 75% quality — good balance
+    }
+    img.src = url
+  })
+}
+
 async function uploadPhoto(file: File, slug: string, name: string): Promise<string | null> {
-  const ext = file.name.split('.').pop()
-  const path = `${slug}/${name}.${ext}`
-  const { error } = await supabase.storage.from('photos').upload(path, file, { upsert: true })
+  const compressed = await compressImage(file) // ← add this line
+  const path = `${slug}/${name}.jpg`           // ← always jpg now
+  const { error } = await supabase.storage.from('photos').upload(path, compressed, { upsert: true, contentType: 'image/jpeg' })
   if (error) { console.error('Photo upload error:', error); return null }
   const { data } = supabase.storage.from('photos').getPublicUrl(path)
   return data.publicUrl
