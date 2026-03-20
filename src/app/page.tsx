@@ -87,6 +87,7 @@ export default function HomePage() {
           animation: btnBounce 2s ease-in-out infinite;
           position: relative;
           z-index: 2;
+          text-align: center;
         }
         .step-card {
           animation: fadeUp 0.5s ease-out both;
@@ -197,7 +198,7 @@ export default function HomePage() {
           {/* CTA */}
           <div style={{ animation: 'fadeUp 0.6s 0.45s ease-out both', marginBottom: 14 }}>
             <Link href="/create" className="cta-btn">
-              🎁 CREATE A BIRTHDAY GAME
+              CREATE A BIRTHDAY GAME
             </Link>
           </div>
 
