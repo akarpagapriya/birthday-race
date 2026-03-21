@@ -60,7 +60,7 @@ export default function HomePage() {
           100% { transform: scale(1); opacity: 1; }
         }
 
-        .page-wrap {
+.page-wrap {
           width: 100%;
           min-height: 100vh;
           background: radial-gradient(ellipse at 50% 0%, #1e0042 0%, #06000f 60%);
@@ -70,6 +70,21 @@ export default function HomePage() {
           font-family: 'Nunito', sans-serif;
           overflow-x: hidden;
           position: relative;
+        }
+
+        .hero-wrap {
+          width: 100%;
+          max-width: 680px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          flex: 1;
+          min-height: calc(100vh - 48px);
+          gap: 0;
+          z-index: 1;
+          position: relative;
+          transition: padding 0.5s ease;
         }
 
         .floating-star {
@@ -213,12 +228,9 @@ export default function HomePage() {
         ))}
 
         {/* ── HERO ── */}
-        <div style={{
-          width: '100%', maxWidth: 680,
-          display: 'flex', flexDirection: 'column', alignItems: 'center',
-          padding: showHiw ? 'clamp(32px,6vw,52px) 24px 0' : 'clamp(48px,10vw,80px) 24px 0',
-          transition: 'padding 0.5s ease',
-          gap: 0, zIndex: 1, position: 'relative',
+        <div className="hero-wrap" style={{
+          padding: showHiw ? '24px 24px 0' : '0 24px',
+          minHeight: showHiw ? 'auto' : 'calc(100vh - 48px)',
         }}>
 
           {/* Hero image */}
