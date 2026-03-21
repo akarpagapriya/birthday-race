@@ -76,7 +76,7 @@ export default function CreatePage() {
   const currentStep = STEP_LABELS[step - 1]
 
   return (
-    <div style={{ height: '100vh', overflowY: 'scroll', background: 'radial-gradient(at 50% 30%, rgb(30, 0, 66), rgb(8, 0, 16))' }}>
+    <div style={{ minHeight: '100vh', background: 'radial-gradient(at 50% 30%, rgb(30, 0, 66), rgb(8, 0, 16))' }}>
 
       {/* ── CHECKERED HEADER ── */}
       <div style={{ position: 'relative', overflow: 'hidden', padding: '28px 20px 20px', textAlign: 'center' }}>
@@ -139,7 +139,7 @@ export default function CreatePage() {
       </div>
 
       {/* ── CARD ── */}
-      <div style={{ maxWidth: 560, margin: '12px auto 32px', padding: '0 16px' }}>
+      <div style={{ maxWidth: 560, margin: '12px auto 0', padding: '0 16px 100px' }}>
         <div style={{ background: 'linear-gradient(160deg,rgba(255,255,255,0.04),rgba(255,255,255,0.01))', border: `1.5px solid ${col}33`, borderRadius: 24, padding: '24px 20px', backdropFilter: 'blur(20px)' }}>
 
           {/* ══ STEP 1: IGNITION ══ */}

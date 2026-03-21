@@ -3,156 +3,375 @@
 @tailwind components;
 @tailwind utilities;
 
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-html, body, #__next {
+html,
+body,
+#__next {
   width: 100%;
-  height: 100%;
-  overflow: hidden;
+  height: auto;
+  overflow-x: hidden;
   background: #080010;
   font-family: 'Nunito', sans-serif;
-  touch-action: none;
+  scroll-behavior: smooth;
 }
 
 /* Stage node animations */
 @keyframes nodePulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.3); }
-}
-@keyframes btnPulse {
-  0%, 100% { box-shadow: 0 7px 0 #1a0030, 0 0 30px var(--car-color, rgba(147,51,234,0.4)); }
-  50%       { box-shadow: 0 7px 0 #1a0030, 0 0 70px var(--car-color, rgba(147,51,234,0.9)); }
-}
-@keyframes wishPop {
-  from { transform: scale(0.3) rotate(-10deg); opacity: 0; }
-  to   { transform: scale(1) rotate(0deg); opacity: 1; }
-}
-@keyframes floatDot {
-  from { transform: translateY(100vh) scale(0); opacity: 1; }
-  to   { transform: translateY(-5vh) scale(1); opacity: 0; }
-}
-@keyframes flagWave {
-  from { transform: rotate(-8deg) scale(0.95); }
-  to   { transform: rotate(8deg) scale(1.06); }
-}
-@keyframes avatarFloat {
-  0%, 100% { transform: translateY(0) scale(1); }
-  50%       { transform: translateY(-10px) scale(1.05); }
-}
-@keyframes trophyBounce {
-  from { transform: scale(0.9); }
-  to   { transform: scale(1.12); }
-}
-@keyframes winFloat {
-  0%, 100% { transform: translateY(0); }
-  50%       { transform: translateY(-12px); }
-}
-@keyframes confettiFall {
-  to { transform: translateY(110vh) rotate(720deg); opacity: 0; }
-}
-@keyframes transOpen {
-  to { clip-path: circle(150% at 50% 50%); }
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.3);
+  }
 }
 
-.anim-flag     { animation: flagWave 1.2s ease-in-out infinite alternate; }
-.anim-btnpulse { animation: btnPulse 1.8s ease-in-out infinite; }
-.anim-avatar   { animation: avatarFloat 2s ease-in-out infinite; }
-.anim-trophy   { animation: trophyBounce 1s ease-in-out infinite alternate; }
-.anim-winfloat { animation: winFloat 2s ease-in-out infinite; }
-.anim-wishpop  { animation: wishPop 0.55s cubic-bezier(.36,1.5,.5,1) both; }
-.anim-nodecurr { animation: nodePulse 1s ease-in-out infinite; }
+@keyframes btnPulse {
+
+  0%,
+  100% {
+    box-shadow: 0 7px 0 #1a0030, 0 0 30px var(--car-color, rgba(147, 51, 234, 0.4));
+  }
+
+  50% {
+    box-shadow: 0 7px 0 #1a0030, 0 0 70px var(--car-color, rgba(147, 51, 234, 0.9));
+  }
+}
+
+@keyframes wishPop {
+  from {
+    transform: scale(0.3) rotate(-10deg);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+@keyframes floatDot {
+  from {
+    transform: translateY(100vh) scale(0);
+    opacity: 1;
+  }
+
+  to {
+    transform: translateY(-5vh) scale(1);
+    opacity: 0;
+  }
+}
+
+@keyframes flagWave {
+  from {
+    transform: rotate(-8deg) scale(0.95);
+  }
+
+  to {
+    transform: rotate(8deg) scale(1.06);
+  }
+}
+
+@keyframes avatarFloat {
+
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+
+  50% {
+    transform: translateY(-10px) scale(1.05);
+  }
+}
+
+@keyframes trophyBounce {
+  from {
+    transform: scale(0.9);
+  }
+
+  to {
+    transform: scale(1.12);
+  }
+}
+
+@keyframes winFloat {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+@keyframes confettiFall {
+  to {
+    transform: translateY(110vh) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+@keyframes transOpen {
+  to {
+    clip-path: circle(150% at 50% 50%);
+  }
+}
+
+.anim-flag {
+  animation: flagWave 1.2s ease-in-out infinite alternate;
+}
+
+.anim-btnpulse {
+  animation: btnPulse 1.8s ease-in-out infinite;
+}
+
+.anim-avatar {
+  animation: avatarFloat 2s ease-in-out infinite;
+}
+
+.anim-trophy {
+  animation: trophyBounce 1s ease-in-out infinite alternate;
+}
+
+.anim-winfloat {
+  animation: winFloat 2s ease-in-out infinite;
+}
+
+.anim-wishpop {
+  animation: wishPop 0.55s cubic-bezier(.36, 1.5, .5, 1) both;
+}
+
+.anim-nodecurr {
+  animation: nodePulse 1s ease-in-out infinite;
+}
 
 /* ── GIFT BOX UNWRAP ANIMATIONS ── */
 
 /* Full card slides up from bottom */
 @keyframes giftSlideUp {
-  from { transform: translateY(120%) scale(0.8); opacity: 0; }
-  to   { transform: translateY(0) scale(1);      opacity: 1; }
+  from {
+    transform: translateY(120%) scale(0.8);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
 }
 
 /* Ribbon left end slides out */
 @keyframes ribbonLeft {
-  0%   { transform: scaleX(1) translateX(0); opacity: 1; }
-  60%  { transform: scaleX(1) translateX(-130%); opacity: 1; }
-  100% { transform: scaleX(1) translateX(-130%); opacity: 0; }
+  0% {
+    transform: scaleX(1) translateX(0);
+    opacity: 1;
+  }
+
+  60% {
+    transform: scaleX(1) translateX(-130%);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scaleX(1) translateX(-130%);
+    opacity: 0;
+  }
 }
 
 /* Ribbon right end slides out */
 @keyframes ribbonRight {
-  0%   { transform: scaleX(1) translateX(0); opacity: 1; }
-  60%  { transform: scaleX(1) translateX(130%); opacity: 1; }
-  100% { transform: scaleX(1) translateX(130%); opacity: 0; }
+  0% {
+    transform: scaleX(1) translateX(0);
+    opacity: 1;
+  }
+
+  60% {
+    transform: scaleX(1) translateX(130%);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scaleX(1) translateX(130%);
+    opacity: 0;
+  }
 }
 
 /* Bow bounces up and fades */
 @keyframes bowFlyUp {
-  0%   { transform: translateY(0) scale(1) rotate(0deg);    opacity: 1; }
-  50%  { transform: translateY(-80px) scale(1.4) rotate(-15deg); opacity: 1; }
-  100% { transform: translateY(-160px) scale(0.5) rotate(20deg); opacity: 0; }
+  0% {
+    transform: translateY(0) scale(1) rotate(0deg);
+    opacity: 1;
+  }
+
+  50% {
+    transform: translateY(-80px) scale(1.4) rotate(-15deg);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(-160px) scale(0.5) rotate(20deg);
+    opacity: 0;
+  }
 }
 
 /* Lid lifts up and flies off */
 @keyframes lidLift {
-  0%   { transform: translateY(0) rotate(0deg) scale(1);    opacity: 1; }
-  40%  { transform: translateY(-30px) rotate(-5deg) scale(1.05); opacity: 1; }
-  100% { transform: translateY(-200px) rotate(15deg) scale(0.6); opacity: 0; }
+  0% {
+    transform: translateY(0) rotate(0deg) scale(1);
+    opacity: 1;
+  }
+
+  40% {
+    transform: translateY(-30px) rotate(-5deg) scale(1.05);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(-200px) rotate(15deg) scale(0.6);
+    opacity: 0;
+  }
 }
 
 /* Sparkle burst from box centre */
 @keyframes sparkleBurst {
-  0%   { transform: scale(0) rotate(0deg);   opacity: 1; }
-  60%  { transform: scale(1.6) rotate(180deg); opacity: 1; }
-  100% { transform: scale(2.2) rotate(360deg); opacity: 0; }
+  0% {
+    transform: scale(0) rotate(0deg);
+    opacity: 1;
+  }
+
+  60% {
+    transform: scale(1.6) rotate(180deg);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(2.2) rotate(360deg);
+    opacity: 0;
+  }
 }
 
 /* Individual sparkle particle flies outward */
 @keyframes sparkleOut {
-  0%   { transform: translate(0,0) scale(1); opacity: 1; }
-  100% { transform: translate(var(--sx), var(--sy)) scale(0); opacity: 0; }
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate(var(--sx), var(--sy)) scale(0);
+    opacity: 0;
+  }
 }
 
 /* Photo reveals from inside box — zooms in */
 @keyframes photoReveal {
-  0%   { transform: scale(0.2) rotate(-8deg); opacity: 0; filter: brightness(3); }
-  60%  { transform: scale(1.08) rotate(2deg); opacity: 1; filter: brightness(1.2); }
-  100% { transform: scale(1) rotate(0deg);    opacity: 1; filter: brightness(1); }
+  0% {
+    transform: scale(0.2) rotate(-8deg);
+    opacity: 0;
+    filter: brightness(3);
+  }
+
+  60% {
+    transform: scale(1.08) rotate(2deg);
+    opacity: 1;
+    filter: brightness(1.2);
+  }
+
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+    filter: brightness(1);
+  }
 }
 
 /* Short wish text types/fades in */
 @keyframes wishTextIn {
-  from { transform: translateY(16px); opacity: 0; }
-  to   { transform: translateY(0);    opacity: 1; }
+  from {
+    transform: translateY(16px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 /* Sender badge pops in */
 @keyframes badgePop {
-  0%   { transform: scale(0) rotate(-20deg); opacity: 0; }
-  70%  { transform: scale(1.15) rotate(4deg); opacity: 1; }
-  100% { transform: scale(1) rotate(0deg);   opacity: 1; }
+  0% {
+    transform: scale(0) rotate(-20deg);
+    opacity: 0;
+  }
+
+  70% {
+    transform: scale(1.15) rotate(4deg);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
 }
 
 /* Continue button fades up */
 @keyframes btnFadeUp {
-  from { transform: translateY(20px); opacity: 0; }
-  to   { transform: translateY(0);    opacity: 1; }
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 /* Floating sparkle dots after open */
 @keyframes floatSparkle {
-  0%,100% { transform: translateY(0) scale(1);    opacity: 0.7; }
-  50%      { transform: translateY(-14px) scale(1.3); opacity: 1; }
+
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 0.7;
+  }
+
+  50% {
+    transform: translateY(-14px) scale(1.3);
+    opacity: 1;
+  }
 }
 
 /* Photo float */
 @keyframes photoFloat {
-  0%,100% { transform: translateY(0) scale(1); }
-  50%      { transform: translateY(-6px) scale(1.03); }
+
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+
+  50% {
+    transform: translateY(-6px) scale(1.03);
+  }
 }
 
 @keyframes trophyBounce {
   from {
     transform: translateY(0px);
   }
+
   to {
     transform: translateY(-8px);
   }
@@ -162,18 +381,34 @@ html, body, #__next {
   from {
     transform: translateY(0);
   }
+
   to {
     transform: translateY(-200px);
   }
 }
 
 @keyframes shine {
-  0% { left:-40%; }
-  60% { left:120%; }
-  100% { left:120%; }
+  0% {
+    left: -40%;
+  }
+
+  60% {
+    left: 120%;
+  }
+
+  100% {
+    left: 120%;
+  }
 }
 
 @keyframes carBounce {
-  0%,100% { transform: translateY(0); }
-  50% { transform: translateY(-4px); }
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-4px);
+  }
 }

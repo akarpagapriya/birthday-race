@@ -48,19 +48,17 @@ export default function HomePage() {
           50%      { transform: translateY(-3px); box-shadow: 0 10px 0 #2a0060, 0 0 50px #9333eaaa; }
         }
 
-        .page-wrap {
-          width: 100%;
-          min-height: 100vh;
-          max-height: 100dvh;
-          background: radial-gradient(ellipse at 50% 0%, #1e0042 0%, #06000f 60%);
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          font-family: 'Nunito', sans-serif;
-          overflow-x: hidden;
-          overflow-y: auto;
-          position: relative;
-        }
+.page-wrap {
+  width: 100%;
+  min-height: 100vh;
+  background: radial-gradient(ellipse at 50% 0%, #1e0042 0%, #06000f 60%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Nunito', sans-serif;
+  overflow-x: hidden;
+  position: relative;
+}
 
         .floating-star {
           position: fixed;
