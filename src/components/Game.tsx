@@ -649,7 +649,7 @@ const startGame = useCallback(() => {
                 <div style={{
                   width: 34, height: 34, borderRadius: '50%', flexShrink: 0,
                   background: `linear-gradient(135deg,${carColor},${carColor}88)`,
-                  border: '2.5px solid rgba(255,255,255,0.25)',
+                  border: '2.5px solid rgba(255,255,255,0.5)',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
                   fontSize: '1rem',
                   boxShadow: `0 0 14px ${carColor}, 0 3px 8px rgba(0,0,0,0.5)`,
@@ -716,7 +716,7 @@ const startGame = useCallback(() => {
               pointerEvents: 'none',
               fontSize: i % 2 === 0 ? '1.2rem' : '0.85rem',
             } as React.CSSProperties}>
-              {['✨', '⭐', '💫', '🌟', '💜'][i % 5]}
+              {['✨', '⭐', '💫', '🌟'][i % 5]}
             </div>
           ))}
 

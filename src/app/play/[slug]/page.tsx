@@ -50,7 +50,7 @@ const [gameData, setGameData] = useState<{ childName: string; age?: number; carC
       <h1 style={{ fontFamily: "'Racing Sans One',cursive", color: '#f87171', fontSize: '2rem' }}>ROAD CLOSED!</h1>
       <p style={{ fontFamily: "'Boogaloo',cursive", color: 'rgba(255,255,255,0.6)', fontSize: '1.2rem' }}>This birthday game link is invalid or has expired.</p>
       <a href="/create" style={{ fontFamily: "'Racing Sans One',cursive", background: 'linear-gradient(135deg,#9333ea,#6b21a8)', color: '#fff', borderRadius: 40, padding: '13px 28px', textDecoration: 'none', letterSpacing: 1 }}>
-        🎁 Create a New Game
+        Create a New Game
       </a>
     </div>
   )

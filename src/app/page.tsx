@@ -34,9 +34,10 @@ export default function HomePage() {
           from { opacity: 0; transform: translateY(20px); }
           to   { opacity: 1; transform: translateY(0); }
         }
-        @keyframes shimmer {
-          0%   { background-position: -200% center; }
-          100% { background-position: 200% center; }
+@keyframes shimmer {
+          0%   { background-position: 0% center; }
+          50%  { background-position: 150% center; }
+          100% { background-position: 300% center; }
         }
         @keyframes starFloat {
           0%,100% { transform: translateY(0) rotate(0deg); opacity: 0.5; }
@@ -96,13 +97,21 @@ export default function HomePage() {
           margin-bottom: 10px;
         }
 
-        .hero-accent {
-          background: linear-gradient(90deg, #c084fc, #e879f9, #a78bfa, #c084fc);
-          background-size: 200% auto;
+.hero-accent {
+          background: linear-gradient(
+            135deg,
+            #fde68a 0%,
+            #e879f9 35%,
+            #c084fc 50%,
+            #818cf8 65%,
+            #e879f9 80%,
+            #fde68a 100%
+          );
+          background-size: 300% auto;
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
-          animation: shimmer 3s linear infinite;
+          animation: shimmer 4s linear infinite;
         }
 
         .tagline {

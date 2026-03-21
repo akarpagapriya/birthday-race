@@ -417,7 +417,7 @@ export default function CreatePage() {
 
               <button onClick={handlePublish} disabled={loading}
                 style={{ fontFamily: "'Racing Sans One',cursive", fontSize: '1.25rem', background: loading ? '#1a0030' : `linear-gradient(135deg,${col},#6b21a8)`, color: '#fff', border: 'none', borderRadius: 50, padding: '17px', cursor: loading ? 'not-allowed' : 'pointer', boxShadow: loading ? 'none' : `0 6px 0 #3b0764, 0 0 30px ${col}55`, letterSpacing: 2, width: '100%', transition: 'all 0.2s' }}>
-                {loading ? '⏳ FUELLING UP...' : '🚦 START THE RACE!'}
+                {loading ? '⏳ FUELLING UP...' : 'START THE RACE!'}
               </button>
             </div>
           )}
