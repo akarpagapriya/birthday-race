@@ -6,6 +6,7 @@ import { saveGame } from '@/lib/gameService'
 import Image from 'next/image'
 import raceNotifyheart from '@/assets/race-notify-heart.png'
 
+
 function defaultWishes(): WishEntry[] {
   return [{ stage: 1, from_name: '', avatar: '👵', short_wish: '' }]
 }
