@@ -225,13 +225,12 @@ export default function HomePage() {
           <div style={{ fontSize: '2.8rem', marginBottom: 4, alignItems: 'center', display: 'flex', justifyContent: 'center', gap: 12, flexWrap: 'wrap' }}>
             <Image
               src={heroImg}
-              alt="Birthday Notify Heart"
-              width={150}
-              height={150}
+              alt="Birthday Gift"
+              width={120}
+              height={120}
               style={{
                 animation: 'flagWave 1.4s ease-in-out infinite alternate',
                 marginBottom: 12,
-                width: 'clamp(80px, 20vw, 150px)',
                 height: 'auto',
               }}
             />
@@ -306,7 +305,7 @@ export default function HomePage() {
           <div id="how-it-works" style={{
             width: '100%', maxWidth: 520,
             margin: '0 auto',
-            padding: '0 20px 80px',
+            padding: '0 20px 100px',
             animation: 'hiwSlideIn 0.7s cubic-bezier(.22,1,.36,1) both',
           }}>
 
@@ -426,14 +425,18 @@ export default function HomePage() {
 
 {/* ── FOOTER ── */}
         <div style={{
-          width: '100%', textAlign: 'center',
-          padding: '20px 24px 36px',
-          borderTop: '1px solid rgba(255,255,255,0.06)',
-          marginTop: 'auto',
+          position: 'fixed', bottom: 0, left: 0, right: 0,
+          textAlign: 'center',
+          padding: '10px 24px 14px',
+          background: 'rgba(6,0,15,0.92)',
+          borderTop: '1px solid rgba(147,51,234,0.15)',
+          backdropFilter: 'blur(12px)',
+          WebkitBackdropFilter: 'blur(12px)',
+          zIndex: 10,
         }}>
           <p style={{
-            fontFamily: "'Boogaloo',cursive", fontSize: '0.82rem',
-            color: 'rgba(255,255,255,0.2)',
+            fontFamily: "'Boogaloo',cursive", fontSize: '0.78rem',
+            color: 'rgba(255,255,255,0.8)',
           }}>
             Made with 💜 by <span style={{ color: '#9333ea' }}>Karpagapriya</span>
           </p>
