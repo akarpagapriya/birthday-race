@@ -8,10 +8,10 @@ export interface Wish {
 }
 
 export const WISHES: Wish[] = [
-  { from: 'Grandparent', av: '👵', color: '#c084fc', tag: 'Stage 1 Complete! 🏁', photo: null, text: "Wishing you a wonderful birthday full of joy and laughter! 🌟" },
-  { from: 'Mum',         av: '💛', color: '#f59e0b', tag: 'Stage 2 Complete! ✨', photo: null, text: "You make every single day brighter just by being you! Happy Birthday! ☀️" },
-  { from: 'Dad',         av: '💜', color: '#e879f9', tag: 'Stage 3 Complete! ⚡', photo: null, text: "So proud of you every single day. Keep racing through life! 🚗" },
-  { from: 'Sibling',     av: '👦', color: '#6ee7b7', tag: 'Stage 4 Complete! 🏆', photo: null, text: "Happy Birthday! You are the best! Let's play all day! 🎉" },
+  { from: 'Mum',         av: '💛', color: '#f59e0b', tag: 'Stage 1 Complete! ✨', photo: null, text: "You make every single day brighter just by being you! Happy Birthday! ☀️" },
+  { from: 'Dad',         av: '💜', color: '#e879f9', tag: 'Stage 2 Complete! ⚡', photo: null, text: "So proud of you every single day. Keep racing through life! 🚗" },
+  { from: 'Sibling',     av: '👦', color: '#6ee7b7', tag: 'Stage 3 Complete! 🏆', photo: null, text: "Happy Birthday! You are the best! Let's play all day! 🎉" },
+  { from: 'Grandparent', av: '👵', color: '#c084fc', tag: 'Stage 4 Complete! 🏁', photo: null, text: "Wishing you a wonderful birthday full of joy and laughter! 🌟" },
   { from: 'Family',      av: '🏠', color: '#fca5a5', tag: 'Stage 5 Complete! 🔴', photo: null, text: "The whole family is cheering for you! We love you so much! 💜" },
   { from: 'Best Friend', av: '⭐', color: '#2563eb', tag: 'Stage 6 Complete! 📣', photo: null, text: "You are amazing and today is YOUR day! Happy Birthday champion! 🏆" },
   { from: 'Champion!',   av: '🏆', color: '#f59e0b', tag: '🏁 ALL DONE!',         photo: null, text: "YOU DID IT! You finished every stage! Happy Birthday superstar! 🎂🎊" },

@@ -36,7 +36,7 @@ export interface WishEntry {
   photo_preview?: string
 }
 
-export const AVATARS = ['👵','👩','👨','👦','👧','👶','🏠','❤️','🌟','🎉','🦁','🐯']
+export const AVATARS = ['👩','👨','👦','👧','👶','👵','🏠','❤️','🌟','🎉','🦁','🐯']
 
 export const CAR_COLORS = [
   { label: 'Purple Rocket',  value: '#9333ea', emoji: '🟣' },
