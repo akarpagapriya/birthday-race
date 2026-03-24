@@ -2,7 +2,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import heroImg from '@/assets/race-hero.png'
+import heroImg from '@/assets/race-flag.png'
 
 export default function HomePage() {
   const [showHiw, setShowHiw] = useState(false)
